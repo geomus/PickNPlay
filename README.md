@@ -1,5 +1,5 @@
 # Grupo 1
-![logo](/logo.png)
+![Logo](https://user-images.githubusercontent.com/61567182/79498247-5a80cd00-7fff-11ea-88c7-0279911f1585.png)
 # Pick 'n' Play
 ## Integrantes: Abramzon Enrique, Daneri Nahuel, Toyos Francisco
 ## Descripción:
@@ -11,7 +11,7 @@
 ### Nuestra oferta es variada, por eso mismo se dividirá en categorías, que podrían a su vez contener subcategorías, para facilitar la búsqueda filtrada por el objetivo del cliente.
 
 ## Sitios referentes:
-### [Oliveira Musical] (https://www.olimusic.com/) //productos destacados
+### [Oliveira Musical](https://www.olimusic.com/) //productos destacados
 ### [Audio Rosario](https://www.audiorosario.com.ar/) //carousel de portadas
 ### [Tu Instrumento](http://tu-instrumento.com.ar/) //solapas desplegables de las categorias, tono de colores (distribución)
 ### [Intervalo Shop](https://www.intervaloshop.com/) //movimiento por los menús
