@@ -1,0 +1,23 @@
+{
+  "name": "Pick & Play",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0220CBFSNCN01ARRO/grupo_1_InstrumentosM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0220CBFSNCN01ARRO/grupo_1_InstrumentosM/issues"
+  },
+  "homepage": "https://github.com/0220CBFSNCN01ARRO/grupo_1_InstrumentosM#readme",
+  "dependencies": {
+    "express-generator": "^4.16.1"
+  }
+}
