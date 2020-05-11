@@ -4,6 +4,7 @@
 ## Integrantes: Abramzon Enrique, Daneri Nahuel, Toyos Francisco
 ## Descripción:
 ### El sitio está orientado a la compra-venta de instrumentos musicales varios y accesorios relacionados.
+## [Trello del equipo](https://trello.com/b/2bdNFARD/)
 
 ## Target:
 ### Personas en cualquier rango de edad, oferta para diferentes situaciones económicas, principiantes en el área de la música y profecionales.

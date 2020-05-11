@@ -1,10 +1,78 @@
+/* Resets */
+ul,ol {padding: 0;}
+li {list-style: none;}
+*{
+  font-family: roboto;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(/public/images/bgMain2.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #2F303A;
 }
-h1{
-  background-color: greenyellow;
+/* header */
+.bg-dark{
+  background-color: #2F303A !important;
 }
-a {
-  color: #00B7FF;
+
+/* destacados */
+.card-body .btn-primary {
+  color: #fff;
+  background-color: #2F303A;
+  border-color: #2F303A;
 }
+.card .img-fluid {
+width: 100%;
+height: 200px;
+}
+
+/* footer */
+footer a {
+  color: white;
+}
+footer div u li a i {
+  padding: 6px;
+}
+
+/* Media-Queries */
+@media (max-width: 425px){
+  .card-deck{
+  width: 250px;
+  margin: 0 auto;
+}
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .card .img-fluid {
+    height: 150px;
+  }
+  nav .dropdown{
+    margin-right: 10px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  header {
+  padding-bottom: 10px;
+  }
+  header div a img{
+    width:auto;
+  }
+  #logoLG{
+    margin: 5px;
+    padding-left: 50px;
+  }
+  .bg-dark{
+    background-color: #2F303A00 !important;
+  }
+  nav button {
+    background-color:#2F303A !important ;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
