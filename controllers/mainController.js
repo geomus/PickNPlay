@@ -13,6 +13,9 @@ const controller = {
 		// res.send(ejs);
 		res.render('index',{title: 'pIntegrador'});
 		// res.render('index', {title:'Home'});
+	},
+	detalle: (req, res) => {
+		res.render('detalle',{title: 'pIntegrador'})
 	}
 };
 

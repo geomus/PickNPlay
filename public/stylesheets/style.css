@@ -1,8 +1,11 @@
 /* Resets */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
+
 ul,ol {padding: 0;}
 li {list-style: none;}
 *{
   font-family: roboto;
+  box-sizing: border-box;
 }
 body {
   background-image: url('/images/bgMain2.jpg');
@@ -14,7 +17,7 @@ body {
 }
 .logo{
   max-width: 300px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 .navSearch{
   width: 125px;
@@ -23,6 +26,10 @@ body {
 /* header */
 .bg-dark{
   background-color: #2F303A !important;
+}
+#categorias{
+  background-color:#2F303A;
+  
 }
 
 /* destacados */
@@ -37,12 +44,64 @@ height: 200px;
 }
 
 /* footer */
+footer{
+  
+}
 footer a {
   color: white;
 }
 footer div u li a i {
   padding: 6px;
 }
+/* css-quique  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+
+
+.claro{
+    background-image: url('/images/bg2.jpg');
+    
+}
+.cardClaro{
+  background-color: transparent;
+}
+h5{
+    font-size: 140%;
+}
+h6{
+    font-size: 120%;
+}
+ul, li{
+    list-style: none;
+}
+.ubicacionSitio{
+    font-size: 80%;
+
+}
+.carousel-control-next,
+.carousel-control-prev {
+  background: transparent;
+}
+.card-title{
+}
+.btn-outline-dark{
+    width: 136px;
+    text-align: left;
+    border-radius: 25px;
+    
+}
+.btnIzquierda{
+    margin-right: 1%;
+    margin-bottom: 2.5%;
+}
+.btnDerecha{
+    margin-bottom: 2.5%;
+}
+#carouselExampleControls{
+    margin-left: 0;
+}
+
+
+
 
 /* Media-Queries */
 @media (max-width: 425px){

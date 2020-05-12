@@ -1,88 +1,8 @@
-<!DOCTYPE html>
-<html>
+<%- include('./partials/head') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Venta de instrumentos musicales">
+<%- include('./partials/header') %>
 
-  <title>Pick 'N' Play | Home</title>
-  <script src="https://kit.fontawesome.com/ada1ef26bb.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <!-- <link rel='stylesheet' href='/stylesheets/style.css'> -->
-</head>
 
-<body>
-  <!-- header -->
-  <div class="container p-0">
-  <header class="d-lg-flex justify-content-lg-around" style="padding-top: 20px;">
-    <div class="container d-lg-none p-0">
-      <a href="/views/index.html" class="d-flex justify-content-center flex-grow-1"><img src="/images/logo.png"
-          class="img-fluid logo" alt="logo">
-        <!-- <img src=/images/logo.png" class="img-fluid" alt="logo"> -->
-      </a>
-    </div><br>
-    <nav class="navbar navbar-dark bg-dark flex-lg-fill">
-      <!-- logo lg -->
-      <div id="logoLG" class="d-lg-flex order-lg-1 d-none d-xs-none d-sm-none d-md-none">
-        <a href="/views/index.html"><img src="/images/logo.png" class="img-fluid logo" alt="logo">
-          <!-- <img src=/images/logo.png" class="img-fluid" alt="logo"> -->
-        </a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <form class="form-inline my-2 my-lg-0 order-lg-1 flex-md-grow-1 justify-content-center">
-        <input class="form mr-sm-1 p-0 navSearch" type="search" placeholder=" Buscar" aria-label="Search">
-        <button class="btn btn-dark my-2 my-sm-0" type="submit" style="border-color: #6c757d;"><i class="fas fa-search"
-            style="color: white;"></i></button>
-      </form>
-      <!-- user -->
-      <div class="dropdown order-lg-1">
-        <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-display="static"
-          aria-haspopup="true" aria-expanded="false">
-          <button type="button" class="btn btn-secondary bg-dark my-1 my-lg-0"><i class="far fa-user"></i></button>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Entrar</a>
-          <a class="dropdown-item" href="#">Registrarse</a>
-        </div>
-      </div>
-      <button type="button" class="btn btn-secondary bg-dark my-2 my-lg-0 order-lg-1"><i
-          class="fas fa-shopping-cart"></i></button>
-      <div class="collapse navbar-collapse  order-lg-1" id="categorias">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Accesorios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bajos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Baterías</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Guitarras
-            </a>
-            <div class="dropdown-menu" style="width:50px" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Acústicas</a>
-              <a class="dropdown-item" href="#">Eléctricas</a>
-              <a class="dropdown-item" href="#">Electroacústicas</a>
-              <a class="dropdown-item" href="#">Clásicas</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    </div>
-  </header>
-</div>
-  <!-- /header -->
 
   <main>
     <!-- carousel -->
@@ -163,33 +83,5 @@
     </div>
     <!-- /destacados -->
   </main>
-  <!-- footer -->
-  <footer class="container p-0" style="background-color: #2F303A;
-  opacity: 0.8;">
-    <div class="d-flex justify-content-between">
-      <ul class="d-flex">
-        <li><a href=""><i class="fas fa-user-circle"> Contacto</i></a></li>
-        <li><a href=""><i class="far fa-question-circle"> FAQ</i></a></li>
-        <li><a href=""><i class="fas fa-broadcast-tower"> Conocenos</i></a></li>
-      </ul>
-      <div class="d-flex">
-        <a href="https://www.facebook.com/"><i class="fab fa-facebook-square p-2"></i></a>
-        <a href="https://www.instagram.com/?hl=es-la"><i class="fab fa-instagram-square p-2"></i></a>
-      </div>
-    </div>
-  </footer>
-  <!-- /footer -->
 
-  <!-- Bootstrap, jquery y popper -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-</body>
-
-</html>
+  <%- include('./partials/footer') %>
