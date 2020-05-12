@@ -5,12 +5,20 @@ li {list-style: none;}
   font-family: roboto;
 }
 body {
-  background-image: url(/public/images/bgMain2.jpg);
+  background-image: url('/images/bgMain2.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #2F303A;
+}
+.logo{
+  max-width: 300px;
+  padding-bottom: 20px;
+}
+.navSearch{
+  width: 125px;
+  
 }
 /* header */
 .bg-dark{
@@ -52,6 +60,14 @@ footer div u li a i {
   nav .dropdown{
     margin-right: 10px;
   }
+  .navSearch{
+    width: 300px;
+    margin-left: 50px;
+    
+  }
+  #logoLG{
+    margin: 5px;
+  }
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -64,7 +80,8 @@ footer div u li a i {
   }
   #logoLG{
     margin: 5px;
-    padding-left: 50px;
+    padding-left: 70px;
+    
   }
   .bg-dark{
     background-color: #2F303A00 !important;
@@ -72,7 +89,14 @@ footer div u li a i {
   nav button {
     background-color:#2F303A !important ;
   }
+  .navSearch{
+    width: 300px;
+    
+  }
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) { 
+  .navSearch{
+    width: 400px;
+  } }

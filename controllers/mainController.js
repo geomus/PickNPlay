@@ -11,7 +11,7 @@ const controller = {
 	home: (req, res) => {
 		// let ejs = readEJS('index');
 		// res.send(ejs);
-		res.render('index',);
+		res.render('index',{title: 'pIntegrador'});
 		// res.render('index', {title:'Home'});
 	}
 };
