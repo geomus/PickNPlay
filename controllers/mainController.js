@@ -15,7 +15,10 @@ const controller = {
 		// res.render('index', {title:'Home'});
 	},
 	detalle: (req, res) => {
-		res.render('detalle',{title: 'pIntegrador'})
+		res.render('detalle',{title: 'pIntegrador'});
+	},
+	carrito: (req, res) => {
+		res.render('carrito',{title: 'pIntegrador'});
 	}
 };
 
