@@ -12,7 +12,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="/images/carousel1.jpg" class="d-block w-100" alt="carousel 1">
+          <img src="/images/carousel1.jpg" id="carouselIMG" class="d-block w-100" alt="carousel 1">
           <div class="carousel-caption"
             style="color: black;background-color: rgba(255, 	255, 255, 0.6); border-radius: 5px;">
             <h5>Winter Sale!</h5>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="/images/carousel2.jpg" class="d-block w-100" alt="carousel 2">
+          <img src="/images/carousel2.jpg" id="carouselIMG" class="d-block w-100" alt="carousel 2">
           <div class="carousel-caption" style="color: white;background-color: rgba(0, 0, 0, 0.6); border-radius: 5px;">
             <h5>Visitá nuestras redes</h5>
             <p>No te pierdas ninguna novedad sobre nuestros productos.</p>
@@ -43,15 +43,18 @@
     <!-- /carousel -->
 
     <!-- destacados -->
-    <div class="container p-0">
+    <div class="container">
       <h5 style="color: white; text-decoration: underline;"><i class="fas fa-fire-alt"></i> DESTACADOS :</h5>
       <div class="card-deck">
         <div class="card text-white bg-secondary mb-3">
           <img class="card-img-top img-fluid" src="/images/bateriaPrueba.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Batería Natal DNA (5 cuerpos)</h5>
+            <h5 class="card-title">Natal DNA (5 cuerpos)</h5>
             <h5 class="card-title text-right">$26.300</h5>
             <a href="#" class="btn btn-primary">Ver más</a>
+          </div>
+          <div class="card-footer bg-light">
+            <small class="text-muted">Baterías</small>
           </div>
         </div>
         <div class="card text-white bg-secondary mb-3">
@@ -61,27 +64,36 @@
             <h5 class="card-title text-right">$31.500</h5>
             <a href="#" class="btn btn-primary">Ver más</a>
           </div>
+          <div class="card-footer bg-light">
+            <small class="text-muted">Guitarras eléctricas</small>
+          </div>
         </div>
         <div class="card text-white bg-secondary mb-3">
           <img class="card-img-top img-fluid" src="/images/ampliPrueba.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Amplificador Marshall MG Series MG102CFX 100W</h5>
+            <h5 class="card-title">Marshall MG Series MG102CFX 100W</h5>
             <h5 class="card-title text-right">$50.000</h5>
             <a href="#" class="btn btn-primary">Ver más</a>
+          </div>
+          <div class="card-footer bg-light">
+            <small class="text-muted">Amplificadores</small>
           </div>
         </div>
         <div class="card text-white bg-secondary mb-3">
           <img class="card-img-top img-fluid" src="/images/acusticaPrueba.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Guitarra electroacústica Takamine GN51CE NEX</h5>
+            <h5 class="card-title">Takamine GN51CE NEX</h5>
             <h5 class="card-title text-right">$23.000</h5>
             <a href="#" class="btn btn-primary">Ver más</a>
+          </div>
+          <div class="card-footer bg-light">
+            <small class="text-muted">Guitarras electroacústicas</small>
           </div>
         </div>
       </div>
     </div>
     <!-- /destacados -->
   </main>
-  
+
 <!-- FOOTER -->
 <%- include('./partials/footer') %>

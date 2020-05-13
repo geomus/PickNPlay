@@ -36,10 +36,10 @@ body {
   background-color: #2F303A;
   border-color: #2F303A;
 }
-.card .img-fluid {
+/* .card .img-fluid {
 width: 100%;
 height: 200px;
-}
+} */
 
 /* footer */
 footer a {
@@ -47,6 +47,9 @@ footer a {
 }
 footer div ul li a i {
   padding: 6px;
+}
+.card-footer .text-muted{
+  text-decoration: underline;
 }
 /* css-quique  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
@@ -92,14 +95,12 @@ ul, li{
 }
 
 
-
-
 /* Media-Queries */
-@media (max-width: 425px){
-  .card-deck{
-  width: 250px;
+@media (min-width: 425px){
+  /* .card-deck{
+  width: auto;
   margin: 0 auto;
-}
+} */
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -140,10 +141,20 @@ ul, li{
   .navSearch{
     width: 300px;
   }
+  #carouselIMG{
+    height: 350px;
+  }
+  nav .dropdown{
+    margin-right: 1px;
+  }
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   .navSearch{
     width: 400px;
-  } }
+  }
+  #carouselIMG{
+    height: 500px;
+  }
+}
