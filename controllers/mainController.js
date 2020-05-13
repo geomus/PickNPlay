@@ -17,7 +17,13 @@ const controller = {
 		res.render('detalle',{title: 'Detalle Producto'})
 	},
 	carrito: (req, res) => {
-		res.render('carrito',{title: 'pIntegrador'});
+		res.render('carrito',{title: 'Carro Compras'});
+	},
+	productAdd: (req, res) => {
+		res.render('productAdd',{title: 'Admin Control'});
+	},
+	register: (req, res) => {
+		res.render('register',{title: 'Registro'});
 	}
 };
 
