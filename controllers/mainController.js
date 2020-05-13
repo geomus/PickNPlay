@@ -15,6 +15,9 @@ const controller = {
 	},
 	detalle: (req, res) => {
 		res.render('detalle',{title: 'Detalle Producto'})
+	},
+	carrito: (req, res) => {
+		res.render('carrito',{title: 'pIntegrador'});
 	}
 };
 
