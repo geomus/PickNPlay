@@ -1,20 +1,33 @@
 /* Resets */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
+
 ul,ol {padding: 0;}
 li {list-style: none;}
 *{
   font-family: roboto;
+  box-sizing: border-box;
 }
 body {
-  background-image: url(/public/images/bgMain2.jpg);
+  background-image: url('/images/bgMain2.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #2F303A;
 }
+.logo{
+  max-width: 300px;
+  padding-bottom: 10px;
+}
+.navSearch{
+  width: 125px;
+}
 /* header */
 .bg-dark{
   background-color: #2F303A !important;
+}
+#categorias{
+  background-color:#2F303A;
 }
 
 /* destacados */
@@ -35,6 +48,51 @@ footer a {
 footer div ul li a i {
   padding: 6px;
 }
+/* css-quique  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+
+
+.claro{
+    background-image: url('/images/bg2.jpg');
+}
+.cardClaro{
+  background-color: transparent;
+}
+h5{
+    font-size: 140%;
+}
+h6{
+    font-size: 120%;
+}
+ul, li{
+    list-style: none;
+}
+.ubicacionSitio{
+    font-size: 80%;
+
+}
+.carousel-control-next,
+.carousel-control-prev {
+  background: transparent;
+}
+.btn-outline-dark{
+    width: 136px;
+    text-align: left;
+    border-radius: 25px;
+}
+.btnIzquierda{
+    margin-right: 1%;
+    margin-bottom: 2.5%;
+}
+.btnDerecha{
+    margin-bottom: 2.5%;
+}
+#carouselExampleControls{
+    margin-left: 0;
+}
+
+
+
 
 /* Media-Queries */
 @media (max-width: 425px){
@@ -52,6 +110,13 @@ footer div ul li a i {
   nav .dropdown{
     margin-right: 10px;
   }
+  .navSearch{
+    width: 300px;
+    margin-left: 50px;
+  }
+  #logoLG{
+    margin: 5px;
+  }
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -64,7 +129,7 @@ footer div ul li a i {
   }
   #logoLG{
     margin: 5px;
-    padding-left: 50px;
+    padding-left: 70px;
   }
   .bg-dark{
     background-color: #2F303A00 !important;
@@ -72,7 +137,13 @@ footer div ul li a i {
   nav button {
     background-color:#2F303A !important ;
   }
+  .navSearch{
+    width: 300px;
+  }
 }
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) {
+  .navSearch{
+    width: 400px;
+  } }

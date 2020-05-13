@@ -11,8 +11,10 @@ const controller = {
 	home: (req, res) => {
 		// let ejs = readEJS('index');
 		// res.send(ejs);
-		res.render('index',);
-		// res.render('index', {title:'Home'});
+		res.render('index',{title: 'Home'});
+	},
+	detalle: (req, res) => {
+		res.render('detalle',{title: 'Detalle Producto'})
 	}
 };
 
