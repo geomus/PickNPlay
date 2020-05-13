@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carga de productos</title>
     <!--My CSS-->
-    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="../public/stylesheets/style.css">
 
     <!--CSS Boostrap-->
     <link rel="stylesheet" href="../bootstrap-4.4.1-dist/css/bootstrap.min.css">
@@ -179,7 +179,7 @@
                         <label class="custom-file-label" for="fileInput">imagenProducto</label>
                     </div>
                 </div>
-
+                    <!--Carga de imagen-->
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -190,69 +190,123 @@
             </div>
             <button type="submit" class="btn btn-secondary" id="dt-all-checkbox">Agregar</button>
             </form>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Acciones
+                </button>
+                <div class="dropdown-menu " aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item active" type="button">Eliminar</button>
+                    <button class="dropdown-item" type="button">Modificaciones</button>
+                    
+                </div>
+            </div>
             <!--/Formulario de carga-->
-            <!--Productos a cargar-->
-
-            <table id="dt-all-checkbox" class="table text-light" cellspacing="0" width="100%">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th class="th-sm">nombreProducto
-                    </th>
-                    <th class="th-sm">idProducto
-                    </th>
-                    <th class="th-sm">serialProducto
-                    </th>
-                    <th class="th-sm">precioProductoUnit
-                    </th>
-                    <th class="th-sm">cantidadProducto
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td>Guitarra Acústica Fenders</td>
-                    <td>GA21582</td>
-                    <td>GuitarraAcuFenders</td>
-                    <td>$15.000</td>
-                    <td>8</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>Bateria TAMA</td>
-                    <td>BTM8540</td>
-                    <td>BatTama</td>
-                    <td>$85.000</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                  </tr>
-                 
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>
-                    </th>
-                    <th>nombreProducto
-                    </th>
-                    <th>idProducto
-                    </th>
-                    <th>serialProducto
-                    </th>
-                    <th>precioProductoUnit
-                    </th>
-                    <th>cantidadProducto
-                    </th>
-                  </tr>
-                </tfoot>
-            </table>
+            <hr>
+            <!--Productos a cargar (vista pc)-->
+            <label for="inputidProducto" class="text-light"><strong>Carga de los productos</strong> </label>
+            <div class="table-responsive d-none d-lg-flex">
+                <table class="table text-light">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">nombreProducto</th>
+                      <th scope="col">idProducto</th>
+                      <th scope="col">serialProducto</th>
+                      <th scope="col">precioProducto</th>
+                      <th scope="col">cantidadProducto</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"><div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                        <label class="form-check-label" for="materialChecked2"></label>
+                      </div></th>
+                      <td>Guitarra acústica Fender</td>
+                      <td>GA21582</td>
+                      <td>GuitarraAcuFenders</td>
+                      <td>$15.000</td>
+                      <td>8</td>
+                     
+                    </tr>
+                    <tr>
+                        <th scope="row"><div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                            <label class="form-check-label" for="materialChecked2"></label>
+                          </div></th>
+                      <td>Batería Tama</td>
+                      <td>BTM8504</td>
+                      <td>BatTAMASplender</td>
+                      <td>$80.000</td>
+                      <td>3</td>
+                     
+                    </tr>
+                    <tr>
+                        <th scope="row"><div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                            <label class="form-check-label" for="materialChecked2"></label>
+                          </div></th>
+                      <td>---</td>
+                      <td>---</td>
+                      <td>---</td>
+                      <td>---</td>
+                      <td>---</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+               <!--/Productos a cargar (vista pc)-->
+                <!--Productos a cargar (vista mbile y tablet)-->
+                <div class="table-responsive d-lg-none" >
+                    <table class="table text-light">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">nombreProducto</th>
+                          <th scope="col">idProducto</th>
+                          <th scope="col">cantidad</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"><div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                            <label class="form-check-label" for="materialChecked2"></label>
+                          </div></th>
+                          <td>Guitarra acústica Fender</td>
+                          <td>GA21582</td>
+                          <td>8</td>
+                         
+                        </tr>
+                        <tr>
+                            <th scope="row"><div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                                <label class="form-check-label" for="materialChecked2"></label>
+                              </div></th>
+                          <td>Batería Tama</td>
+                          <td>BTM8504</td>
+                          <td>3</td>
+                         
+                        </tr>
+                        <tr>
+                            <th scope="row"><div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                                <label class="form-check-label" for="materialChecked2"></label>
+                              </div></th>
+                          <td>---</td>
+                          <td>---</td>
+                          <td>---</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <hr>
+                  <button type="submit" class="btn btn-secondary" id=>Cargar todo</button>
+                  <hr>
             </div>
 
         </section>
