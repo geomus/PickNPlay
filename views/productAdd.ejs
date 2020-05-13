@@ -3,8 +3,107 @@
 <!-- HEADER -->
 <%- include('./partials/header') %>
 
-        <!--Contenido-->
-        <section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carga de productos</title>
+    <!--My CSS-->
+    <link rel="stylesheet" href="../public/stylesheets/style.css">
+
+    <!--CSS Boostrap-->
+    <link rel="stylesheet" href="../bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-4.4.1-dist/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="../bootstrap-4.4.1-dist/css/bootstrap-grid.min.css">
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/ada1ef26bb.js" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <!--Boostrap-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+       
+        
+</head>
+
+
+<body>
+    <!--Header-->
+    <header>
+        <header class="d-lg-flex justify-content-lg-around" style="padding-top: 20px;">
+            <div class="container d-lg-none">
+                <a href="./registro.html" class="d-flex justify-content-center flex-grow-1"><img
+                        src="../images/Logo(2).png" class="img-fluid" alt="logo">
+                    <!-- <img src=/images/logo.png" class="img-fluid" alt="logo"> -->
+                </a>
+            </div><br>
+            <nav class="navbar navbar-dark bg-dark flex-lg-fill">
+                <!-- logo lg -->
+                <div id="logoLG" class="d-lg-flex order-lg-1 d-none d-xs-none d-sm-none d-md-none">
+                    <a href="/views/index.html"><img src="../images/Logo(2).png" class="img-fluid" alt="logo">
+                        <!-- <img src=/images/logo.png" class="img-fluid" alt="logo"> -->
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <form class="form-inline my-2 my-lg-0 order-lg-1 flex-md-grow-1 justify-content-center">
+                    <input class="form mr-sm-1 w-50" type="search" placeholder=" Buscar" aria-label="Search">
+                    <button class="btn btn-dark my-2 my-sm-0" type="submit" style="border-color: #6c757d;"><i
+                            class="fas fa-search" style="color: white;"></i></button>
+                </form>
+                <!-- user -->
+                <div class="dropdown order-lg-1">
+                    <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-display="static"
+                        aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-secondary bg-dark my-2 my-lg-0"><i
+                                class="far fa-user"></i></button>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Entrar</a>
+                        <a class="dropdown-item" href="#">Registrarse</a>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary bg-dark my-2 my-lg-0 order-lg-1"><i
+                        class="fas fa-shopping-cart"></i></button>
+                <div class="collapse navbar-collapse  order-lg-1" id="categorias">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Accesorios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bajos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Baterías</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Guitarras
+                            </a>
+                            <div class="dropdown-menu" style="width:50px" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Acústicas</a>
+                                <a class="dropdown-item" href="#">Eléctricas</a>
+                                <a class="dropdown-item" href="#">Electroacústicas</a>
+                                <a class="dropdown-item" href="#">Clásicas</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            </div>
+        </header>
+          <!--Contenido-->
+          <section>
             <div class="container">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
@@ -18,11 +117,7 @@
                     </div>
                 </div>
                 <hr>
-                <!--Imagen vista grande-->
                
-                
-                  <!--/Imagen vista grande-->
-                 
                 <!--Formulario de carga-->
                 <form>
                     <div class="form-row">
@@ -82,7 +177,7 @@
                         <label class="custom-file-label" for="fileInput">imagenProducto</label>
                     </div>
                 </div>
-
+                    <!--Carga de imagen-->
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -93,69 +188,123 @@
             </div>
             <button type="submit" class="btn btn-secondary" id="dt-all-checkbox">Agregar</button>
             </form>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Acciones
+                </button>
+                <div class="dropdown-menu " aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item active" type="button">Eliminar</button>
+                    <button class="dropdown-item" type="button">Modificaciones</button>
+                    
+                </div>
+            </div>
             <!--/Formulario de carga-->
-            <!--Productos a cargar-->
-
-            <table id="dt-all-checkbox" class="table text-light" cellspacing="0" width="100%">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th class="th-sm">nombreProducto
-                    </th>
-                    <th class="th-sm">idProducto
-                    </th>
-                    <th class="th-sm">serialProducto
-                    </th>
-                    <th class="th-sm">precioProductoUnit
-                    </th>
-                    <th class="th-sm">cantidadProducto
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td>Guitarra Acústica Fenders</td>
-                    <td>GA21582</td>
-                    <td>GuitarraAcuFenders</td>
-                    <td>$15.000</td>
-                    <td>8</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>Bateria TAMA</td>
-                    <td>BTM8540</td>
-                    <td>BatTama</td>
-                    <td>$85.000</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                  </tr>
-                 
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>
-                    </th>
-                    <th>nombreProducto
-                    </th>
-                    <th>idProducto
-                    </th>
-                    <th>serialProducto
-                    </th>
-                    <th>precioProductoUnit
-                    </th>
-                    <th>cantidadProducto
-                    </th>
-                  </tr>
-                </tfoot>
-            </table>
+            <hr>
+            <!--Productos a cargar (vista pc)-->
+            <label for="inputidProducto" class="text-light"><strong>Carga de los productos</strong> </label>
+            <div class="table-responsive d-none d-lg-flex">
+                <table class="table text-light">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">nombreProducto</th>
+                      <th scope="col">idProducto</th>
+                      <th scope="col">serialProducto</th>
+                      <th scope="col">precioProducto</th>
+                      <th scope="col">cantidadProducto</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"><div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                        <label class="form-check-label" for="materialChecked2"></label>
+                      </div></th>
+                      <td>Guitarra acústica Fender</td>
+                      <td>GA21582</td>
+                      <td>GuitarraAcuFenders</td>
+                      <td>$15.000</td>
+                      <td>8</td>
+                     
+                    </tr>
+                    <tr>
+                        <th scope="row"><div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                            <label class="form-check-label" for="materialChecked2"></label>
+                          </div></th>
+                      <td>Batería Tama</td>
+                      <td>BTM8504</td>
+                      <td>BatTAMASplender</td>
+                      <td>$80.000</td>
+                      <td>3</td>
+                     
+                    </tr>
+                    <tr>
+                        <th scope="row"><div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                            <label class="form-check-label" for="materialChecked2"></label>
+                          </div></th>
+                      <td>---</td>
+                      <td>---</td>
+                      <td>---</td>
+                      <td>---</td>
+                      <td>---</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+               <!--/Productos a cargar (vista pc)-->
+                <!--Productos a cargar (vista mbile y tablet)-->
+                <div class="table-responsive d-lg-none" >
+                    <table class="table text-light">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">nombreProducto</th>
+                          <th scope="col">idProducto</th>
+                          <th scope="col">cantidad</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"><div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                            <label class="form-check-label" for="materialChecked2"></label>
+                          </div></th>
+                          <td>Guitarra acústica Fender</td>
+                          <td>GA21582</td>
+                          <td>8</td>
+                         
+                        </tr>
+                        <tr>
+                            <th scope="row"><div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                                <label class="form-check-label" for="materialChecked2"></label>
+                              </div></th>
+                          <td>Batería Tama</td>
+                          <td>BTM8504</td>
+                          <td>3</td>
+                         
+                        </tr>
+                        <tr>
+                            <th scope="row"><div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                                <label class="form-check-label" for="materialChecked2"></label>
+                              </div></th>
+                          <td>---</td>
+                          <td>---</td>
+                          <td>---</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <hr>
+                  <button type="submit" class="btn btn-secondary" id=>Cargar todo</button>
+                  <hr>
             </div>
 
         </section>
