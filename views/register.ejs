@@ -2,56 +2,73 @@
 <%- include('./partials/head') %>
 <!-- HEADER -->
 <%- include('./partials/header') %>
-   <section>
-     <div class="container">
-       <br>
-       <form class="form-horizontal w-50">
-        <p class="text-center text-uppercase text-light ">REGISTRO</p>
-        <div class="form-group">
-          <label for="inputNombre" class="col-sm-2 control-label text-light">Nombre</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputNombre" placeholder="Nombre"  required>
+  <section>
+    <div class="row">
+      <div class="col-12 col-sm-8 ">
+        <br>
+        <form class="form-horizontal w-100">
+          <p class="text-center text-uppercase text-light ">REGISTRO</p>
+          <div class="form-group">
+            <label for="inputNombre" class="col-sm-2 control-label text-light">Nombre</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" required>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputApellido" class="col-sm-2 control-label text-light">Apellido</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" required>
+          <div class="form-group">
+            <label for="inputApellido" class="col-sm-2 control-label text-light">Apellido</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" required>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label text-light">Email</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="Example@gmail.com" required>
-            <small id="helpBlock2" class="help-block text-light">Nunca compartas tus datos</small>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label text-light">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="Example@gmail.com" required>
+              <small id="helpBlock2" class="help-block text-light">Nunca compartas tus datos</small>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword3" class="col-sm-2 control-label text-light">Contraseña</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña" required>
-            <small id="helpBlock2" class="help-block text-light "> Tu contraseña debe contener 8-20 carácteres de largo,contener letras y números, no espacios, carácteres especiales, o emojis.</small>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label text-light">Contraseña</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña" required>
+              <small id="helpBlock2" class="help-block text-light "> Tu contraseña debe contener 8-20 carácteres de
+                largo,contener letras y números, no espacios, carácteres especiales, o emojis.</small>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputConfirmPassword3" class="col-sm-2 col-md-6 col-lg-4 control-label text-light">Confirmar contraseña</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputConfirmPassword3" placeholder="Confirmar contraseña" required>
+          <div class="form-group">
+            <label for="inputConfirmPassword3" class="col-sm-2 col-md-6 col-lg-4 control-label text-light">Confirmar
+              contraseña</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputConfirmPassword3" placeholder="Confirmar contraseña"
+                required>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-secondary btn-sm">Sign in</button>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-secondary btn-sm">Sign in</button>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary btn-sm">Ingresar con google</button>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary btn-sm">Ingresar con google</button>
+            </div>
           </div>
+        </form>
+        <div class="w45">
         </div>
-      </form>
-     </div>
-   </section>
+      </div>
+      <div class=" col-sm-4 fraseNietzsche">
+        <div class="container nietzsche">
+          <h3 class="text-muted">
+            "Without music, life would be a mistake"
+          </h3>
+          <p class="text-muted text-right mr-5">
+            Friedrich Nietzsche
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
    <!--Frase-->
 <!-- FOOTER -->
 <%- include('./partials/footer') %>

@@ -226,6 +226,12 @@ bottom: 0; }
   width: auto;
   margin: 0 auto;
 } */
+
+}
+@media (min-width: 576px){
+  .nietzsche{
+    margin: 70% -10%;
+  }
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -243,6 +249,8 @@ bottom: 0; }
   #logoLG{
     margin: 5px;
   }
+  
+  
 }
 
 /* Medium devices (desktops, 992px and up) */
