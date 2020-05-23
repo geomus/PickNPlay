@@ -1,5 +1,5 @@
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 // ************ Function to Read an HTML File ************
 // function readEJS (fileName) {
@@ -9,18 +9,10 @@
 
 const controller = {
 	home: (req, res) => {
-		// let ejs = readEJS('index');
-		// res.send(ejs);
 		res.render('index',{title: 'Home'});
-	},
-	detalle: (req, res) => {
-		res.render('detalle',{title: 'Detalle Producto'})
 	},
 	carrito: (req, res) => {
 		res.render('carrito',{title: 'Carro Compras'});
-	},
-	productAdd: (req, res) => {
-		res.render('productAdd',{title: 'Admin Control'});
 	},
 	register: (req, res) => {
 		res.render('register',{title: 'Registro'});

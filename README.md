@@ -7,7 +7,7 @@
 ## [Trello del equipo](https://trello.com/b/2bdNFARD/)
 
 ## Target:
-### Personas en cualquier rango de edad, oferta para diferentes situaciones económicas, principiantes en el área de la música y profecionales.
+### Personas en cualquier rango de edad, oferta para diferentes situaciones económicas, principiantes en el área de la música y profesionales.
 ## Plan de negocio inicial:
 ### Nuestra oferta es variada, por eso mismo se dividirá en categorías, que podrían a su vez contener subcategorías, para facilitar la búsqueda filtrada por el objetivo del cliente.
 
