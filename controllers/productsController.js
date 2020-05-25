@@ -1,9 +1,18 @@
 const fs = require('fs');
 const path = require('path');
 
+let productsPath = path.join(__dirname,'..','data','productos.json');
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+function getProducts() {
+    let products = fs.readFileSync(productsPath, "utf8")
+    return products != '' ? JSON.parse(products) : []
+};
+
 const controller = {
 	list: (req, res) => {
-		res.render('list',{title: 'Catalogo'});
+        let productos = getProducts();
+        res.render('list',{title: 'Catalogo', productos, puntoMil:toThousand});
     },
     detalle: (req, res) => {
 		res.render('detalle',{title: 'Detalle Producto'})
