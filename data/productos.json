@@ -7,7 +7,7 @@
         "category": "bajos-electricos",
         "subCategory": "",
         "description": "Fender Jazz Bass USA color a eleccion",
-        "image": "[fjb1.jpg, fjb2.jpg, fjb3.jpg]",
+        "image": ["fjb1.jpg", "fjb2.jpg", "fjb3.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -19,7 +19,7 @@
         "category": "bajos-electricos",
         "subCategory": "",
         "description": "Music Mann Stingray USA color a eleccion",
-        "image": "[mms1.jpg,mms2.jpg]",
+        "image": ["mms1.jpg","mms2.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -31,7 +31,7 @@
         "category": "bajos-electricos",
         "subCategory": "",
         "description": "Gibson Thunderbird Bass USA color a eleccion",
-        "image": "[gtb1.jpg,gtb2.jpg]",
+        "image": ["gtb1.jpg","gtb2.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -43,7 +43,7 @@
         "category": "guitarras",
         "subCategory": "guitarras-electricas",
         "description": "Fender Stratocaster USA color a eleccion",
-        "image": "[fsc1.jpg, fsc2.jpg, fsc3.jpg, fsc4.jpg, fsc5.jpg, fsc6.jpg]",
+        "image": ["fsc1.jpg", "fsc2.jpg", "fsc3.jpg", "fsc4.jpg", "fsc5.jpg", "fsc6.jpg"],
         "destacado": false,
         "serialNumber": ""
     },
@@ -55,7 +55,7 @@
         "category": "guitarras",
         "subCategory": "guitarras-electricas",
         "description": "Epiphone Casino Vinyage Clasic",
-        "image": "[ec1.jpg, ec2.jpg]",
+        "image": ["ec1.jpg", "ec2.jpg"],
         "destacado": false,
         "serialNumber": ""
     },
@@ -67,7 +67,7 @@
         "category": "guitarras",
         "subCategory": "guitarras-electricas",
         "description": "Gibson Lucil Vinyage Clasic",
-        "image": "[gl1.jpg, gl2.jpg]",
+        "image": ["gl1.jpg", "gl2.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -79,7 +79,7 @@
         "category": "guitarras",
         "subCategory": "guitarras-acusticas",
         "description": "Fender Paramount USA",
-        "image": "[fp1.jpg, fp2.jpg]",
+        "image": ["fp1.jpg", "fp2.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -91,7 +91,7 @@
         "category": "guitarras",
         "subCategory": "guitarras-acusticas",
         "description": "Martin & Co special 75",
-        "image": "[mc1.jpg, mc2.jpg]",
+        "image": ["mc1.jpg", "mc2.jpg"],
         "destacado": false,
         "serialNumber": ""
     },
@@ -103,7 +103,7 @@
         "category": "guitarras",
         "subCategory": "guitarras-acusticas",
         "description": "Takamine 223 Japan en stock",
-        "image": "[mc1.jpg, mc2.jpg]",
+        "image": ["mc1.jpg", "mc2.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -115,7 +115,7 @@
         "category": "guitarras",
         "subCategory": "clasicas-criollas",
         "description": "Yamaha Concert siempre en stock",
-        "image": "[yc1.jpg, yc2.jpg, yc3.jpg]",
+        "image": ["yc1.jpg", "yc2.jpg", "yc3.jpg"],
         "destacado": false,
         "serialNumber": ""
     },
@@ -127,7 +127,7 @@
         "category": "baterias",
         "subCategory": "",
         "description": "Tama 5 cuerpos todos los colores",
-        "image": "[tama1.jpg, tama2.jpg]",
+        "image": ["tama1.jpg", "tama2.jpg"],
         "destacado": false,
         "serialNumber": ""
     },
@@ -139,7 +139,7 @@
         "category": "baterias",
         "subCategory": "",
         "description": "Pearl 5 cuerpos super resistente",
-        "image": "[pearl1.jpg, pearl2.jpg]",
+        "image": ["pearl1.jpg", "pearl2.jpg"],
         "destacado": false,
         "serialNumber": ""
     },
@@ -151,7 +151,7 @@
         "category": "baterias",
         "subCategory": "",
         "description": "DW signature unica en el pais",
-        "image": "[dw1.jpg, dw2.jpg, dw3.jpg]",
+        "image": ["dw1.jpg", "dw2.jpg", "dw3.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -163,7 +163,7 @@
         "category": "teclados",
         "subCategory": "",
         "description": "Yamaha MX49 sintetizador teclado ultima generacion",
-        "image": "[yamaha1.jpg, yamaha2.jpg]",
+        "image": ["yamaha1.jpg", "yamaha2.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -175,7 +175,7 @@
         "category": "teclados",
         "subCategory": "",
         "description": "Yamaha MX49 sintetizador teclado ultima generacion",
-        "image": "[yamaha1.jpg, yamaha2.jpg]",
+        "image": ["yamaha1.jpg", "yamaha2.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -187,7 +187,7 @@
         "category": "teclados",
         "subCategory": "",
         "description": "Nord piano 3 teclado ultima generacion",
-        "image": "[nord1.jpg, nord2.jpg]",
+        "image": ["nord1.jpg", "nord2.jpg"],
         "destacado": true,
         "serialNumber": ""
     },
@@ -199,7 +199,7 @@
         "category": "accesorios",
         "subCategory": "",
         "description": "pedal guitarra super photone",
-        "image": "[fotone1.jpg, fotone2.jpg]",
+        "image": ["fotone1.jpg", "fotone2.jpg"],
         "destacado": false,
         "serialNumber": ""
     },
@@ -211,7 +211,7 @@
         "category": "accesorios",
         "subCategory": "",
         "description": "Cuerdas Martin americanas",
-        "image": "[cuerdas.jpg]",
+        "image": ["cuerdas.jpg"],
         "destacado": true,
         "serialNumber": ""
     }
