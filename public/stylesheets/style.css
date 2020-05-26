@@ -1,13 +1,6 @@
 /* Resets */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
 
-.product-box_data {
-  padding: 15px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
 a:link, a:visited, a:active {
   text-decoration:none;
 }
