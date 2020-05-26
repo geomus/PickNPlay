@@ -8,6 +8,9 @@
   align-items: center;
   flex-wrap: wrap;
 }
+a:link, a:visited, a:active {
+  text-decoration:none;
+}
 
 ul,ol {padding: 0;}
 li {list-style: none;}
@@ -69,6 +72,7 @@ footer div ul li a i {
 .cardClaro{
   background-color: transparent;
 }
+
 h5{
     font-size: 140%;
 }
@@ -98,8 +102,19 @@ ul, li{
 .btnDerecha{
     margin-bottom: 2.5%;
 }
+.btnEdit{
+  color: blue;
+}
+.btnDelete{
+  color: red;
+}
 #carouselExampleControls{
     margin-left: 0;
+}
+.anclas{
+  color: #495057;
+  font-size: 120%;
+  text-decoration: none;
 }
 
 /* css-carrito  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/

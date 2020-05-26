@@ -6,8 +6,8 @@
 
     <div class="container">
       <div>
-        <a class="p-1" href="/"><img src="/images/iconos/house.svg" alt="Home" width="20" height="20" title="Home"></a>
-        <span class="ubicacionSitio"><a class="anclas" href="">><%= producto.category%></a><a class="anclas" href="">><%= producto.subCategory %></a></span>
+        <img src="/images/iconos/house.svg" alt="Home" width="20" height="20" title="Home">
+        <span class="ubicacionSitio">>CATEGORIA>SUBCATEGORIA>PRODUCTO</span>
       </div>
     </div>
 
@@ -16,23 +16,17 @@
         <div class="col-md-8 p-0">
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-              <%let imagenes = producto.image;
-                for (let i=0; i< imagenes.length; i++){
-                let imagenX = imagenes[i];
-                let posicion = imagenes.indexOf(imagenX)
-                let estado = ""
-                if(posicion == 0){
-                  estado = "active"
-                }else{
-                  estado = ""
-                }
-                %> 
-                <div class="carousel-item <%=estado%>">
-
-                <img class="d-block w-100" src="/images/imgInstrumentos/<%=imagenX%>"
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="/images/maquetaQuique/chrome-close-up-electric-guitar-equipment-376452.jpg"
                   alt="First slide">
               </div>
-            <%};%> 
+              <div class="carousel-item">
+                <img class="d-block w-100" src="/images/maquetaQuique/close-up-photo-of-black-electric-guitar-1266821.jpg"
+                  alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="/images/maquetaQuique/red-electric-guitar-165971.jpg" alt="Third slide">
+              </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -48,11 +42,15 @@
         <div class="col-md-4 p-0">
           <div class="card w-100 cardClaro">
             <div class="card-body">
-              <h5 class="card-title"><%= producto.name %> </h5>
-              <p class="card-text"><%= producto.description %></p>
+              <h5 class="card-title">nombreProducto</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti deleniti quo, soluta
+                temporibus alias esse natus maiores. Saepe cupiditate debitis corporis. Molestiae, id alias voluptatum
+                soluta
+                minima consequuntur tempora nemo.
+              </p>
               <div class="mb-3">
                 <img src="/images/iconos/plata.svg" alt="Home" width="20" height="20" title="Home">
-                <h6 class="card-title d-inline">= $<%=producto.price%> </h6>
+                <h6 class="card-title d-inline">= precioUnitario</h6>
 
 
               </div>
@@ -62,10 +60,6 @@
                 <button type="button" class="btn btn-outline-dark btnDerecha">agregar al__ <img
                     src="/images/iconos/carritoMas.svg" alt="agregar al carrito" width="20" height="20"
                     title="Home"></button>
-              </div>
-              <div class="container-fluid p-0 d-flex justify-content-around">
-                <button type="button" class="btn btn-outline-dark btnEdit">editar producto</button>
-                <button type="button" class="btn btn-outline-dark btnDelete">borrar producto</button>
               </div>
               <br />
               <br />

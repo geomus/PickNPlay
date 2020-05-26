@@ -15,8 +15,19 @@ const controller = {
         res.render('list',{title: 'Catalogo', productos, puntoMil:toThousand});
     },
     detalle: (req, res) => {
-		res.render('detalle',{title: 'Detalle Producto'})
+        console.log(req.params.id);
+        let productos = getProducts();
+        let producto = productos.find((prod) => prod.id == req.params.id);
+        console.log(producto);
+        res.render('detalle',{title: 'Detalle Producto',producto, toThousand})
     },
+    // Detail - Detail from one product
+    //detail: (req, res) => {
+    //    let producto = products.find((prod) => //prod.id == req.params.productId);
+    //    res.render("detail", { producto, enMiles: //toThousand });
+    //},
+
+
     delete: (req, res, next) => {
         
         res.redirect('list');
