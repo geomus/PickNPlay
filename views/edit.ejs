@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-12 col-md-6 form-group">
                     <label for="category" class="form-label">Categoría:</label>
-                    <select class="custom-select" style="width: 190px">
+                    <select name="category" id="category" class="custom-select" style="width: 190px">
                         <option value="accesorios" <% if(producto.category == 'accesorios' ){ %>
                             selected
                         <% } %>>Accesorios</option>
@@ -45,8 +45,8 @@
                     </select>
                 </div>
                 <div class="col-12 col-md-6 form-group">
-                    <label for="name" class="form-label">Subcategoría:</label>
-                    <select class="custom-select" style="width: 190px" <% if(producto.category !== 'guitarras' ){ %>
+                    <label for="subCategory" class="form-label">Subcategoría:</label>
+                    <select name="subCategory" id="subCategory"class="custom-select" style="width: 190px" <% if(producto.category !== 'guitarras' ){ %>
                         disabled
                     <% } %>>
                         <option value="guitarras-acusticas" <% if(producto.subCategory == 'guitarras-acusticas' ){ %>

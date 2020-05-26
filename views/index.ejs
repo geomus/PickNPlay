@@ -46,18 +46,20 @@
     <div class="container">
       <strong><h5 style="color: white; text-decoration: underline;"><i class="fas fa-fire-alt"></i> DESTACADOS :</h5></strong>
       <div class="row">
-        <% for (producto of productos){ %>
+       <% let destacadosFinal = destacados.sort(() => Math.random() - Math.random()).slice(0, 4) %>
+        <% for (producto of destacadosFinal){ %>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 py-2">
           <div class="card text-white bg-secondary mb-3 h-100">
-            <img class="card-img-top img-fluid" src="/images/bateriaPrueba.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Natal DNA (5 cuerpos)</h5>
-              <h5 class="card-title text-right">$26.300</h5>
-              <a href="#" class="btn btn-primary">Ver más</a>
-            </div>
-            <div class="card-footer bg-light">
-              <small class="text-muted">Baterías</small>
-            </div>
+            <a href="/products/<%= producto.id %>" style="color: black;">
+              <img class="card-img-top img-fluid" src="/images/imgInstrumentos/<%= producto.image[0] %>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= producto.name %></h5>
+                <h5 class="card-title text-right">$<%= producto.price %></h5>
+              </div>
+              <div class="card-footer bg-light">
+                <small class="text-muted text-capitalize"><%= producto.category %></small>
+              </div>
+            </a>
           </div>
         </div>
         <% } %>

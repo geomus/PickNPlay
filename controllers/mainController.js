@@ -1,15 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
-// ************ Function to Read an HTML File ************
-// function readEJS (fileName) {
-// 	let ejsFile = fs.readFileSync(path.join(__dirname, `/../views/${fileName}.ejs`), 'utf-8');
-// 	return ejsFile;
-// }
+let productsPath = path.join(__dirname,'..','data','productos.json');
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+function getProducts() {
+	let products = fs.readFileSync(productsPath, "utf8")
+    return products != '' ? JSON.parse(products) : []
+};
+let productos = getProducts();
+const destacados = productos.filter(prod =>prod.destacado==true);
 
 const controller = {
 	home: (req, res) => {
-		res.render('index',{title: 'Home'});
+		res.render('index',{title: 'Home', destacados, puntoMil:toThousand});
 	},
 	carrito: (req, res) => {
 		res.render('carrito',{title: 'Carro Compras'});

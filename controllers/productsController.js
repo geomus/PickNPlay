@@ -33,7 +33,9 @@ const controller = {
 				return {
 					id: prod.id,
 					...req.body,
-					image: prod.image
+                    image: prod.image,
+                    discount: prod.discount,
+                    destacado: prod.destacado
 				}
 			} else {
 				return prod
