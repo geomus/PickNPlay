@@ -7,10 +7,8 @@
         <% for (producto of productos){ %>
         <div class="col-12 col-sm-6 col-lg-3 py-2">
             <div class="card text-white bg-secondary mb-3 h-100">
-                <a href="/products/detail/<%= producto.id %>" style="color: black;">
-                    <!-- <figure class="product-box_data"> -->
-                        <img src="/images/imgInstrumentos/<%= producto.image[0] %>" alt="Card image cap">
-                    <!-- </figure> -->
+                <a href="/products/<%= producto.id %>" style="color: black;">
+                        <img class="card-img-top img-fluid" src="/images/imgInstrumentos/<%= producto.image[0] %>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><%= producto.name %></h5>
                         <h5 class="card-title text-right">$<%= puntoMil(producto.price) %></h5>

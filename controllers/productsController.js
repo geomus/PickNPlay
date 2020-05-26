@@ -40,8 +40,8 @@ const controller = {
 			}
         });
         //escribe el JSON
-        fs.writeFileSync(productsFilePath, JSON.stringify(moded, null, ' '));
-        res.redirect('list');
+        fs.writeFileSync(productsPath, JSON.stringify(moded, null, ' '));
+        res.redirect('/products');
     },
     productAdd: (req, res) => {
         res.render('productAdd',{title: 'Admin Control'});
