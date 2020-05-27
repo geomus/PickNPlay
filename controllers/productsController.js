@@ -9,6 +9,7 @@ function getProducts() {
   return products != "" ? JSON.parse(products) : [];
 }
 let productos = getProducts();
+
 const controller = {
     list: (req, res) => {
         res.render("list", {
@@ -18,8 +19,6 @@ const controller = {
         });
     },
     detalle: (req, res) => {
-        console.log(req.params.id);
-        let productos = getProducts();
         let producto = productos.find((prod) => prod.id == req.params.id);
         //console.log(producto);
         res.render("detalle", {
@@ -59,41 +58,45 @@ const controller = {
                     image: prod.image.concat(images),
                 };
             } else {
-                return prod;
-            }
+        return prod;
+        }
         });
         //escribe el JSON
         fs.writeFileSync(productsPath, JSON.stringify(moded, null, " "));
         res.redirect("/products");
     },
-    //get
     productAdd: (req, res) => {
         res.render("productAdd", { title: "Admin-Control" });
     },
-    //post
     add: (req, res, next) => {
         //Elegir Id
         let ids = productos.map((prod) => prod.id);
-        // Math.max(1,2,3) -> 1
-        let id = Math.max(...ids) + 1; //2
+        let id = Math.max(...ids) + 1;
+
         //creo el producto con los datos  del form
         req.body.price = Number(req.body.price);
         req.body.discount = Number(req.body.discount);
-        req.body.cantidad = Number(req.body.cantidad);
+        // req.body.stock = Number(req.body.stock);
 
-        let productoNuevo = {
-            id: id,
-            ...req.body,
-            image: " ",
+        // array img
+        let images = [];
+        // array con las nuevas img
+        for (let i = 0; i < req.files.length; i++) {
+        images.push(req.files[i].filename);
+        }
+
+        let newProduct = {
+        id: id,
+        ...req.body,
+        image: images
         };
 
         //agrego el producto nuevo al array de productos
-        let final = [...products, productoNuevo];
-
-        fs.writeFileSync(productosPath, JSON.stringify(final, null, " "));
+        let final = [...productos, newProduct];
+        fs.writeFileSync(productsPath, JSON.stringify(final, null, " "));
         //redirecciono a la lista de productos
         res.redirect("/products");
-    },
+    }
 };
 
 module.exports = controller;
