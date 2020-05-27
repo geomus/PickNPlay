@@ -116,6 +116,26 @@ ul, li{
   font-size: 120%;
   text-decoration: none;
 }
+/* css-modal  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+.modal-naranja{
+  background-color: rgb(255, 188, 64);
+}
+.modal-center{
+  text-align: center;
+}
+.modal-botones{
+  margin: 2% 27%;
+  display: flex;
+  justify-content: space-around;
+}
+.btn-rojo{
+  background-color: red;
+  color: white;
+}
+.btn-verde{
+  background-color: green;
+  color: white;
+}
 
 /* css-carrito  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
   .imgCarrito {

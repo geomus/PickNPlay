@@ -76,11 +76,11 @@
                   title="Home"></button>
             </div>
             <div class="container-fluid p-0 d-flex justify-content-around">
-              <button type="button" class="btn btn-outline-dark"><a class="btnEdit" href="/products/<%=producto.id%>/edit">editar producto</a></button>
-              <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST" style="display: inline-flex">
-							<button type="submit" class="btn btn-outline-dark btnDelete">borrar producto</button>
-						</form>
-              
+              <button type="button" class="btn btn-outline-dark"><a class="btnEdit" href="/products/<%=producto.id%>/edit">editar
+                  producto</a></button>
+              <button type="button" class="btn btn-outline-dark btnDelete" data-toggle="modal" data-target="#exampleModalCenter">
+                borrar producto
+              </button>
             </div>
             <br />
             <br />
@@ -92,4 +92,25 @@
       </div>
     </div>
   </div>
+  <!-- Modal alerta antes de borrar-->
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content  modal-naranja">
+      <div class="mt-4 mb-1">
+        <h4 class="modal-center" id="titulo modal">¡ Alerta de borrado !</h5>
+      </div>
+      <div class="">
+        <h6 class="modal-center">Esta seguro que quiere borrar este producto del sitio ?</h6>
+      </div>
+      <div class="modal-botones">
+        <button type="button" class="btn btn-verde" data-dismiss="modal">salir</button>
+        <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST" style="display: inline-flex">
+                <button type="submit" class="btn btn-rojo">!! borrar producto</button>
+              </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
   <%- include('./partials/footer') %>
