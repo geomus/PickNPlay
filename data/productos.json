@@ -31,20 +31,19 @@
   "serialNumber": ""
  },
  {
-  "id": 3,
-  "name": "Gibson Thunderbird Bass",
-  "price": 150000,
-  "discount": 5,
-  "category": "bajos-electricos",
-  "subCategory": "",
-  "description": "Gibson Thunderbird Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  "image": [
-   "gtb1.jpg",
-   "gtb2.jpg"
-  ],
-  "destacado": true,
-  "serialNumber": ""
- },
+    "id": 3,
+    "name": "Gibson Thunderbird Bass",
+    "price": 180000,
+    "discount": 5,
+    "serialNumber": "",
+    "destacado": true,
+    "description": "Gibson Thunderbird Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "category": "bajos-electricos",
+    "image": [
+     "gtb1.jpg",
+     "gtb2.jpg"
+    ]
+   },
  {
   "id": 4,
   "name": "Fender Stratocaster",

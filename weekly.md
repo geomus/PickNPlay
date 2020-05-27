@@ -1,11 +1,12 @@
 # Weekly 26/05
+
 ## Enrique
 ### Que hice ayer?
-#### 
+#### corregi vista de detalle con boton edit y borrar + cambio de fotos dinamico en carrousel, arme db productos.json, termine rutas detalle y delete con sus controladores
 ### Impedimientos:
-#### 
+#### la solucion para el carrousel de bootstrap me llevo bastante pero al final salio.
 ### Que me falta hacer?
-#### 
+#### agregar alerta antes de borrar y db usuarios.
 
 ## Francisco
 ### Que hice ayer?
