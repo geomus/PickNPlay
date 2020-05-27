@@ -7,10 +7,10 @@ const path = require('path');
 //Multer
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-          cb(null, path.join(__dirname,'../public/images/products'))
+      cb(null, path.join(__dirname,'../public/images/imgInstrumentos'))
     },
     filename: (req, file, cb) => {
-          cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
     }
   })
 var upload = multer({ storage: storage });
@@ -31,7 +31,7 @@ router.get('/products/:id', productsController.detalle);
 router.delete('/products/delete/:id', productsController.delete);
 
 router.get('/products/:id/edit', productsController.editView);
-router.put('/products/:id/edit', productsController.edit);
+router.put('/products/:id/edit', upload.any(), productsController.edit);
 
 router.get('/carrito', mainController.carrito);
 

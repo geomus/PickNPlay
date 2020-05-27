@@ -31,16 +31,22 @@ const controller = {
         res.render('edit',{title: 'Editar producto',producto});
     },
     edit: (req, res, next) => {
-        req.body.price = Number(req.body.price);//paso text a num
+        req.body.price = Number(req.body.price);
+        req.body.discount = Number(req.body.discount);
+        req.body.destacado = Boolean(req.body.destacado);
         let moded = productos.map(prod => {
             //busca el prod por id, devuelve un objeto lit con los campos del form
 			if(prod.id == req.params.id){
+                let images = [];
+                // array con las nuevas img
+                for (let i = 0; i < req.files.length; i++) {
+                    images.push(req.files[i].filename);
+                };
+
 				return {
 					id: prod.id,
-					...req.body,
-                    image: prod.image,
-                    discount: prod.discount,
-                    destacado: prod.destacado
+                    ...req.body,
+                    image: prod.image.concat(images)
 				}
 			} else {
 				return prod
