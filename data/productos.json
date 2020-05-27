@@ -204,11 +204,12 @@
  {
   "id": 14,
   "name": "Yamaha MX49",
-  "price": 500,
-  "serialNumber": "444444",
-  "destacado": false,
-  "category": "teclados",
+  "price": 12000,
+  "discount": 10,
+  "serialNumber": "",
+  "destacado": true,
   "description": "Yamaha MX49 sintetizador teclado ultima generacion",
+  "category": "teclados",
   "image": [
    "yamaha1.jpg",
    "yamaha2.jpg"
