@@ -2,11 +2,11 @@
  {
   "id": 1,
   "name": "Fender Jazz Bass",
-  "price": 100,
-  "discount": 50,
+  "price": 100000,
+  "discount": 25,
   "category": "bajos-electricos",
   "subCategory": "",
-  "description": "Fender Jazz Bass USA color a eleccion",
+  "description": "Fender Jazz Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "fjb1.jpg",
    "fjb2.jpg",
@@ -18,11 +18,11 @@
  {
   "id": 2,
   "name": "Music Mann Stingray",
-  "price": 200,
+  "price": 150000,
   "discount": 5,
   "category": "bajos-electricos",
   "subCategory": "",
-  "description": "Music Mann Stingray USA color a eleccion",
+  "description": "Music Mann Stingray USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "mms1.jpg",
    "mms2.jpg"
@@ -33,11 +33,11 @@
  {
   "id": 3,
   "name": "Gibson Thunderbird Bass",
-  "price": 300,
+  "price": 150000,
   "discount": 5,
   "category": "bajos-electricos",
   "subCategory": "",
-  "description": "Gibson Thunderbird Bass USA color a eleccion",
+  "description": "Gibson Thunderbird Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "gtb1.jpg",
    "gtb2.jpg"
@@ -48,18 +48,17 @@
  {
   "id": 4,
   "name": "Fender Stratocaster",
-  "price": 300,
+  "price": 100000,
   "discount": 5,
   "category": "guitarras",
   "subCategory": "guitarras-electricas",
-  "description": "Fender Stratocaster USA color a eleccion",
+  "description": "Fender Stratocaster USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "fsc1.jpg",
    "fsc2.jpg",
    "fsc3.jpg",
    "fsc4.jpg",
-   "fsc5.jpg",
-   "fsc6.jpg"
+   "fsc5.jpg"
   ],
   "destacado": false,
   "serialNumber": ""
@@ -67,11 +66,11 @@
  {
   "id": 5,
   "name": "Epiphone Casino",
-  "price": 200,
+  "price": 200000,
   "discount": 0,
   "category": "guitarras",
   "subCategory": "guitarras-electricas",
-  "description": "Epiphone Casino Vinyage Clasic",
+  "description": "Epiphone Casino Vinyage Clasic. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "ec1.jpg",
    "ec2.jpg"
@@ -82,11 +81,11 @@
  {
   "id": 6,
   "name": "Gibson Lucile",
-  "price": 250,
+  "price": 250000,
   "discount": 0,
   "category": "guitarras",
   "subCategory": "guitarras-electricas",
-  "description": "Gibson Lucil Vinyage Clasic",
+  "description": "Gibson Lucil Vinyage Clasic. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "gl1.jpg",
    "gl2.jpg"
@@ -97,11 +96,11 @@
  {
   "id": 7,
   "name": "Fender Paramount",
-  "price": 250,
+  "price": 110000,
   "discount": 10,
   "category": "guitarras",
   "subCategory": "guitarras-acusticas",
-  "description": "Fender Paramount USA",
+  "description": "Fender Paramount USA. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "fp1.jpg",
    "fp2.jpg"
@@ -116,7 +115,7 @@
   "discount": 10,
   "category": "guitarras",
   "subCategory": "guitarras-acusticas",
-  "description": "Martin & Co special 75",
+  "description": "Martin & Co special 75. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "mc1.jpg",
    "mc2.jpg"
@@ -131,7 +130,7 @@
   "discount": 10,
   "category": "guitarras",
   "subCategory": "guitarras-acusticas",
-  "description": "Takamine 223 Japan en stock",
+  "description": "Takamine 223 Japan en stock. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "mc1.jpg",
    "mc2.jpg"
@@ -146,7 +145,7 @@
   "discount": 10,
   "category": "guitarras",
   "subCategory": "clasicas-criollas",
-  "description": "Yamaha Concert siempre en stock",
+  "description": "Yamaha Concert siempre en stock. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "yc1.jpg",
    "yc2.jpg",
@@ -162,7 +161,7 @@
   "discount": 10,
   "category": "baterias",
   "subCategory": "",
-  "description": "Tama 5 cuerpos todos los colores",
+  "description": "Tama 5 cuerpos todos los colores. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "tama1.jpg",
    "tama2.jpg"
@@ -177,7 +176,7 @@
   "discount": 10,
   "category": "baterias",
   "subCategory": "",
-  "description": "Pearl 5 cuerpos super resistente",
+  "description": "Pearl 5 cuerpos super resistente. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "pearl1.jpg",
    "pearl2.jpg"
@@ -192,7 +191,7 @@
   "discount": 0,
   "category": "baterias",
   "subCategory": "",
-  "description": "DW signature unica en el pais",
+  "description": "DW signature unica en el pais. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "dw1.jpg",
    "dw2.jpg",
@@ -204,12 +203,11 @@
  {
   "id": 14,
   "name": "Yamaha MX49",
-  "price": 12000,
-  "discount": 10,
-  "serialNumber": "",
-  "destacado": true,
-  "description": "Yamaha MX49 sintetizador teclado ultima generacion",
+  "price": 500,
+  "serialNumber": "444444",
+  "destacado": false,
   "category": "teclados",
+  "description": "Yamaha MX49 sintetizador teclado ultima generacion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "yamaha1.jpg",
    "yamaha2.jpg"
@@ -222,7 +220,7 @@
   "discount": 0,
   "category": "teclados",
   "subCategory": "",
-  "description": "Nord piano 3 teclado ultima generacion",
+  "description": "Nord piano 3 teclado ultima generacion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "nord1.jpg",
    "nord2.jpg"
@@ -237,7 +235,7 @@
   "discount": 0,
   "category": "accesorios",
   "subCategory": "",
-  "description": "pedal guitarra super photone",
+  "description": "pedal guitarra super photone. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "fotone1.jpg",
    "fotone2.jpg"
@@ -252,7 +250,7 @@
   "discount": 0,
   "category": "accesorios",
   "subCategory": "",
-  "description": "Cuerdas Martin americanas",
+  "description": "Cuerdas Martin americanas. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
    "cuerdas.jpg"
   ],
