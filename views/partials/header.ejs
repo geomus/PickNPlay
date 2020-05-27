@@ -1,5 +1,32 @@
 <body>
     <!-- header -->
+    <!-- modal login -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login menu" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content border-white bg-secondary">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><strong>Entrar</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/" method="post">
+              <div class="col-12 col-md-6 form-group">
+                <label class="form-label" for="email">Email</label>
+                <input id="email" type="email" name="email" placeholder="Ingrese su email" class="form-input">
+            </div>
+            <div class="col-12 col-md-6 form-group">
+                <label class="form-label" for="pass">Contraseña</label>
+                <input id="pass" type="password" name="pass" max="20" min="8" placeholder="Ingrese su clave" class="form-input">
+            </div>
+            <button type="submit" class="btn btn-dark">Ingresar</button> ¿No tenes cuenta? Registrate <a href="/register" style="text-decoration: underline;">ACA</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /modal login -->
     <div class="container p-0">
     <header class="d-lg-flex justify-content-lg-around" style="padding-top: 20px;">
       <div class="container d-lg-none p-0">
@@ -29,7 +56,10 @@
             <button type="button" class="btn btn-secondary bg-dark my-1 my-lg-0"><i class="far fa-user"></i></button>
           </a>
           <div class="dropdown-menu dropdown-menu-right border-white text-white bg-secondary" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/productAdd">Entrar</a>
+            <!-- login -->
+            <button type="button" class="btn dropdown-item" data-toggle="modal" data-target="#login">Entrar</button>
+            <!-- <a class="dropdown-item" href="/productAdd">Entrar</a> -->
+            <!-- register -->
             <a class="dropdown-item" href="/register">Registrarse</a>
           </div>
         </div>

@@ -44,6 +44,10 @@ body {
 width: 100%;
 height: auto;
 }
+.row div .card:focus,
+.row div .card:hover {
+  box-shadow: 0 10px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
 
 /* footer */
 
@@ -284,7 +288,7 @@ ul, li{
   .bg-dark{
     background-color: #2F303A00 !important;
   }
-  nav button {
+  nav button.navbar-toggler {
     background-color:#2F303A !important ;
   }
   .navSearch{
