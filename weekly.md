@@ -13,7 +13,7 @@
 ### Impedimientos:
 #### El día de hoy me trabe con la parte de cargar todo a la bda y las fotos a su respectiva carpeta
 ### Que me falta hacer?
-#### chequear todo antes de emtregar y que este todo en funcionamiento
+#### chequear todo antes de entregar y que este todo en funcionamiento
 
 ## Nahuel
 ### Que hice ayer?
