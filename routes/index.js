@@ -28,7 +28,7 @@ router.get('/products/create', productsController.productAdd);
 router.post('/products/create', upload.any(), productsController.add);
 
 router.get('/products/:id', productsController.detalle);
-router.delete('/products/:id', productsController.delete);
+router.delete('/products/delete/:id', productsController.delete);
 
 router.get('/products/:id/edit', productsController.editView);
 router.put('/products/:id/edit', productsController.edit);

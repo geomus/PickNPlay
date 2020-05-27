@@ -101,6 +101,9 @@ ul, li{
 .btnDelete{
   color: red;
 }
+.tachado{
+  text-decoration: line-through;
+}
 #carouselExampleControls{
     margin-left: 0;
 }

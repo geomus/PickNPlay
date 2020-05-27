@@ -21,16 +21,10 @@ const controller = {
         console.log(producto);
         res.render('detalle',{title: 'Detalle Producto',producto, toThousand})
     },
-    // Detail - Detail from one product
-    //detail: (req, res) => {
-    //    let producto = products.find((prod) => //prod.id == req.params.productId);
-    //    res.render("detail", { producto, enMiles: //toThousand });
-    //},
-
-
     delete: (req, res, next) => {
+        console.log("controller delete");
         
-        res.redirect('list');
+        res.redirect("/products");
     },
     editView: (req, res) => {
         let producto = productos.find(prod => prod.id == req.params.id);
