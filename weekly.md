@@ -9,11 +9,11 @@
 
 ## Francisco
 ### Que hice ayer?
-#### 
+#### ayer empece con la parte de add
 ### Impedimientos:
-#### 
+#### El día de hoy me trabe con la parte de cargar todo a la bda y las fotos a su respectiva carpeta
 ### Que me falta hacer?
-#### 
+#### chequear todo antes de emtregar y que este todo en funcionamiento
 
 ## Nahuel
 ### Que hice ayer?
