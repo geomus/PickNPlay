@@ -62,7 +62,7 @@ const controller = {
   //post
   add: (req, res, next) => {
     //Elegir Id
-    let ids = producto.map((prod) => prod.id);
+    let ids = productos.map((prod) => prod.id);
     // Math.max(1,2,3) -> 1
     let id = Math.max(...ids) + 1; //2
     //creo el producto con los datos  del form
