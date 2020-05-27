@@ -10,50 +10,61 @@ function getProducts() {
 }
 let productos = getProducts();
 const controller = {
-  list: (req, res) => {
-    res.render("list", { title: "Catalogo", productos, puntoMil: toThousand });
-  },
-  detalle: (req, res) => {
-    console.log(req.params.id);
-    let productos = getProducts();
-    let producto = productos.find((prod) => prod.id == req.params.id);
-    console.log(producto);
-    res.render("detalle", { title: "Detalle Producto", producto, toThousand });
-  },
-  delete: (req, res, next) => {
-    console.log("controller delete");
+    list: (req, res) => {
+        res.render("list", {
+            title: "Catalogo",
+            productos,
+            puntoMil: toThousand,
+        });
+    },
+    detalle: (req, res) => {
+        console.log(req.params.id);
+        let productos = getProducts();
+        let producto = productos.find((prod) => prod.id == req.params.id);
+        //console.log(producto);
+        res.render("detalle", {
+            title: "Detalle Producto",
+            producto,
+            toThousand,
+        });
+    },
+    delete: (req, res, next) => {
+        let aReescribir = productos.filter(
+            (unProducto) => unProducto.id != req.params.id
+        );
+        //console.log(aReescribir);
+        fs.writeFileSync(productsPath, JSON.stringify(aReescribir, null, " "));
+        res.redirect("/products");
+    },
+    editView: (req, res) => {
+        let producto = productos.find((prod) => prod.id == req.params.id);
+        res.render("edit", { title: "Editar producto", producto });
+    },
+    edit: (req, res, next) => {
+        req.body.price = Number(req.body.price);
+        req.body.discount = Number(req.body.discount);
+        req.body.destacado = Boolean(req.body.destacado);
+        let moded = productos.map((prod) => {
+            //busca el prod por id, devuelve un objeto lit con los campos del form
+            if (prod.id == req.params.id) {
+                let images = [];
+                // array con las nuevas img
+                for (let i = 0; i < req.files.length; i++) {
+                    images.push(req.files[i].filename);
+                }
 
-    res.redirect("/products");
-  },
-  editView: (req, res) => {
-    let producto = productos.find((prod) => prod.id == req.params.id);
-    res.render("edit", { title: "Editar producto", producto });
-  },
-  edit: (req, res, next) => {
-    req.body.price = Number(req.body.price);
-    req.body.discount = Number(req.body.discount);
-    req.body.destacado = Boolean(req.body.destacado);
-    let moded = productos.map((prod) => {
-      //busca el prod por id, devuelve un objeto lit con los campos del form
-      if (prod.id == req.params.id) {
-        let images = [];
-        // array con las nuevas img
-        for (let i = 0; i < req.files.length; i++) {
-          images.push(req.files[i].filename);
-        }
-
-        return {
-          id: prod.id,
-          ...req.body,
-          image: prod.image.concat(images),
-        };
-      } else {
+                return {
+                    id: prod.id,
+                    ...req.body,
+                    image: prod.image.concat(images),
+                };
+            } else {
         return prod;
-      }
-    });
-    //escribe el JSON
-    fs.writeFileSync(productsPath, JSON.stringify(moded, null, " "));
-    res.redirect("/products");
+        }
+        });
+        //escribe el JSON
+        fs.writeFileSync(productsPath, JSON.stringify(moded, null, " "));
+        res.redirect("/products");
   },
   //get
   productAdd: (req, res) => {
