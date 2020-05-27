@@ -14,13 +14,15 @@
             <form action="/" method="post">
               <div class="col-12 col-md-6 form-group">
                 <label class="form-label" for="email">Email</label>
-                <input id="email" type="email" name="email" placeholder="Ingrese su email" class="form-input">
-            </div>
-            <div class="col-12 col-md-6 form-group">
+                <input id="email" type="email" name="email" placeholder="Ingrese su email" class="form-input" required>
+              </div>
+              <div class="col-12 col-md-6 form-group">
                 <label class="form-label" for="pass">Contraseña</label>
-                <input id="pass" type="password" name="pass" max="20" min="8" placeholder="Ingrese su clave" class="form-input">
-            </div>
-            <button type="submit" class="btn btn-dark">Ingresar</button> ¿No tenes cuenta? Registrate <a href="/register" style="text-decoration: underline;">ACA</a>
+                <input id="pass" type="password" name="pass" max="20" min="8" placeholder="Ingrese su clave" class="form-input" required>
+              </div>
+              <div class="col-12 form-group">
+                <button type="submit" class="btn btn-dark">Ingresar</button> ¿No tenes cuenta? Registrate <a href="/register" style="text-decoration: underline;">ACA</a>
+              </div>
             </form>
           </div>
         </div>

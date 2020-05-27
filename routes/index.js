@@ -18,23 +18,31 @@ var upload = multer({ storage: storage });
 // ************ Controller Require ************
 const mainController = require('../controllers/mainController');
 const productsController = require('../controllers/productsController');
+const usersController = require('../controllers/usersController');
 
-/* GET - home page. */
+/* HOME */
 router.get('/', mainController.home);
 
+/* PRODUCTS */
+// Listado productos
 router.get('/products', productsController.list);
-
+// Agregar productos
 router.get('/products/create', productsController.productAdd);
 router.post('/products/create', upload.any(), productsController.add);
-
+// Detalle producto
 router.get('/products/:id', productsController.detalle);
+// Eliminar producto
 router.delete('/products/delete/:id', productsController.delete);
-
+// Editar productos
 router.get('/products/:id/edit', productsController.editView);
 router.put('/products/:id/edit', upload.any(), productsController.edit);
 
-router.get('/carrito', mainController.carrito);
-
+/* USERS */
+// Registro usuarios
 router.get('/register', mainController.register);
+// Login
+router.post('/products', usersController.processLogin);
+
+router.get('/carrito', mainController.carrito);
 
 module.exports = router;
