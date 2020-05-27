@@ -1,231 +1,204 @@
 <!--Include Head-->
-<%- include('./partials/head',{title:'Admin Control'})%>
+<%- include('./partials/head')%>
 <!-- HEADER -->
-<%- include('./partials/header') %>
+<%- include('./partials/header')%>
 
 
 
-          <!--Contenido-->
-          <section>
-            <div class="container">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Controles
-                    </button>
-                    <div class="dropdown-menu " aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item active" type="button">Altas</button>
-                        <button class="dropdown-item" type="button">Bajas</button>
-                        <button class="dropdown-item" type="button">Modificaciones</button>
-                    </div>
-                </div>
-                <hr>
-               
-                <!--Formulario de carga-->
-                <form action='/products/create' method="POST" enctype="multipart/form-data">
-                    <div class="form-row">
-                        <div class="form-group col-md-6 text-light ">
-                            <label for="inputnombreProducto">nombreProducto</label>
-                            <input type="text" class="form-control"  name="name" id="inputnombreProducto"
-                                placeholder="Guitarra acústica" required>
-                        </div>
-                        <div class="form-group col-md-6 text-light ">
-                            <label for="inputDescripProducto">descripciónProducto</label>
-                            <textarea class="form-control " rows="4"
-                                placeholder="Guitarra acústica fenders, seis cuerdas,con micrófonos integrados..."
-                                required name="description" id="inputDescripProducto"></textarea>
-                        </div>
-                        <div class="form-group col-md-6 text-light">
-                            <label for="inputidProducto">idProducto</label>
-                            <input type="text" class="form-control" id="inputidProducto"
-                                placeholder="GA21582 (lista de productos del proveedor)" required>
-                        </div>
-                    </div>
-                    <div class="form-group text-light">
-                        <label for="inputPrecio">Precio unitario</label>
-                        <input type="text" class="form-control" id="inputPrecio" name="price" placeholder="$15.000" required>
-                    </div>
-                    <div class="form-group text-light">
-                        <label for="inputSerialProducto">serialProducto</label>
-                        <input type="text" class="form-control" id="inputSerialProducto"
-                            placeholder="GuitarraAcuFenders" name="serialNumber" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6 text-light">
-                            <label for="inputCategoriaProducto">Categorias</label>
-                            <select id="inputCategoriaProducto" class="custom-select" name="category" required>
-                                <option selected disabled value></option>
-                                <option>Accesorios</option>
-                                <option selected>Guitarras</option>
-                                <option>Baterias</option>
-                                <option>Bajos</option>
-                                <option>Pianos</option>
-                        </div>
+<main>
+<!-- CARGA  -->
+  <div class="container">
+    <nav class="col-12 py-3 my-3">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-altas" role="tab" aria-controls="nav-altas" aria-selected="true">Altas</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-bajas" role="tab" aria-controls="nav-bajas" aria-selected="false">Bajas</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-edit" role="tab" aria-controls="nav-edit" aria-selected="false">Modificaciones</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-altas" role="tabpanel" aria-labelledby="ALTAS">
+        <!--Formulario de carga-->
+        <div class="container py-3 my-3">
+          <div class="col-12" style=" background-color: #ffffff; border-radius: 8px;">
+              <h2 style="text-decoration: underline;">Carga productos:</h2>
+              <form name="formCarga" action="/products/create" enctype="multipart/form-data" method="POST">
+                  <div class="form-row justify-content-center" onload="resetSelection()">
+                      <div class="col-12 col-md-6 form-group">
+                          <label for="name" class="form-label">Nombre del producto:</label>
+                          <input type="text" id="name" name="name" class="form-input" required>
                       </div>
-                        </select>
-
-                    </div>
-                    
-                    <div class="form-group col-md-2 text-light">
-                        <label for="inputCantidad">Cantidad</label>
-                        <input type="number" class="form-control" id="inputCantidad" placeholder="8">
-                    </div>
-                    <div class="form-group col-md-2 text-light">
-                      <label for="inputCantidad">Descuento</label>
-                      <input type="number" class="form-control" id="inputCantidad" name="discount" placeholder="20%">
+                      <div class="col-12 col-md-6 form-group">
+                          <label for="price" class="form-label">Precio ($):</label>
+                          <input type="number" id="price" name="price" max="999999" class="form-input" required>
+                      </div>
+                      <div class="col-12 col-md-6 form-group">
+                          <label for="discount" class="form-label">Descuento (%):</label>
+                          <input type="number" id="discount" name="discount" min="0" max="99" class="form-input" value="0">
+                      </div>
+                      <div class="col-12 col-md-6">
+                          <label for="stock" class="form-label">Cantidad:</label>
+                          <input type="number" id="stock" name="stock" class="form-input" required>
+                      </div>
+                      <div class="col-12 col-md-6 form-group">
+                          <label for="serialNumber" class="form-label">Serial del producto:</label>
+                          <input type="number" id="serialNumber" name="serialNumber" required class="form-input">
+                      </div>
+                      <div class="col-12 col-md-6 form-group">
+                          <label>Producto destacado:</label>
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="destacado" id="destacado1" value=1>
+                              <label class="form-check-label" for="destacado1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="destacado" id="destacado2" value=0 checked>
+                              <label class="form-check-label" for="destacado2">No</label>
+                            </div>
+                      </div>
+                      <div class="col-12 col-md-6 form-group">
+                          <label for="description" class="form-label">Descripcion del producto:</label><br>
+                          <textarea name="description" id="description" maxlength="150" cols="30" rows="4" class="form-input" required></textarea>
+                      </div>
+                      <div class="col-12 col-md-6 form-group">
+                          <label for="category" class="form-label">Categoría:</label>
+                          <select name="category" id="category" class="custom-select" style="width: 190px" required>
+                              <option value="" disabled selected>Elegir</option>
+                              <option value="accesorios">Accesorios</option>
+                              <option value="baterias">Baterias</option>
+                              <option value="bajos-electricos">Bajos</option>
+                              <option value="guitarras">Guitarras</option>
+                              <option value="teclados">Teclados</option>
+                          </select>
+                      </div>
+                      <div class="col-12 col-md-6 form-group">
+                          <label for="subCategory"class="form-label">Subcategoría:</label>
+                          <select name="subCategory" id="subCategory" class="custom-select" style="width: 190px">
+                              <option value="" selected>No aplica</option>
+                              <option value="guitarras-acusticas">Acustica</option>
+                              <option value="clasicas-criollas">Clasica</option>
+                              <option value="guitarras-electricas">Electrica</option>
+                          </select>
+                      </div>
+                      <div class="col-12 col-md-6 form-group">
+                          <div class="custom-file">
+                              <input type="file" class="custom-file-input" name="image" max="3" id="image" multiple required>
+                              <label class="custom-file-label" for="image">Elegir imagenes (MAX 3)</label>
+                          </div>
+                      </div>
+                      <div class="col-12 form-group">
+                          <button type="submit" class="btn btn-dark">Cargar producto</button>
+                      </div>
+                      <small>(Para cancelar la operacion simplemente salir de la pagina)</small>
                   </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6 text-light">
-                  <label for="inputSubCategoriaProducto">subCategorias</label>
-                  <select id="inputSubCategoriaProducto" class="custom-select" name="subCategory"  required>
-                      <option selected value disabled></option>
-                      <option>Criolla</option>
-                      <option selected>Electrica</option>
-                      <option>Electroacustica</option>
-                      
-              </div>
-            </div>
-              </select>
-
+              </form>
           </div>
-                   <!--Carga de imagen-->
-                   
-                   <div class="input-group mb-4" >
-                    
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="image" id="fileInput" aria-describedby="fileInput">
-                        <label class="custom-file-label"  for="fileInput"></label>
-                    </div>
-                </div>
-                    <!--Carga de imagen-->
-            <div class="form-group">
-                <div class="form-check">
-                    
-                   
-                </div>
-            </div>
-            <button type="submit" class="btn btn-secondary" id="dt-all-checkbox">Agregar</button>
-            </form>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Acciones
-                </button>
-                <div class="dropdown-menu " aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item active" type="button">Eliminar</button>
-                    <button class="dropdown-item" type="button">Modificaciones</button>
-                </div>
-            </div>
-            <!--/Formulario de carga-->
-            <hr>
-            <!--Productos a cargar (vista pc)-->
-            <label for="inputidProducto" class="text-light"><strong>Carga de los productos</strong> </label>
-            <div class="table-responsive d-none d-lg-flex">
-                <table class="table text-light">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">nombreProducto</th>
-                      <th scope="col">idProducto</th>
-                      <th scope="col">serialProducto</th>
-                      <th scope="col">precioProducto</th>
-                      <th scope="col">cantidadProducto</th>
-                      
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row"><div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                        <label class="form-check-label" for="materialChecked2"></label>
-                      </div></th>
-                      <td>Guitarra acústica Fender</td>
-                      <td>GA21582</td>
-                      <td>GuitarraAcuFenders</td>
-                      <td>$15.000</td>
-                      <td>8</td>
-                     
-                    </tr>
-                    <tr>
-                        <th scope="row"><div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                            <label class="form-check-label" for="materialChecked2"></label>
-                          </div></th>
-                      <td>Batería Tama</td>
-                      <td>BTM8504</td>
-                      <td>BatTAMASplender</td>
-                      <td>$80.000</td>
-                      <td>3</td>
-                     
-                    </tr>
-                    <tr>
-                        <th scope="row"><div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                            <label class="form-check-label" for="materialChecked2"></label>
-                          </div></th>
-                      <td>---</td>
-                      <td>---</td>
-                      <td>---</td>
-                      <td>---</td>
-                      <td>---</td>
-                      
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-               <!--/Productos a cargar (vista pc)-->
-                <!--Productos a cargar (vista mbile y tablet)-->
-                <div class="table-responsive d-lg-none" >
-                    <table class="table text-light">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">nombreProducto</th>
-                          <th scope="col">idProducto</th>
-                          <th scope="col">cantidad</th>
-                          
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row"><div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                            <label class="form-check-label" for="materialChecked2"></label>
-                          </div></th>
-                          <td>Guitarra acústica Fender</td>
-                          <td>GA21582</td>
-                          <td>8</td>
-                         
-                        </tr>
-                        <tr>
-                            <th scope="row"><div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2"></label>
-                              </div></th>
-                          <td>Batería Tama</td>
-                          <td>BTM8504</td>
-                          <td>3</td>
-                         
-                        </tr>
-                        <tr>
-                            <th scope="row"><div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2"></label>
-                              </div></th>
-                          <td>---</td>
-                          <td>---</td>
-                          <td>---</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <hr>
-                  <button type="submit" class="btn btn-secondary" id=>Cargar todo</button>
-                  <hr>
-            </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-bajas" role="tabpanel" aria-labelledby="BAJAS"><h1 style="color: white;">Bajas</h1></div>
+      <div class="tab-pane fade" id="nav-edit" role="tabpanel" aria-labelledby="MODS"><h1 style="color: white;">Modificaciones</h1></div>
+    </div>
+  </div>
+<!-- /CARGA -->
 
-        </section>
+<!--Productos a cargar (vista pc)-->
+  <!-- <hr>
+  <label for="inputidProducto" class="text-light"><strong>Carga de los productos</strong> </label>
+  <div class="table-responsive d-none d-lg-flex">
+      <table class="table text-light">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">nombreProducto</th>
+            <th scope="col">idProducto</th>
+            <th scope="col">serialProducto</th>
+            <th scope="col">precioProducto</th>
+            <th scope="col">cantidadProducto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><div class="form-check">
+              <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+              <label class="form-check-label" for="materialChecked2"></label>
+            </div></th>
+            <td>Guitarra acústica Fender</td>
+            <td>GA21582</td>
+            <td>GuitarraAcuFenders</td>
+            <td>$15.000</td>
+            <td>8</td>
+          </tr>
+          <tr>
+              <th scope="row"><div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                  <label class="form-check-label" for="materialChecked2"></label>
+                </div></th>
+            <td>Batería Tama</td>
+            <td>BTM8504</td>
+            <td>BatTAMASplender</td>
+            <td>$80.000</td>
+            <td>3</td>
+          </tr>
+          <tr>
+              <th scope="row"><div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                  <label class="form-check-label" for="materialChecked2"></label>
+                </div></th>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+
+    <!--Productos a cargar (vista mbile y tablet)-->
+      <!-- <div class="table-responsive d-lg-none" >
+          <table class="table text-light">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">nombreProducto</th>
+                <th scope="col">idProducto</th>
+                <th scope="col">cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                  <label class="form-check-label" for="materialChecked2"></label>
+                </div></th>
+                <td>Guitarra acústica Fender</td>
+                <td>GA21582</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                  <th scope="row"><div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                      <label class="form-check-label" for="materialChecked2"></label>
+                    </div></th>
+                <td>Batería Tama</td>
+                <td>BTM8504</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                  <th scope="row"><div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                      <label class="form-check-label" for="materialChecked2"></label>
+                    </div></th>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-secondary" id=>Cargar todo</button>
+        <hr>
+  </div> -->
+</main>
 
 
 <!-- FOOTER -->
