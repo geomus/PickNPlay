@@ -76,7 +76,7 @@ const controller = {
         //creo el producto con los datos  del form
         req.body.price = Number(req.body.price);
         req.body.discount = Number(req.body.discount);
-        // req.body.stock = Number(req.body.stock);
+        req.body.stock = Number(req.body.stock);
 
         // array img
         let images = [];

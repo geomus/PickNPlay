@@ -86,7 +86,7 @@
             <br />
             <p>Medios de pago</p>
             <img src="/images/iconos/metodos-de-pago.png" class="mx-auto d-block" alt="visa   mastercard mercadopago"
-              width="60%" height="" title="Home">
+            width="60%" height="" title="Home">
           </div>
         </div>
       </div>
@@ -98,17 +98,16 @@
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content  modal-naranja">
       <div class="mt-4 mb-1">
-        <h4 class="modal-center" id="titulo modal">¡ Alerta de borrado !</h5>
+        <h4 class="modal-center" id="titulo modal">¡Alerta de borrado!</h5>
       </div>
       <div class="">
-        <h6 class="modal-center">Esta seguro que quiere borrar este producto del sitio ?</h6>
+        <h6 class="modal-center">Esta seguro que quiere borrar este producto del sitio?</h6>
       </div>
       <div class="modal-botones">
-        <button type="button" class="btn btn-verde" data-dismiss="modal">salir</button>
+        <button type="button" class="btn btn-verde" data-dismiss="modal">Salir</button>
         <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST" style="display: inline-flex">
-                <button type="submit" class="btn btn-rojo">!! borrar producto</button>
-              </form>
-        
+          <button type="submit" class="btn btn-rojo">Borrar producto</button>
+        </form>
       </div>
     </div>
   </div>
