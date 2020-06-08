@@ -17,9 +17,6 @@ const controller = {
 	},
 	carrito: (req, res) => {
 		res.render('carrito',{title: 'Carro Compras'});
-	},
-	register: (req, res) => {
-		res.render('register',{title: 'Registro'});
 	}
 };
 

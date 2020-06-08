@@ -15,6 +15,16 @@ var storage = multer.diskStorage({
   })
 var upload = multer({ storage: storage });
 
+var storage2 = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname,'../public/images/userAvatars'))
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+var uploadUsers = multer({ storage: storage2 });
+
 // ************ Controller Require ************
 const mainController = require('../controllers/mainController');
 const productsController = require('../controllers/productsController');
@@ -39,9 +49,12 @@ router.put('/products/:id/edit', upload.any(), productsController.edit);
 
 /* USERS */
 // Registro usuarios
-router.get('/register', mainController.register);
+router.get('/register', usersController.register);
+router.post('/register', uploadUsers.any(), usersController.userAdd);
 // Login
-router.post('/products', usersController.processLogin);
+router.post('/', usersController.processLogin);
+// Profile
+router.get('/profile/:id', usersController.profile);
 
 router.get('/carrito', mainController.carrito);
 

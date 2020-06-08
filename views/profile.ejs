@@ -1,0 +1,14 @@
+<!-- HEAD -->
+<%- include('./partials/head') %>
+<!-- HEADER -->
+<%- include('./partials/header') %>
+
+<div class="container py-3 my-3">
+    <div class="col-12" style=" background-color: #ffffff; border-radius: 8px;">
+        <h2>Hola <%= loggedUser.firstName %>! </h2>
+        <img class="img-fluid" src="/images/userAvatars<%= loggedUser.avatar[0] %>" alt="Avatar">
+    </div>
+</div>
+
+<!-- FOOTER -->
+<%- include('./partials/footer') %>

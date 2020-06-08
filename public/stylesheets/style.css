@@ -266,9 +266,6 @@ ul, li{
 /* Media-Queries */
 
 @media (min-width: 576px){
-  .nietzsche{
-    margin: 70% -10%;
-  }
   .card a .img-fluid {
     width: 100%;
     height: 220px;
