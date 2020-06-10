@@ -2,6 +2,8 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const sessionUser = require('./middlewares/sessionUser');
 const logger = require('morgan');
 const methodOverride =  require('method-override');
 
@@ -16,11 +18,20 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+//session y cookie
 app.use(cookieParser());
+app.use(session({
+  secret: 'topSecret',
+  resave: false,
+  saveUninitialized: true
+}));
+
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
 
-// routes
+// routes y usuario en .locals
+app.use(sessionUser);
 app.use('/', indexRouter);
 
 

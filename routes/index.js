@@ -52,7 +52,8 @@ router.put('/products/:id/edit', upload.any(), productsController.edit);
 router.get('/register', usersController.register);
 router.post('/register', uploadUsers.any(), usersController.userAdd);
 // Login
-router.post('/', usersController.processLogin);
+router.post('/login', usersController.processLogin);
+router.post('/logout', usersController.logout);
 // Profile
 router.get('/profile/:id', usersController.profile);
 

@@ -166,5 +166,21 @@
   "email": "nahuel.daneri@outlook.com",
   "pass": "$2b$10$5wSx0XtjuumaZrm.QBQ3durMg0Y4m09OzMMYgrwDe3ZWP7ZAMAoGu",
   "avatar": "avatar-1591659102941.jpg"
+ },
+ {
+  "id": 22,
+  "firstName": "Enrique",
+  "lastName": "Abramzon",
+  "email": "eabramzon@gmail.com",
+  "pass": "$2b$10$8S0GinKhu2PEBITZzkq1Cu7w6EPX9JMjCDefAMATus2KGlhfsepqO",
+  "avatar": "avatar-1591673709471.jpg"
+ },
+ {
+  "id": 23,
+  "firstName": "aaa",
+  "lastName": "bbb",
+  "email": "aa@bbb.com",
+  "pass": "$2b$10$4mmuXbSKMuFvOq3sUoVv2exi6MpKTbeILKthtfs79onO7Ahh4ZtlS",
+  "avatar": "avatar-1591766271916.jpg"
  }
 ]
