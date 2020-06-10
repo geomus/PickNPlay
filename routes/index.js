@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const {check, validationResult, body} = require ('express-validator');
 
 //Multer
 var storage = multer.diskStorage({
@@ -35,6 +36,8 @@ const loggedUser = require('../middlewares/loggedUser');
 const guestUser = require('../middlewares/guestUser');
 const adminUser = require('../middlewares/adminUser');
 
+// ************ Middlewares Require ************
+
 /* HOME */
 router.get('/', mainController.home);
 
@@ -43,7 +46,7 @@ router.get('/', mainController.home);
 router.get('/products', productsController.list);
 // Agregar productos
 router.get('/products/create',adminUser, productsController.productAdd);
-router.post('/products/create', upload.any(), productsController.add);
+router.post('/products/create',[check('discount').isInt({min:0, max:99}).withMessage('0 < % < 99')], upload.any(), productsController.add);
 // Detalle producto
 router.get('/products/:id', productsController.detalle);
 // Eliminar producto

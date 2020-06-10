@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const {check, validationResult, body} = require ('express-validator');
 
 let productsPath = path.join(__dirname, "..", "data", "productos.json");
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -69,11 +70,11 @@ const controller = {
         res.render("productAdd", { title: "Admin-Control" });
     },
     add: (req, res, next) => {
-        //Elegir Id
+        // generar id
         let ids = productos.map((prod) => prod.id);
         let id = Math.max(...ids) + 1;
 
-        //creo el producto con los datos  del form
+        // creo el producto con los datos  del form
         req.body.price = Number(req.body.price);
         req.body.discount = Number(req.body.discount);
         req.body.stock = Number(req.body.stock);
@@ -94,8 +95,15 @@ const controller = {
         //agrego el producto nuevo al array de productos
         let final = [...productos, newProduct];
         fs.writeFileSync(productsPath, JSON.stringify(final, null, " "));
-        //redirecciono a la lista de productos
-        res.redirect("/products");
+
+        // errores
+        let errors = validationResult (req);
+        if (errors.isEmpty()){
+            //redirecciono a la lista de productos
+            res.redirect("/products");
+        } else {
+            return res.render('error', {errors: errors.errors})
+        }
     }
 };
 

@@ -55,24 +55,24 @@
               style="color: white;"></i></button>
         </form>
         <!-- user -->
-        <% if (frontLogedUser){ %> 
+        <% if (frontLogedUser){ %>
           <div class="dropdown order-lg-1">
             <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-display="static"
               aria-haspopup="true" aria-expanded="false">
               <button type="button" class="btn btn-secondary bg-dark my-1 my-lg-0"><%= frontLogedUser.firstName.slice(0,1)  %> </button>
             </a>
-            <div class="dropdown-menu dropdown-menu-right border-white text-white bg-secondary" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-right border-white text-white bg-secondary text-center" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item border border-light rounded-pill" href="/profile/<%=frontLogedUser.id  %>"> Perfil</a><br>
               <!-- logout -->
               <form action="/logout" method="POST" class="text-center">
                 <button type="submit" class= 'btn btn-light'>Cerrar sesión</button>
               </form>
-              
             </div>
           </div>
            <!------->
-        
+
         <!------->
-      <% }else{ %> 
+      <% }else{ %>
         <div class="dropdown order-lg-1">
           <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-display="static"
             aria-haspopup="true" aria-expanded="false">
