@@ -43,6 +43,7 @@ const controller = {
         if (userLog) {
             if (bcrypt.compareSync(req.body.pass, userLog.pass)) {
                 //inicio de session
+                // si se usa el delete pass la caga cuando queres logear por segunda vez el mismo user, no se bien por que?! por eso cree el objeto nuevo sin pass.
                 //delete userLog.pass;
                 let userSession = {
                     id: userLog.id,
