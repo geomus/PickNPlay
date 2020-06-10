@@ -1,40 +1,9 @@
-const fs = require("fs");
-const path = require("path");
 const bcrypt = require("bcrypt");
-
-let usersPath = path.join(__dirname, "..", "data", "users.json");
-
-function getUsers() {
-    let users = fs.readFileSync(usersPath, "utf8");
-    return users != "" ? JSON.parse(users) : [];
-}
-let usuarios = getUsers();
-
-function getUserByEmail(email) {
-    return usuarios.find((user) => user.email == email);
-}
-
-function getUserById(id) {
-    return usuarios.find((user) => user.id == id);
-}
-
-function generateId() {
-    if (usuarios.length) {
-        let ids = usuarios.map((user) => user.id);
-        return Math.max(...ids) + 1;
-    } else {
-        return 1;
-    }
-}
-
-function guardarUsuario(usuario) {
-    usuarios.push(usuario);
-    fs.writeFileSync(usersPath, JSON.stringify(usuarios, null, " "));
-}
+const functions = require('../public/javascripts/userFunctions')
 
 const controller = {
     processLogin: (req, res, next) => {
-        let userLog = getUserByEmail(req.body.email);
+        let userLog = functions.getUserByEmail(req.body.email);
 
         //console.log(passNoEncriptado);
         //console.log(userLog.pass);
@@ -80,15 +49,15 @@ const controller = {
         delete req.body.repass;
         req.body.pass = bcrypt.hashSync(req.body.pass, 10);
         let newUser = {
-            id: generateId(),
+            id: functions.generateId(),
             ...req.body,
             avatar: req.files[0].filename,
         };
-        guardarUsuario(newUser);
+        functions.guardarUsuario(newUser);
         res.redirect("/");
     },
     profile: (req, res) => {
-        let loggedUser = getUserById(req.params.id);
+        let loggedUser = functions.getUserById(req.params.id);
         res.render("profile", {
             title: `Perfil de ${loggedUser.firstName}`,
             loggedUser,

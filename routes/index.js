@@ -30,6 +30,11 @@ const mainController = require('../controllers/mainController');
 const productsController = require('../controllers/productsController');
 const usersController = require('../controllers/usersController');
 
+// ************ Middlewares Require ************
+const loggedUser = require('../middlewares/loggedUser');
+const guestUser = require('../middlewares/guestUser');
+const adminUser = require('../middlewares/adminUser');
+
 /* HOME */
 router.get('/', mainController.home);
 
@@ -37,7 +42,7 @@ router.get('/', mainController.home);
 // Listado productos
 router.get('/products', productsController.list);
 // Agregar productos
-router.get('/products/create', productsController.productAdd);
+router.get('/products/create',adminUser, productsController.productAdd);
 router.post('/products/create', upload.any(), productsController.add);
 // Detalle producto
 router.get('/products/:id', productsController.detalle);
@@ -49,13 +54,13 @@ router.put('/products/:id/edit', upload.any(), productsController.edit);
 
 /* USERS */
 // Registro usuarios
-router.get('/register', usersController.register);
+router.get('/register', guestUser, usersController.register);
 router.post('/register', uploadUsers.any(), usersController.userAdd);
 // Login
-router.post('/login', usersController.processLogin);
+router.post('/login', guestUser, usersController.processLogin);
 router.post('/logout', usersController.logout);
 // Profile
-router.get('/profile/:id', usersController.profile);
+router.get('/profile/:id', loggedUser, usersController.profile);
 
 router.get('/carrito', mainController.carrito);
 
