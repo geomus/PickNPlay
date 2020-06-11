@@ -40,11 +40,10 @@ const controller = {
         //req.session.destroy()
         //res.locals.frontLogedUser = null
         //eliminar cookie de recordar
-        res.clearCookie('userlogged')
+        res.clearCookie('userLog')
         req.session.destroy((err) => {
             res.redirect("/");
         });
-        //res.redirect('/');
     },
     register: (req, res) => {
         res.render("register", { title: "Registro" });
