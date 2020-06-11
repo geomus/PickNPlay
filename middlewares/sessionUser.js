@@ -3,6 +3,10 @@ module.exports = function (req, res, next) {
     if (req.session.logedUser != undefined) {
         res.locals.frontLogedUser = req.session.logedUser;
         //console.log(res.locals.frontLogedUser);
+    }else if(req.cookies.logedUser){
+        //si esta la cookie con el usuario se lo pasamos a la sesion a la vista
+        req.session.userLog = req.cookies.loggedUser;
+        res.locals.userLog =  req.cookies.loggedUser;
     }
     next();
 };

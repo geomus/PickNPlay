@@ -182,5 +182,13 @@
   "email": "aa@bbb.com",
   "pass": "$2b$10$4mmuXbSKMuFvOq3sUoVv2exi6MpKTbeILKthtfs79onO7Ahh4ZtlS",
   "avatar": "avatar-1591766271916.jpg"
+ },
+ {
+  "id": 24,
+  "firstName": "Francisco",
+  "lastName": "Toyos",
+  "email": "francabj95@gmail.com",
+  "pass": "$2b$10$j/QkWTI0G.4XWvsKlj5sYuFrsFhQeKqYXz.VmbwxeXEFIEtxmvP5m",
+  "avatar": "avatar-1591907843901.jpg"
  }
 ]

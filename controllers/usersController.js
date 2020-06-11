@@ -24,7 +24,9 @@ const controller = {
                 req.session.logedUser = userSession;
 
                 //aca deberia ir la cookie
-
+                 if (req.body.remember)
+                 //recordamos el usuario por 3 meses
+                 res.cookie ('userLog',userLog,{maxAge:1000*60*60*24*90})
                 //redirecciona a profile + id user
                 res.redirect(`/profile/${userLog.id}`);
             } else {
@@ -37,6 +39,8 @@ const controller = {
     logout: (req, res) => {
         //req.session.destroy()
         //res.locals.frontLogedUser = null
+        //eliminar cookie de recordar
+        res.clearCookie('userlogged')
         req.session.destroy((err) => {
             res.redirect("/");
         });
