@@ -75,13 +75,18 @@
                   src="/images/iconos/carritoMas.svg" alt="agregar al carrito" width="20" height="20"
                   title="Home"></button>
             </div>
-            <div class="container-fluid p-0 d-flex justify-content-around">
-              <button type="button" class="btn btn-outline-dark"><a class="btnEdit" href="/products/<%=producto.id%>/edit">editar
-                  producto</a></button>
-              <button type="button" class="btn btn-outline-dark btnDelete" data-toggle="modal" data-target="#exampleModalCenter">
-                borrar producto
-              </button>
-            </div>
+            <% if (frontLogedUser){ %>
+              <% if (frontLogedUser.lastName=='Admin'){ %>
+                <h4 class="py-3">Panel administrador:</h4>
+                <div class="container-fluid p-0 d-flex justify-content-around">
+                  <button type="button" class="btn btn-outline-dark"><a class="btnEdit" href="/products/<%=producto.id%>/edit">Editar
+                      producto</a></button>
+                  <button type="button" class="btn btn-outline-dark btnDelete" data-toggle="modal" data-target="#exampleModalCenter">
+                    Borrar producto
+                  </button>
+                </div>
+              <% }%>
+            <% }%>
             <br />
             <br />
             <p>Medios de pago</p>
