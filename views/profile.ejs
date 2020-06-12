@@ -4,9 +4,13 @@
 <%- include('./partials/header') %>
 
 <div class="container py-3 my-3">
-    <div class="col-12" style=" background-color: #ffffff; border-radius: 8px;">
+    <div class="col-12 py-3 my-3" style=" background-color: #ffffff; border-radius: 8px;">
         <h2>Hola <%= loggedUser.firstName %>! </h2>
         <img class="img-fluid" src="/images/userAvatars/<%= loggedUser.avatar %>" alt="Avatar">
+        <h3>Panel de control administrador:</h3>
+        <% if (loggedUser.lastName=='Admin'){ %>
+            <a href="/products/create">Carga de productos</a>
+        <% } %>
     </div>
 </div>
 <!-- FOOTER -->
