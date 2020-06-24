@@ -1,0 +1,106 @@
+<%- include('./partials/head') %>
+
+<body class='claro'>
+<%- include('./partials/header') %>
+
+<div class="container my-5">
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-12">
+
+      <div class="card shopping-cart claro sombreado">
+        <div class="card-body p-4">
+
+          <!-- Grid row -->
+          <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-lg-6">
+              <!-- titulo carrito -->
+              <h4 class="mb-4 py-2 text-center font-weight-bold text-uppercase"><img
+                src="/images/iconos/carritoMas.svg" alt="imagen carrito" width="50" height=""
+                title="carrito" class="mr-3">Sus Productos</h4>
+
+              <div class="media mb-3">
+                <img class="d-flex mr-3 imgCarrito" src="\images\maquetaQuique\chrome-close-up-electric-guitar-equipment-376452.jpg" alt="guitarra electrica">
+                <div class="media-body">
+                  <a class="float-right"><i class="fas fa-times"></i></a>
+                  <h5 class="mt-0 font-weight-bold">Gretch concert</h5>
+                  <p class="font-weight-bold grey-text mb-2">Color: red wine</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="font-weight-bold">$220000</p>
+                    <div class="def-number-input number-input safari_only mt-n05">
+                      <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                      <input class="quantity font-weight-bold black-text" min="0" name="quantity" value="1" type="number">
+                      <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="media mb-3">
+                <img class="d-flex mr-3 imgCarrito" src="\images\maquetaQuique\close-up-photo-of-black-electric-guitar-1266821.jpg" alt="Generic placeholder image">
+                <div class="media-body">
+                  <a class="float-right"><i class="fas fa-times"></i></a>
+                  <h5 class="mt-0 font-weight-bold">Guibson Les-paul</h5>
+                  <p class="font-weight-bold grey-text mb-2">Color: grey mat</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="font-weight-bold">$190000</p>
+                    <div class="def-number-input number-input safari_only mt-n05">
+                      <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                      <input class="quantity font-weight-bold black-text" min="0" name="quantity" value="1" type="number">
+                      <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="media">
+                <img class="d-flex mr-3 imgCarrito" src="\images\maquetaQuique\red-electric-guitar-165971.jpg" alt="Generic placeholder image">
+                <div class="media-body">
+                  <a class="float-right"><i class="fas fa-times"></i></a>
+                  <h5 class="mt-0 font-weight-bold">Epiphone Lucile</h5>
+                  <p class="font-weight-bold grey-text mb-2">Color: deep red</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="font-weight-bold">$200000</p>
+                    <div class="def-number-input number-input safari_only mt-n05">
+                      <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                      <input class="quantity font-weight-bold black-text" min="0" name="quantity" value="2" type="number">
+                      <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="blue-border mb-4">
+
+              <div class="d-flex justify-content-between light-blue lighten-5 p-2">
+                <h5 class="font-weight-bold mb-0">Total:</h5>
+                <h5 class="font-weight-bold mb-0">$610000</h5>
+              </div>
+
+            </div>
+
+            <!-- Grid column -->
+            <div class="col-lg-6">
+              <h6 class="font-weight-bold m-2">Financiacion con tarjeta de credito!</h6>
+              <h6 class="font-weight-bold m-2">AHORA 12!!</h6>
+              <h6 class="font-weight-bold m-2">Recibimos canjes en parte de pago</h6>
+
+              <form action="">
+                <div class="mPagos">
+                  <span class="mt-auto mb-auto">Medios de pago</span>
+                  <img src="/images/iconos/metodos-de-pago.png" class="ml-2 mediosCarrito" alt="visa   mastercard mercadopago"
+                    width="60%" height="" title="Home">
+                </div>
+                <button type="button" class="btn btn-primary btn-block mb-lg-0 mb-5">Compre ahora, Pare de sufrir!</button>
+                <h5 class="font-weight-bold d-flex justify-content-around"><a class="blue-text back-link"><i class="fas fa-angle-left mr-2"></i>Pagina principal</a></h5>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<%- include('./partials/footer') %>
