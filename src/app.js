@@ -8,6 +8,8 @@ const logger = require('morgan');
 const methodOverride =  require('method-override');
 
 const indexRouter = require('./routes/index');
+const productsRouter = require('./routes/products');
+const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -33,7 +35,9 @@ app.set('view engine', 'ejs');
 
 // routes y usuario en .locals
 app.use(sessionUser);
-app.use('/', indexRouter);
+app.use('/', indexRouter); // Rutas /
+app.use('/products', productsRouter); // Rutas /products
+app.use('/users', usersRouter); // Rutas /users
 
 
 // catch 404 and forward to error handler

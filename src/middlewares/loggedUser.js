@@ -5,7 +5,7 @@ module.exports = (req,res, next) => {
             if(req.params.id == req.session.logedUser.id){
                 next()
             } else {
-                res.redirect(`/profile/${req.session.logedUser.id}`);
+                res.redirect(`/users/profile/${req.session.logedUser.id}`);
             };
         // si esta logueado pero no entra a info de ningun usuario en particular
         }else {

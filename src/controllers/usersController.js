@@ -5,15 +5,10 @@ const controller = {
     processLogin: (req, res, next) => {
         let userLog = functions.getUserByEmail(req.body.email);
 
-        //console.log(passNoEncriptado);
-        //console.log(userLog.pass);
-        //console.log(userLog.email);
-
         if (userLog) {
             if (bcrypt.compareSync(req.body.pass, userLog.pass)) {
                 //inicio de session
                 // si se usa el delete pass la caga cuando queres logear por segunda vez el mismo user, no se bien por que?! por eso cree el objeto nuevo sin pass.
-                //delete userLog.pass;
                 let userSession = {
                     id: userLog.id,
                     firstName: userLog.firstName,
@@ -28,7 +23,7 @@ const controller = {
                  //recordamos el usuario por 3 meses
                  res.cookie ('userLog',userLog,{maxAge:1000*60*60*24*90})
                 //redirecciona a profile + id user
-                res.redirect(`/profile/${userLog.id}`);
+                res.redirect(`/users/profile/${userLog.id}`);
             } else {
                 res.send("Contraseña incorrecta");
             }
@@ -37,8 +32,6 @@ const controller = {
         }
     },
     logout: (req, res) => {
-        //req.session.destroy()
-        //res.locals.frontLogedUser = null
         //eliminar cookie de recordar
         res.clearCookie('userLog')
         req.session.destroy((err) => {

@@ -24,7 +24,7 @@
                 <input class="check-control" type="checkbox" name="remember" id="remember"> Recordarme
               </div>
               <div class="col-12 form-group">
-                <button type="submit" class="btn btn-dark">Ingresar</button> ¿No tenes cuenta? Registrate <a href="/register" style="text-decoration: underline;">ACA</a>
+                <button type="submit" class="btn btn-dark">Ingresar</button> ¿No tenes cuenta? Registrate <a href="/users/register" style="text-decoration: underline;">ACA</a>
               </div>
             </form>
           </div>
@@ -65,11 +65,11 @@
           <div class="dropdown-menu dropdown-menu-right border-white text-white bg-secondary text-center"
             aria-labelledby="navbarDropdown">
             <!-- logout y link perfil-->
-            <form action="/logout" method="POST" class="text-center">
+            <form action="/users/logout" method="POST" class="text-center">
               <button type="submit" class='btn btn-light btn-block'>Cerrar sesión</button>
             </form>
               <button type="" class='btn btn-light mt-1 btn-block '>
-                <a class="text-dark" href="/profile/<%=frontLogedUser.id  %>">Perfil</a>
+                <a class="text-dark" href="/users/profile/<%=frontLogedUser.id  %>">Perfil</a>
               </button>
           </div>
         </div>
@@ -82,9 +82,8 @@
           <div class="dropdown-menu dropdown-menu-right border-white text-white bg-secondary" aria-labelledby="navbarDropdown">
             <!-- login -->
             <button type="button" class="btn dropdown-item" data-toggle="modal" data-target="#login">Entrar</button>
-            <!-- <a class="dropdown-item" href="/productAdd">Entrar</a> -->
             <!-- register -->
-            <a class="dropdown-item" href="/register">Registrarse</a>
+            <a class="dropdown-item" href="/users/register">Registrarse</a>
           </div>
         </div>
         <% } %>
