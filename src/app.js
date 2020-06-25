@@ -7,10 +7,6 @@ const sessionUser = require('./middlewares/sessionUser');
 const logger = require('morgan');
 const methodOverride =  require('method-override');
 
-const indexRouter = require('./routes/index');
-const productsRouter = require('./routes/products');
-const usersRouter = require('./routes/users');
-
 const app = express();
 
 //middlewares
@@ -29,11 +25,15 @@ app.use(session({
 }));
 
 // view engine setup
-app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
 
 
 // routes y usuario en .locals
+const indexRouter = require('./routes/index');
+const productsRouter = require('./routes/products');
+const usersRouter = require('./routes/users');
+
 app.use(sessionUser);
 app.use('/', indexRouter); // Rutas /
 app.use('/products', productsRouter); // Rutas /products

@@ -24,16 +24,16 @@ const adminUser = require('../middlewares/adminUser');
 
 /* PRODUCTS */
 // Listado productos
-router.get('/products', productsController.list);
+router.get('/', productsController.list);
 // Agregar productos
-router.get('/products/create',adminUser, productsController.productAdd);
-router.post('/products/create',[check('discount').isInt({min:0, max:99}).withMessage('0 < % < 99')], upload.any(), productsController.add);
+router.get('/create',adminUser, productsController.productAdd);
+router.post('/create',[check('discount').isInt({min:0, max:99}).withMessage('0 < % < 99')], uploadProducts.any(), productsController.add);
 // Detalle producto
-router.get('/products/:id', productsController.detalle);
+router.get('/:id', productsController.detalle);
 // Eliminar producto
-router.delete('/products/delete/:id', productsController.delete);
+router.delete('/delete/:id', productsController.delete);
 // Editar productos
-router.get('/products/:id/edit', productsController.editView);
-router.put('/products/:id/edit', uploadProducts.any(), productsController.edit);
+router.get('/:id/edit', productsController.editView);
+router.put('/:id/edit', uploadProducts.any(), productsController.edit);
 
 module.exports = router;

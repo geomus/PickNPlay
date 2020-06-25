@@ -25,12 +25,12 @@ const guestUser = require('../middlewares/guestUser');
 
 /* USERS */
 // Registro usuarios
-router.get('/users/register', guestUser, usersController.register);
-router.post('/users/register', uploadUsers.any(), usersController.userAdd);
+router.get('/register', guestUser, usersController.register);
+router.post('/register', uploadUsers.any(), usersController.userAdd);
 // Login
-router.post('/users/login', guestUser, usersController.processLogin);
-router.post('/users/logout', usersController.logout);
+router.post('/login', guestUser, usersController.processLogin);
+router.post('/logout', usersController.logout);
 // Profile
-router.get('/users/profile/:id', loggedUser, usersController.profile);
+router.get('/profile/:id', loggedUser, usersController.profile);
 
 module.exports = router;
