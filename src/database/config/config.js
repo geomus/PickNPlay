@@ -1,9 +1,11 @@
-module.exports = {
+require('dotenv').config()=
+{
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "pickandplay.db",
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASS,
+    "database":  process.env.DB_NAME,
     "host": "127.0.0.1",
+    "port":process.env.DB_PORT,
     "dialect": "mysql",
     "operatorsAliases": false
   },
