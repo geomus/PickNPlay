@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const {check, validationResult, body} = require ('express-validator');
+//const db =require(".../database/models")
 
 let productsPath = path.join(__dirname, "..", "data", "productos.json");
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");

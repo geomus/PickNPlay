@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps:false
   });
   DB_brands.associate = function(models) {
+    console.log(DB_brands)
     // associations can be defined here
     DB_brands.hasMany(models.DB_Articles,{  //put correctly the name of the DB (article)
       as:'articles', //name table
