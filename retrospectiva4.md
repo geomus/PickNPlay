@@ -10,4 +10,3 @@
 ### Keep Doing: Seguir con la misma comunicacion grupal que tenemos mediante Whatsapp,los daily y weekly que pactamos. Seguir con la ayuda grupal. Seguir cumplimentando el trabajo a tiempo y no acumular para los últimos dias. Hacer un poquito más de lo que se pide para tener ya parte del proximo sprint hecho. Trabajar con ramas. 
 ### Stop Doing: Procrastinar a los ultimos dias de entrega.
 
-// Hacer//
