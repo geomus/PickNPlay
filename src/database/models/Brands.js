@@ -6,10 +6,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps:false
   });
-  DB_brands.associate = function(models) {
-    console.log(DB_brands)
+  Brands.associate = function(models) {
+    //console.log(Brands)
     // associations can be defined here
-    Brands.hasMany(models.Article,{  //put correctly the name of the DB (article)
+    Brands.hasMany(models.Article,{  //the name of the DB (article)
       as:'articles', //name table
       foreignKey:'brand_id' //name foreignKey, it's in the article table
     });
