@@ -1,35 +1,45 @@
+let db = require("../database/models");
+const fs = require("fs");
 const bcrypt = require("bcrypt");
-const functions = require('../../public/javascripts/userFunctions')
+const path = require('path');
+// const { Op } = db.Sequelize;
 
 const controller = {
     processLogin: (req, res, next) => {
-        let userLog = functions.getUserByEmail(req.body.email);
-
-        if (userLog) {
-            if (bcrypt.compareSync(req.body.pass, userLog.pass)) {
-                //inicio de session
-                // si se usa el delete pass la caga cuando queres logear por segunda vez el mismo user, no se bien por que?! por eso cree el objeto nuevo sin pass.
-                let userSession = {
-                    id: userLog.id,
-                    firstName: userLog.firstName,
-                    lastName: userLog.lastName,
-                    email: userLog.email,
-                    avatar: userLog.avatar,
-                };
-                req.session.logedUser = userSession;
-
-                //aca deberia ir la cookie
-                 if (req.body.remember)
-                 //recordamos el usuario por 3 meses
-                 res.cookie ('userLog',userLog,{maxAge:1000*60*60*24*90})
-                //redirecciona a profile + id user
-                res.redirect(`/users/profile/${userLog.id}`);
+        db.Users.findOne({where:{
+            email: req.body.email
+        }})
+        .then( userLog => {
+            if (userLog) {
+                if (bcrypt.compareSync(req.body.pass, userLog.pass)) {
+                    //inicio de session
+                    // si se usa el delete pass la caga cuando queres logear por segunda vez el mismo user, no se bien por que?! por eso cree el objeto nuevo sin pass.
+                    let userSession = {
+                        id: userLog.id,
+                        firstName: userLog.firstName,
+                        lastName: userLog.lastName,
+                        email: userLog.email,
+                        avatar: userLog.avatar,
+                        isAdmin: userLog.isAdmin
+                    };
+                    req.session.logedUser = userSession;
+                    //cookie
+                     if (req.body.remember){
+                     //recordamos el usuario por 3 meses
+                     res.cookie ('userLog',userLog,{maxAge:1000*60*60*24*90});
+                     res.redirect(`/users/profile/${userLog.id}`);
+                    } else{
+                    //redirecciona a profile + id user
+                    res.redirect(`/users/profile/${userLog.id}`);
+                    }
+                } else {
+                    res.send("Contraseña incorrecta");
+                }
             } else {
-                res.send("Contraseña incorrecta");
-            }
-        } else {
-            res.send("Usuario inexistente");
-        }
+                res.send("Usuario inexistente");
+            };
+        })
+        .catch(error=>console.log(error));
     },
     logout: (req, res) => {
         //eliminar cookie de recordar
@@ -39,26 +49,66 @@ const controller = {
         });
     },
     register: (req, res) => {
-        res.render("register", { title: "Registro" });
+        res.render("register", { title: "Registro"})
     },
-    userAdd: (req, res, next) => {
+    userAdd: async (req, res, next) => {
         delete req.body.repass;
         req.body.pass = bcrypt.hashSync(req.body.pass, 10);
         let newUser = {
-            id: functions.generateId(),
             ...req.body,
+            isAdmin: 0,
             avatar: req.files[0].filename,
         };
-        functions.guardarUsuario(newUser);
-        res.redirect("/");
+       await db.Users.create(newUser)
+        //una vez logueado, iniciarle la sesion
+       let userLog = await db.Users.findOne({where:{
+        email: newUser.email
+        }})
+        let userSession = {
+            id: userLog.id,
+            firstName: userLog.firstName,
+            lastName: userLog.lastName,
+            email: userLog.email,
+            avatar: userLog.avatar,
+            isAdmin: userLog.isAdmin
+        };
+        req.session.logedUser = userSession;
+        res.redirect('/')
     },
     profile: (req, res) => {
-        let loggedUser = functions.getUserById(req.params.id);
-        res.render("profile", {
-            title: `Perfil de ${loggedUser.firstName}`,
-            loggedUser,
-        });
+        db.Users.findByPk(req.params.id)
+        .then(loggedUser => res.render("profile", {title: `Perfil de ${loggedUser.firstName}`, loggedUser}))
+        .catch(error=>console.log(error));
     },
+    edit: async (req, res) => {
+        let user = await db.Users.findByPk(req.params.id);
+        res.render('userEdit', {title: "Editar usuario", user})
+        .catch(error=>console.log(error));
+    },
+    update:(req, res) => {
+        // preparar el body
+        let _body = {
+            ...req.body,
+            id: req.session.logedUser.id,
+            avatar: req.files[0].filename,
+            isAdmin: req.session.logedUser.isAdmin
+        };
+        db.Users.update(_body,{
+            where: {id: req.params.id}
+        })
+        .then(() => res.redirect(`/users/profile/${req.params.id}`))
+        .catch(error=>console.log(error));
+    },
+    delete: async (req, res)=> {
+        await db.Users.destroy({where: {id: req.params.id}})
+        // borrar avatar
+        var avatarPath = path.join(__dirname,`../../public/images/userAvatars/${req.session.logedUser.avatar}`)
+        await fs.unlinkSync(avatarPath)
+        // eliminar cookies y session
+        res.clearCookie('userLog');
+        req.session.destroy();
+        res.redirect('/');
+}
 };
 
 module.exports = controller;

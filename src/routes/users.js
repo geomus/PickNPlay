@@ -8,7 +8,7 @@ const {check, validationResult, body} = require ('express-validator');
 //Multer
 var storage2 = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname,'../public/images/userAvatars'))
+    cb(null, path.join(__dirname,'../../public/images/userAvatars'))
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
@@ -32,5 +32,10 @@ router.post('/login', guestUser, usersController.processLogin);
 router.post('/logout', usersController.logout);
 // Profile
 router.get('/profile/:id', loggedUser, usersController.profile);
+// Edit
+router.get('/:id/edit', loggedUser, usersController.edit);
+router.put('/:id/edit', loggedUser, uploadUsers.any(), usersController.update);
+// Delete
+router.get('/:id/delete', loggedUser, usersController.delete);
 
 module.exports = router;

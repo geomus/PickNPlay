@@ -8,7 +8,7 @@ const {check, validationResult, body} = require ('express-validator');
 //Multer
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname,'../public/images/imgInstrumentos'))
+    cb(null, path.join(__dirname,'../../public/images/imgInstrumentos'))
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))

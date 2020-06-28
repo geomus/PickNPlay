@@ -6,12 +6,23 @@
 <div class="container py-3 my-3">
     <div class="col-12 py-3 my-3" style=" background-color: #ffffff; border-radius: 8px;">
         <h2>Hola <%= loggedUser.firstName %>! </h2>
+        <div class="col-4 py-3 my-3" style="background-color: #2F303A;">
+            <!-- Editar -->
+            <button type="button" class="btn btn-light btn-block">
+                <a class="btnEdit" style="color: grey;" href="/users/<%=loggedUser.id%>/edit">Editar</a>
+            </button>
+            <!-- Eliminar -->
+            <button type="button" class="btn btn-danger btn-block">
+                <a class="btnEdit" style="color:whitesmoke;" href="/users/<%=loggedUser.id%>/delete">Borrar usuario</a>
+            </button>
+        </div>
         <img class="img-fluid" src="/images/userAvatars/<%= loggedUser.avatar %>" alt="Avatar">
-        <h3>Panel de control administrador:</h3>
-        <% if (loggedUser.lastName=='Admin'){ %>
+        <% if (loggedUser.isAdmin){ %>
+            <h3>Panel de control administrador:</h3>
             <a href="/products/create">Carga de productos</a>
         <% } %>
     </div>
 </div>
+
 <!-- FOOTER -->
 <%- include('./partials/footer') %>
