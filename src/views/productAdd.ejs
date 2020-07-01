@@ -60,22 +60,20 @@
                       </div>
                       <div class="col-12 col-md-6 form-group">
                           <label for="category" class="form-label">Categoría:</label>
-                          <select name="category" id="category" class="custom-select" style="width: 190px" required>
+                          <select name="category" id="category" class="custom-select" style="width: 190px">
                               <option value="" disabled selected>Elegir</option>
-                              <option value="accesorios">Accesorios</option>
-                              <option value="baterias">Baterias</option>
-                              <option value="bajos-electricos">Bajos</option>
-                              <option value="guitarras">Guitarras</option>
-                              <option value="teclados">Teclados</option>
+                              <% for (category of categorias) {  %> 
+                              <option value="<%=category.id%> "><%= category.name  %> </option>
+                              <% } %> 
                           </select>
                       </div>
                       <div class="col-12 col-md-6 form-group">
                           <label for="subCategory"class="form-label">Subcategoría:</label>
                           <select name="subCategory" id="subCategory" class="custom-select" style="width: 190px">
                               <option value="" selected>No aplica</option>
-                              <option value="guitarras-acusticas">Acustica</option>
-                              <option value="clasicas-criollas">Clasica</option>
-                              <option value="guitarras-electricas">Electrica</option>
+                              <option value="101">Acustica</option>
+                              <option value="102">Clasica</option>
+                              <option value="103">Electrica</option>
                           </select>
                       </div>
                       <div class="col-12 col-md-6 form-group">

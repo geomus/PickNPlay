@@ -27,7 +27,8 @@ const adminUser = require('../middlewares/adminUser');
 router.get('/', productsController.list);
 // Agregar productos
 router.get('/create',adminUser, productsController.productAdd);
-router.post('/create',[check('discount').isInt({min:0, max:99}).withMessage('0 < % < 99')], uploadProducts.any(), productsController.add);
+//codigo del validator ,[check('discount').isInt({min:0, max:99}).withMessage('0 < % < 99')]
+router.post('/create', uploadProducts.any(), productsController.add);
 // Detalle producto
 router.get('/:id', productsController.detalle);
 // Eliminar producto

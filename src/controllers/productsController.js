@@ -1,111 +1,135 @@
 const fs = require("fs");
 const path = require("path");
+const db = require('../database/models')
 const {check, validationResult, body} = require ('express-validator');
-//const db =require(".../database/models")
 
 let productsPath = path.join(__dirname, "..", "data", "productos.json");
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-function getProducts() {
-  let products = fs.readFileSync(productsPath, "utf8");
-  return products != "" ? JSON.parse(products) : [];
-}
-let productos = getProducts();
+
 
 const controller = {
     list: (req, res) => {
-        res.render("list", {
-            title: "Catalogo",
-            productos,
-            puntoMil: toThousand,
-        });
+        db.Articles.findAll().then((productos) =>
+            res.render("list", {
+                productos:productos,
+                toThousand:toThousand,
+                title:'listadoProductos'
+            })
+        );
     },
     detalle: (req, res) => {
-        let producto = productos.find((prod) => prod.id == req.params.id);
-        //console.log(producto);
-        res.render("detalle", {
-            title: "Detalle Producto",
-            producto,
-            toThousand,
-        });
+        db.Articles.findByPk(req.params.id, { include: ["category"] })
+            .then((producto) => {
+                pictures = JSON.parse(producto.image);
+                return res.render("detalle", {
+                    title: "detalleProducto",
+                    producto: producto,
+                    toThousand: toThousand,
+                    pictures: pictures,
+                });
+            }).catch((error) => console.log(error));
     },
-    delete: (req, res, next) => {
-        let aReescribir = productos.filter(
-            (unProducto) => unProducto.id != req.params.id
-        );
-        //console.log(aReescribir);
-        fs.writeFileSync(productsPath, JSON.stringify(aReescribir, null, " "));
-        res.redirect("/products");
+
+    delete: async (req, res) => {
+        let deletedArticle = await db.Articles.findByPk(req.params.id)
+        await db.Articles.destroy({
+            where:{
+                id: req.params.id
+            }
+        })
+        let arrayImages = JSON.parse(deletedArticle.image)
+        console.log(arrayImages);
+        arrayImages.forEach(image => fs.unlinkSync(path.join(__dirname,`../../public/images/imgInstrumentos/${image}`)))
+        return res.redirect('/products')
+
+        //array1.forEach(element => console.log(element));
+
     },
+
     editView: (req, res) => {
-        let producto = productos.find((prod) => prod.id == req.params.id);
-        res.render("edit", { title: "Editar producto", producto });
+
+        db.Articles.findByPk(req.params.id, { include: ["category"] })
+            .then((producto) => {
+                return res.render("edit", {
+                    title: "editProducto",
+                    producto: producto,
+                });
+            }).catch((error) => console.log(error));
     },
+
     edit: (req, res, next) => {
-        req.body.price = Number(req.body.price);
-        req.body.discount = Number(req.body.discount);
-        req.body.destacado = Boolean(req.body.destacado);
-        let moded = productos.map((prod) => {
-            //busca el prod por id, devuelve un objeto lit con los campos del form
-            if (prod.id == req.params.id) {
-                let images = [];
-                // array con las nuevas img
-                for (let i = 0; i < req.files.length; i++) {
-                    images.push(req.files[i].filename);
-                }
 
-                return {
-                    id: prod.id,
-                    ...req.body,
-                    image: prod.image.concat(images),
-                };
-            } else {
-        return prod;
-        }
-        });
-        //escribe el JSON
-        fs.writeFileSync(productsPath, JSON.stringify(moded, null, " "));
-        res.redirect("/products");
-    },
-    productAdd: (req, res) => {
-        res.render("productAdd", { title: "Admin-Control" });
-    },
-    add: (req, res, next) => {
-        // generar id
-        let ids = productos.map((prod) => prod.id);
-        let id = Math.max(...ids) + 1;
+        //crea string de nombre de imagenes para mandar a db
 
-        // creo el producto con los datos  del form
-        req.body.price = Number(req.body.price);
-        req.body.discount = Number(req.body.discount);
-        req.body.stock = Number(req.body.stock);
-
-        // array img
         let images = [];
-        // array con las nuevas img
         for (let i = 0; i < req.files.length; i++) {
-        images.push(req.files[i].filename);
+            images.push(req.files[i].filename);
         }
+        //console.log(images);
 
-        let newProduct = {
-        id: id,
-        ...req.body,
-        image: images
-        };
+        let imagesString = JSON.stringify(images);
+        //console.log(imagesString);
 
-        //agrego el producto nuevo al array de productos
-        let final = [...productos, newProduct];
-        fs.writeFileSync(productsPath, JSON.stringify(final, null, " "));
+        //crea articulo en la db
 
-        // errores
-        let errors = validationResult (req);
-        if (errors.isEmpty()){
-            //redirecciono a la lista de productos
-            res.redirect("/products");
-        } else {
-            return res.render('error', {errors: errors.errors})
+        db.Articles.update({
+            name: req.body.name,
+            price: req.body.price,
+            discount: req.body.discount,
+            stock: req.body.stock,
+            category_id: req.body.category,
+            serialNumber: req.body.serialNumber,
+            outstanding: req.body.destacado,
+            description: req.body.description,
+            image: imagesString
+        },{
+            where:{id: req.params.id}
+        })
+            .then(() => res.redirect('/products'))
+            .catch((error) => console.log(error));
+    },
+
+    productAdd: (req, res) => {
+        let categorias = db.Categories.findAll()
+            //console.log(categorias)
+
+            .then((categorias) =>
+                res.render("productAdd", {
+                    categorias: categorias,
+                    title: "prodAdd",
+                })
+            )
+            .catch((error) => console.log(error));
+    },
+    add: function (req, res) {
+        //crea string de nombre de imagenes para mandar a db
+
+        let images = [];
+        for (let i = 0; i < req.files.length; i++) {
+            images.push(req.files[i].filename);
         }
-    }
+        //console.log(images);
+
+        let imagesString = JSON.stringify(images);
+        //console.log(imagesString);
+
+        //crea articulo en la db
+
+        db.Articles.create({
+            name: req.body.name,
+            price: req.body.price,
+            discount: req.body.discount,
+            stock: req.body.stock,
+            category_id: req.body.category,
+            serialNumber: req.body.serialNumber,
+            outstanding: req.body.destacado,
+            description: req.body.description,
+            image: imagesString
+        })
+            .then(() => res.redirect('/products'))
+            .catch((error) => console.log(error));
+    },
 };
 
 module.exports = controller;
