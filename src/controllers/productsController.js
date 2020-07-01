@@ -1,20 +1,18 @@
 const fs = require("fs");
 const path = require("path");
-const db = require('../database/models')
-const {check, validationResult, body} = require ('express-validator');
+const db = require("../database/models");
+const { check, validationResult, body } = require("express-validator");
 
-let productsPath = path.join(__dirname, "..", "data", "productos.json");
+//let productsPath = path.join(__dirname, "..", "data", "productos.json");
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-
 
 const controller = {
     list: (req, res) => {
         db.Articles.findAll().then((productos) =>
             res.render("list", {
-                productos:productos,
-                toThousand:toThousand,
-                title:'listadoProductos'
+                productos: productos,
+                toThousand: toThousand,
+                title: "listadoProductos",
             })
         );
     },
@@ -28,39 +26,58 @@ const controller = {
                     toThousand: toThousand,
                     pictures: pictures,
                 });
-            }).catch((error) => console.log(error));
+            })
+            .catch((error) => console.log(error));
     },
 
     delete: async (req, res) => {
-        let deletedArticle = await db.Articles.findByPk(req.params.id)
+        let deletedArticle = await db.Articles.findByPk(req.params.id);
         await db.Articles.destroy({
-            where:{
-                id: req.params.id
-            }
-        })
-        let arrayImages = JSON.parse(deletedArticle.image)
-        console.log(arrayImages);
-        arrayImages.forEach(image => fs.unlinkSync(path.join(__dirname,`../../public/images/imgInstrumentos/${image}`)))
-        return res.redirect('/products')
-
-        //array1.forEach(element => console.log(element));
-
+            where: {
+                id: req.params.id,
+            },
+        });
+        let arrayImages = JSON.parse(deletedArticle.image);
+        //console.log(arrayImages);
+        arrayImages.forEach((image) =>
+            fs.unlinkSync(
+                path.join(
+                    __dirname,
+                    `../../public/images/imgInstrumentos/${image}`
+                )
+            )
+        );
+        return res.redirect("/products");
     },
 
     editView: (req, res) => {
-
         db.Articles.findByPk(req.params.id, { include: ["category"] })
             .then((producto) => {
                 return res.render("edit", {
                     title: "editProducto",
                     producto: producto,
                 });
-            }).catch((error) => console.log(error));
+            })
+            .catch((error) => console.log(error));
     },
 
-    edit: (req, res, next) => {
+    edit: (req, res) => {
+        //primero borra imagenes de actuales del producto de la carpeta public
+        db.Articles.findByPk(req.params.id)
+            .then((product) => {
+                let arrayImages = JSON.parse(product.image);
+                return arrayImages.forEach((image) =>
+                    fs.unlinkSync(
+                        path.join(
+                            __dirname,
+                            `../../public/images/imgInstrumentos/${image}`
+                        )
+                    )
+                );
+            })
+            .catch((error) => console.log(error));
 
-        //crea string de nombre de imagenes para mandar a db
+        //despues crea string de nombre de imagenes seleccionadas en el multer para mandar a db
 
         let images = [];
         for (let i = 0; i < req.files.length; i++) {
@@ -71,22 +88,25 @@ const controller = {
         let imagesString = JSON.stringify(images);
         //console.log(imagesString);
 
-        //crea articulo en la db
+        //por ultimo edita el articulo  en la db
 
-        db.Articles.update({
-            name: req.body.name,
-            price: req.body.price,
-            discount: req.body.discount,
-            stock: req.body.stock,
-            category_id: req.body.category,
-            serialNumber: req.body.serialNumber,
-            outstanding: req.body.destacado,
-            description: req.body.description,
-            image: imagesString
-        },{
-            where:{id: req.params.id}
-        })
-            .then(() => res.redirect('/products'))
+        db.Articles.update(
+            {
+                name: req.body.name,
+                price: req.body.price,
+                discount: req.body.discount,
+                stock: req.body.stock,
+                category_id: req.body.category,
+                serialNumber: req.body.serialNumber,
+                outstanding: req.body.destacado,
+                description: req.body.description,
+                image: imagesString,
+            },
+            {
+                where: { id: req.params.id },
+            }
+        )
+            .then(() => res.redirect("/products"))
             .catch((error) => console.log(error));
     },
 
@@ -125,9 +145,9 @@ const controller = {
             serialNumber: req.body.serialNumber,
             outstanding: req.body.destacado,
             description: req.body.description,
-            image: imagesString
+            image: imagesString,
         })
-            .then(() => res.redirect('/products'))
+            .then(() => res.redirect("/products"))
             .catch((error) => console.log(error));
     },
 };
