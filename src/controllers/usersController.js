@@ -1,50 +1,56 @@
 let db = require("../database/models");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
-const path = require('path');
+const path = require("path");
 const { validationResult } = require("express-validator");
 // const { Op } = db.Sequelize;
 
 const controller = {
     processLogin: (req, res, next) => {
-        db.Users.findOne({
-            where: {
-                email: req.body.email,
-            },
-        })
-            .then((userLog) => {
-                if (userLog) {
-                    if (bcrypt.compareSync(req.body.pass, userLog.pass)) {
-                        //inicio de session
-                        // si se usa el delete pass la caga cuando queres logear por segunda vez el mismo user, no se bien por que?! por eso cree el objeto nuevo sin pass.
-                        let userSession = {
-                            id: userLog.id,
-                            firstName: userLog.firstName,
-                            lastName: userLog.lastName,
-                            email: userLog.email,
-                            avatar: userLog.avatar,
-                            isAdmin: userLog.isAdmin,
-                        };
-                        req.session.logedUser = userSession;
-                        //cookie
-                        if (req.body.remember) {
-                            //recordamos el usuario por 3 meses
-                            res.cookie("userLog", userLog, {
-                                maxAge: 1000 * 60 * 60 * 24 * 90,
-                            });
-                            res.redirect(`/users/profile/${userLog.id}`);
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log(errors);
+            res.send(errors);
+        } else {
+            db.Users.findOne({
+                where: {
+                    email: req.body.email,
+                },
+            })
+                .then((userLog) => {
+                    if (userLog) {
+                        if (bcrypt.compareSync(req.body.pass, userLog.pass)) {
+                            //inicio de session
+                            // si se usa el delete pass para no mandar el password a la sesion la caga (debe generar un asincronismo),cuando queres logear por segunda vez el mismo user, no se bien por que?! por eso cree el objeto nuevo sin pass, me parece funcionaria tambien con un callback.
+                            let userSession = {
+                                id: userLog.id,
+                                firstName: userLog.firstName,
+                                lastName: userLog.lastName,
+                                email: userLog.email,
+                                avatar: userLog.avatar,
+                                isAdmin: userLog.isAdmin,
+                            };
+                            req.session.logedUser = userSession;
+                            //cookie
+                            if (req.body.remember) {
+                                //recordamos el usuario por 3 meses
+                                res.cookie("userLog", userLog, {
+                                    maxAge: 1000 * 60 * 60 * 24 * 90,
+                                });
+                                res.redirect(`/users/profile/${userLog.id}`);
+                            } else {
+                                //redirecciona a profile + id user
+                                res.redirect(`/users/profile/${userLog.id}`);
+                            }
                         } else {
-                            //redirecciona a profile + id user
-                            res.redirect(`/users/profile/${userLog.id}`);
+                            res.send("Contraseña incorrecta");
                         }
                     } else {
-                        res.send("Contraseña incorrecta");
+                        res.send("Usuario inexistente");
                     }
-                } else {
-                    res.send("Usuario inexistente");
-                }
-            })
-            .catch((error) => console.log(error));
+                })
+                .catch((error) => console.log(error));
+        }
     },
     logout: (req, res) => {
         //eliminar cookie de recordar
@@ -58,18 +64,20 @@ const controller = {
     },
     userAdd: async (req, res, next) => {
         let errors = validationResult(req);
-        console.log(errors);
+        //console.log(errors);
         //console.log(req.files[0]);
-        
-        if (!errors.isEmpty()) {
-            
-            if(req.files[0]){
-                let imagenABorrar = path.join(__dirname,`../../public/images/userAvatars/${req.files[0].filename}`);
-                    fs.unlinkSync(imagenABorrar)
-            };
 
-            return res.send(errors);
-        
+        if (!errors.isEmpty()) {
+            if (req.files[0]) {
+                let imagenABorrar = path.join(
+                    __dirname,
+                    `../../public/images/userAvatars/${req.files[0].filename}`
+                );
+                fs.unlinkSync(imagenABorrar);
+            }
+
+            console.log(errors);
+            res.redirect('/');
         } else {
             delete req.body.repass;
             req.body.pass = bcrypt.hashSync(req.body.pass, 10);
@@ -115,18 +123,24 @@ const controller = {
         }).catch((error) => console.log(error));
     },
     update: (req, res) => {
-        // preparar el body
-        let _body = {
-            ...req.body,
-            id: req.session.logedUser.id,
-            avatar: req.files[0].filename,
-            isAdmin: req.session.logedUser.isAdmin,
-        };
-        db.Users.update(_body, {
-            where: { id: req.params.id },
-        })
-            .then(() => res.redirect(`/users/profile/${req.params.id}`))
-            .catch((error) => console.log(error));
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log(errors);
+            res.redirect('/');
+        } else {
+            // preparar el body
+            let _body = {
+                ...req.body,
+                id: req.session.logedUser.id,
+                avatar: req.files[0].filename,
+                isAdmin: req.session.logedUser.isAdmin,
+            };
+            db.Users.update(_body, {
+                where: { id: req.params.id },
+            })
+                .then(() => res.redirect(`/users/profile/${req.params.id}`))
+                .catch((error) => console.log(error));
+        }
     },
     delete: async (req, res) => {
         await db.Users.destroy({ where: { id: req.params.id } });

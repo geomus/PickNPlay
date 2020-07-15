@@ -62,6 +62,11 @@ const controller = {
     },
 
     edit: (req, res) => {
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log(errors);
+            res.redirect('/');
+        } else {
         //primero borra imagenes de actuales del producto de la carpeta public
         db.Articles.findByPk(req.params.id)
             .then((product) => {
@@ -108,7 +113,7 @@ const controller = {
         )
             .then(() => res.redirect("/products"))
             .catch((error) => console.log(error));
-    },
+    }},
 
     productAdd: (req, res) => {
         let categorias = db.Categories.findAll()
@@ -123,6 +128,11 @@ const controller = {
             .catch((error) => console.log(error));
     },
     add: function (req, res) {
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log(errors);
+            res.redirect('/');
+        } else {
         //crea string de nombre de imagenes para mandar a db
 
         let images = [];
@@ -149,7 +159,7 @@ const controller = {
         })
             .then(() => res.redirect("/products"))
             .catch((error) => console.log(error));
-    },
+    }},
 };
 
 module.exports = controller;
