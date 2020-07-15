@@ -1,13 +1,13 @@
 window.addEventListener("load", () => {
     let formProduct = document.querySelector("form.formProduct");
     let errores = document.querySelector("form div.errors ul");
-    let name = document.querySelector("input#name");
-    let price = document.querySelector("input#price");
-    let discount = document.querySelector("input#discount");
-    let stock = document.querySelector("input#stock");
-    let serialNumber = document.querySelector("input#serialNumber");
-    let description = document.querySelector("input#description");
-    let image = document.querySelector("input#image");
+    let name = document.querySelector("input.name");
+    let price = document.querySelector("input.price");
+    let discount = document.querySelector("input.discount");
+    let stock = document.querySelector("input.stock");
+    let serialNumber = document.querySelector("input.serialNumber");
+    let description = document.querySelector("textarea.description");
+    let image = document.querySelector("input.image");
 
 
     formProduct.addEventListener("submit", (e) => {
@@ -54,7 +54,7 @@ window.addEventListener("load", () => {
             }
             return valid;
         }
-        let validation = validateTypeAll();
+        // let validation = validateTypeAll();
 
         // if (validation.includes(false)) {
         if (!validateType(image.value)) {
