@@ -7,6 +7,7 @@ const sessionUser = require('./middlewares/sessionUser');
 const logger = require('morgan');
 const methodOverride =  require('method-override');
 
+
 const app = express();
 
 //middlewares
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(methodOverride('_method'));
+
 
 //session y cookie
 app.use(cookieParser());
