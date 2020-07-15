@@ -21,7 +21,7 @@ const controller = {
             .then((producto) => {
                 pictures = JSON.parse(producto.image);
                 return res.render("detalle", {
-                    title: "detalleProducto",
+                    title: `Detalle ${producto.name}`,
                     producto: producto,
                     toThousand: toThousand,
                     pictures: pictures,
@@ -54,7 +54,7 @@ const controller = {
         db.Articles.findByPk(req.params.id, { include: ["category"] })
             .then((producto) => {
                 return res.render("edit", {
-                    title: "editProducto",
+                    title: "Editar Producto",
                     producto: producto,
                 });
             })
@@ -117,7 +117,7 @@ const controller = {
             .then((categorias) =>
                 res.render("productAdd", {
                     categorias: categorias,
-                    title: "prodAdd",
+                    title: "Agregar Productos",
                 })
             )
             .catch((error) => console.log(error));
