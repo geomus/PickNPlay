@@ -21,7 +21,7 @@ const controller = {
             .then((producto) => {
                 pictures = JSON.parse(producto.image);
                 return res.render("detalle", {
-                    title: "detalleProducto",
+                    title: `Detalle ${producto.name}`,
                     producto: producto,
                     toThousand: toThousand,
                     pictures: pictures,
@@ -54,7 +54,7 @@ const controller = {
         db.Articles.findByPk(req.params.id, { include: ["category"] })
             .then((producto) => {
                 return res.render("edit", {
-                    title: "editProducto",
+                    title: "Editar Producto",
                     producto: producto,
                 });
             })
@@ -63,40 +63,118 @@ const controller = {
 
     edit: (req, res) => {
         let errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            console.log(errors);
-            res.redirect('/');
-        } else {
-        //primero borra imagenes de actuales del producto de la carpeta public
-        db.Articles.findByPk(req.params.id)
-            .then((product) => {
-                let arrayImages = JSON.parse(product.image);
-                return arrayImages.forEach((image) =>
-                    fs.unlinkSync(
-                        path.join(
-                            __dirname,
-                            `../../public/images/imgInstrumentos/${image}`
-                        )
-                    )
-                );
-            })
-            .catch((error) => console.log(error));
-
-        //despues crea string de nombre de imagenes seleccionadas en el multer para mandar a db
-
         let images = [];
         for (let i = 0; i < req.files.length; i++) {
             images.push(req.files[i].filename);
         }
         //console.log(images);
+        if (!errors.isEmpty()) {
+            //si hay algun error del validator, borra las imagenes que subio previamente el multer en le ruta
+            images.forEach((image) => {
+                if (image != []) {
+                    fs.unlinkSync(
+                        path.join(
+                            __dirname,
+                            `../../public/images/imgInstrumentos/${image}`
+                        )
+                    );
+                }
+            });
 
-        let imagesString = JSON.stringify(images);
-        //console.log(imagesString);
+            console.log(errors);
+            res.redirect("/");
+        } else {
+            //primero borra imagenes de actuales del producto de la carpeta public
+            db.Articles.findByPk(req.params.id)
+                .then((product) => {
+                    let arrayImages = JSON.parse(product.image);
+                    return arrayImages.forEach((image) =>
+                        fs.unlinkSync(
+                            path.join(
+                                __dirname,
+                                `../../public/images/imgInstrumentos/${image}`
+                            )
+                        )
+                    );
+                })
+                .catch((error) => console.log(error));
 
-        //por ultimo edita el articulo  en la db
+            //despues crea string de nombre de imagenes seleccionadas en el multer para mandar a db
 
-        db.Articles.update(
-            {
+            let images = [];
+            for (let i = 0; i < req.files.length; i++) {
+                images.push(req.files[i].filename);
+            }
+            //console.log(images);
+
+            let imagesString = JSON.stringify(images);
+            //console.log(imagesString);
+
+            //por ultimo edita el articulo  en la db
+
+            db.Articles.update(
+                {
+                    name: req.body.name,
+                    price: req.body.price,
+                    discount: req.body.discount,
+                    stock: req.body.stock,
+                    category_id: req.body.category,
+                    serialNumber: req.body.serialNumber,
+                    outstanding: req.body.destacado,
+                    description: req.body.description,
+                    image: imagesString,
+                },
+                {
+                    where: { id: req.params.id },
+                }
+            )
+                .then(() => res.redirect("/products"))
+                .catch((error) => console.log(error));
+        }
+    },
+
+    productAdd: (req, res) => {
+        let categorias = db.Categories.findAll()
+            //console.log(categorias)
+
+            .then((categorias) =>
+                res.render("productAdd", {
+                    categorias: categorias,
+                    title: "Agregar Productos",
+                })
+            )
+            .catch((error) => console.log(error));
+    },
+    add: function (req, res) {
+        let errors = validationResult(req);
+        let images = [];
+        for (let i = 0; i < req.files.length; i++) {
+            images.push(req.files[i].filename);
+        }
+        //console.log(images);
+        if (!errors.isEmpty()) {
+            //si hay algun error del validator, borra las imagenes que subio previamente el multer en le ruta
+            images.forEach((image) => {
+                if (image != []) {
+                    fs.unlinkSync(
+                        path.join(
+                            __dirname,
+                            `../../public/images/imgInstrumentos/${image}`
+                        )
+                    );
+                }
+            });
+            console.log(errors);
+            res.redirect("/");
+        } else {
+            //crea string de nombre de imagenes para mandar a db
+
+            let imagesString = JSON.stringify(images);
+            //console.log(imagesString);
+
+            //crea articulo en la db
+
+            db.Articles.create({
                 name: req.body.name,
                 price: req.body.price,
                 discount: req.body.discount,
@@ -106,60 +184,11 @@ const controller = {
                 outstanding: req.body.destacado,
                 description: req.body.description,
                 image: imagesString,
-            },
-            {
-                where: { id: req.params.id },
-            }
-        )
-            .then(() => res.redirect("/products"))
-            .catch((error) => console.log(error));
-    }},
-
-    productAdd: (req, res) => {
-        let categorias = db.Categories.findAll()
-            //console.log(categorias)
-
-            .then((categorias) =>
-                res.render("productAdd", {
-                    categorias: categorias,
-                    title: "prodAdd",
-                })
-            )
-            .catch((error) => console.log(error));
-    },
-    add: function (req, res) {
-        let errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            console.log(errors);
-            res.redirect('/');
-        } else {
-        //crea string de nombre de imagenes para mandar a db
-
-        let images = [];
-        for (let i = 0; i < req.files.length; i++) {
-            images.push(req.files[i].filename);
+            })
+                .then(() => res.redirect("/products"))
+                .catch((error) => console.log(error));
         }
-        //console.log(images);
-
-        let imagesString = JSON.stringify(images);
-        //console.log(imagesString);
-
-        //crea articulo en la db
-
-        db.Articles.create({
-            name: req.body.name,
-            price: req.body.price,
-            discount: req.body.discount,
-            stock: req.body.stock,
-            category_id: req.body.category,
-            serialNumber: req.body.serialNumber,
-            outstanding: req.body.destacado,
-            description: req.body.description,
-            image: imagesString,
-        })
-            .then(() => res.redirect("/products"))
-            .catch((error) => console.log(error));
-    }},
+    },
 };
 
 module.exports = controller;
