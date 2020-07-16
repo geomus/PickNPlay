@@ -1,6 +1,6 @@
 alert("Hola acá es, buenos dias!")
 window.addEventListener('load',()=>{
-    const form = document.querySelector('#form-UserAdd');
+    const form = document.querySelector('form');
     
     const firstName = document.querySelector('#firstName');
     const lastName = document.querySelector('#lastName');
@@ -43,9 +43,9 @@ window.addEventListener('load',()=>{
 
        
     //Validando email
-    if (email.value.trim() == "") {
-        errors.push("El correo es obligatorio");
-    }
+    //if (email.value.trim() == "") {
+    //    errors.push("El correo es obligatorio");
+  //  }
     
 
    
@@ -81,3 +81,34 @@ window.addEventListener('load',()=>{
         //e.preventDefault()
     }
 })
+
+
+
+// Validaciones del LOGIN
+
+  
+function validarEmail(){
+
+    let exp =/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    let email = document.querySelector('#email-m').value;
+    let alert = document.querySelector('#alert');
+    alert.innerHTML = " ";
+    if(!exp.test(email)){
+        alert.innerHTML = "Mail inválido. Colocar caracteres de email"
+    }
+
+    
+}
+
+function validarPass(){
+
+    let expp =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
+
+    let pass=document.querySelector('#pass-m').value;
+    let alert = document.querySelector('#alert1');
+    alert.innerHTML = '';
+    if(!expp.test(pass)){
+        alert.innerHTML = "Colocar bien la contraseña"
+    }
+}
