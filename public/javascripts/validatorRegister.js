@@ -1,4 +1,4 @@
-alert("Hola acá es, buenos dias!")
+//alert("Hola acá es, buenos dias!")
 window.addEventListener('load',()=>{
    
     // REGISTER
@@ -94,11 +94,5 @@ window.addEventListener('load',()=>{
     })
 });
 
-    
-     
-    
-   
 
-    
-    
 
