@@ -11,20 +11,25 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="/users/login" name="loginForm" method="post">
+            <form action="/users/login" name="loginForm" id="loginForm"  class="formLogin "method="post"  >
+              <div class="col-12 col-md-6 errorsL" style="color: black;">
+                <ul>
+                    <!-- errors (por front) -->
+                </ul>
+              </div>
               <div class="col-12 col-md-6 form-group">
                 <label class="form-label" for="email">Email</label>
-                <input id="email" type="email" name="email" placeholder="Ingrese su email" class="form-input" required>
+                <input id="email-m" type="email" name="email" placeholder="Ingrese su email" class="form-input"  required>
               </div>
               <div class="col-12 col-md-6 form-group">
                 <label class="form-label" for="pass">Contraseña</label>
-                <input id="pass" type="password" name="pass" max="20" min="8" placeholder="Ingrese su clave" class="form-input" required>
+                <input id="pass-m" type="password" name="pass" max="20" min="8" placeholder="Ingrese su clave" class="form-input"  required>
               </div>
               <div class="col-12 col-md-6 form-group">
                 <input class="check-control" type="checkbox" name="remember" id="remember"> Recordarme
               </div>
               <div class="col-12 form-group">
-                <button type="submit" class="btn btn-dark">Ingresar</button> ¿No tenes cuenta? Registrate <a href="/users/register" style="text-decoration: underline;">ACA</a>
+                <button type="submit" id="submit" class="btn btn-dark">Ingresar</button> ¿No tenes cuenta? Registrate <a href="/users/register" style="text-decoration: underline;">ACA</a>
               </div>
             </form>
           </div>
