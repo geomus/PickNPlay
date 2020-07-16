@@ -7,8 +7,13 @@
       <div class="col-12 col-sm-8 py-3 my-3">
         <strong><h2 style="text-decoration: underline; color: white;" class="text-center"><i class="far fa-play-circle"></i>Registro:</h2></strong>
         <div class="error"></div>
-        <form action="/users/register" enctype="multipart/form-data" name="formUserAdd" id="form-UserAdd" method="post" class="form-horizontal w-100 py-3 my-3">
+        <form action="/users/register" enctype="multipart/form-data" name="formUserAdd" id="form-UserAdd" method="post" class="formUser" class="form-horizontal w-100 py-3 my-3">
           <div class="form-group col-sm-10">
+            <div class="col-12 col-md-6 text-muted errors">
+              <ul>
+                  <!-- errors (por front) -->
+              </ul>
+            </div>
             <label for="firstName" class=" control-label text-light">Nombre:</label>
             <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Nombre" required>
           </div>
@@ -18,7 +23,7 @@
           </div>
           <div class="form-group col-sm-10">
             <label for="email" class="control-label text-light">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" onkeyup="validarEmail(email)" required><a id="resultado"></a>
+            <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com"  required>
           </div>
           <div class="form-group col-sm-10">
             <label for="pass" class="control-label text-light">Contraseña:</label>
@@ -33,7 +38,7 @@
           </div>
           <div class="col-12 col-md-6 form-group">
             <div class="custom-file">
-                <input type="file"  class="custom-file-input" name="avatar" max="3" id="avatars" accept="image/x-png,image/gif,image/jpeg" onchange="validarImagen(this)" required>
+                <input type="file"  class="custom-file-input image" name="image" max="3" id="image" accept="image/x-png,image/gif,image/jpeg"  required>
                 <label class="custom-file-label"  for="avatar">Elegir avatar</label>
             </div>
         </div>
