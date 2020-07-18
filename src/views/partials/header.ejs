@@ -11,22 +11,19 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="/users/login" name="loginForm" id="loginForm"  class="formLogin "method="post"  >
-              <div class="col-12 col-md-6 errorsL" style="color: black;">
-                <ul>
-                    <!-- errors (por front) -->
-                </ul>
+            <form action="/users/login" method="POST" name="loginForm" class="formLogin">
+              <div class="col-12 col-md-6 form-group">
+                <label class="form-label" for="emailL">Email</label>
+                <input id="emailL" type="email" name="email" placeholder="Ingrese su email" class="form-input emailL" required>
+                <small class="errorEmailL error">El EMAIL es obligatorio, no debe contener espacios, debe ser menor a 20 caracteres y formato válido.</small>
               </div>
               <div class="col-12 col-md-6 form-group">
-                <label class="form-label" for="email">Email</label>
-                <input id="email-m" type="email" name="email" placeholder="Ingrese su email" class="form-input"  required>
+                <label class="form-label" for="passL">Contraseña</label>
+                <input id="passL" type="password" name="pass" max="20" min="8" placeholder="Ingrese su clave" class="form-input passL"  required>
+                <small class="errorPassL error">La CONTRASEÑA no debe tener espacios, contener minimo 8 caracteres y al menos una mayuscula.</small>
               </div>
               <div class="col-12 col-md-6 form-group">
-                <label class="form-label" for="pass">Contraseña</label>
-                <input id="pass-m" type="password" name="pass" max="20" min="8" placeholder="Ingrese su clave" class="form-input"  required>
-              </div>
-              <div class="col-12 col-md-6 form-group">
-                <input class="check-control" type="checkbox" name="remember" id="remember"> Recordarme
+                <input class="check-control remember" type="checkbox" name="remember" id="remember"> Recordarme
               </div>
               <div class="col-12 form-group">
                 <button type="submit" id="submit" class="btn btn-dark">Ingresar</button> ¿No tenes cuenta? Registrate <a href="/users/register" style="text-decoration: underline;">ACA</a>

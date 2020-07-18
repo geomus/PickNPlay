@@ -26,6 +26,13 @@ body {
 .navSearch{
   width: 125px;
 }
+
+/* errors */
+small.error {
+  display: none;
+  color: salmon;
+}
+
 /* header */
 .bg-dark{
   background-color: #2F303A !important;
