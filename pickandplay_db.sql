@@ -159,10 +159,10 @@ CREATE TABLE `users` (
 --
 -- Volcado de datos para la tabla `users`
 --
-
 INSERT INTO `users` (`id`, `email`, `pass`, `firstName`, `lastName`, `avatar`, `rating`, `isAdmin`, `createdAt`, `updatedAt`) VALUES
-(2, 'nahu.daneri@gmail.com', '$2b$10$YeO0ndHKPHiL5EeL6FylOe2Jw55bHPvXBCnPJBsrbLnG7sxeHavOq', 'Nahuel', 'Prueba', 'avatar-1593277180489.jpg', NULL, 1, '2020-06-27 15:38:14', '2020-06-27 16:59:40');
-
+(2,	'nahu.daneri@gmail.com',	'$2b$10$YeO0ndHKPHiL5EeL6FylOe2Jw55bHPvXBCnPJBsrbLnG7sxeHavOq',	'Nahuel',	'Prueba',	'avatar-1593277180489.jpg',	NULL,	1,	'2020-06-27 15:38:14',	'2020-06-27 16:59:40'),
+(3,	'eabramzon@gmail.com',	'$2b$10$nuLyZBeF/bEPHN69IMvtu.J7/QQcuoqq8QgUxgyl3HS4dJR1p0GS.',	'enrique',	'Abramzon',	'avatar-1595275058311.jpg',	NULL,	1,	'2020-07-01 16:23:06',	'2020-07-20 16:57:38'),
+(17,	'reviewer@gmail.com',	'$2b$10$VQClw3zFNwUm3v0FD2EmPOEvaLHfVxtMbIxI8ofI5zpFeXAuU1Pcq',	'Mati',	'Santi',	'avatar-1595275773878.JPG',	NULL,	0,	'2020-07-20 17:09:34',	'2020-07-20 17:09:34');
 --
 -- Índices para tablas volcadas
 --

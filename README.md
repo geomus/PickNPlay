@@ -19,5 +19,5 @@
 ### [American Guitar Shop](https://guitar-shop.de/) //responsive
 
 ## Datos para navegar el sitio.
-### usuario administrador: reviewer  // password: Nimda001
+### usuario administrador: reviewer@gmail.com  // password: 11112222T
 ### Para acceder a la vista de carga de nuevos productos hay un link en el  pie de la vista de perfil del usuario. Para borrar o editar un producto se accede al mismo desde la vista detalle del mismo con user admin.
