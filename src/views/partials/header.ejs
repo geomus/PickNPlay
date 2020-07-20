@@ -22,6 +22,14 @@
                 <input id="passL" type="password" name="pass" max="20" min="8" placeholder="Ingrese su clave" class="form-input passL"  required>
                 <small class="errorPassL error">La CONTRASEÑA no debe tener espacios, contener minimo 8 caracteres y al menos una mayuscula.</small>
               </div>
+                <% if(errors){ %>
+                  <ul>
+                    <% for (let error of errors.errors ) {%> 
+                      <li class="text-danger"><%= error.msg  %> </li>
+                      <% } %> 
+                    </ul>
+                <% } %> 
+
               <div class="col-12 col-md-6 form-group">
                 <input class="check-control remember" type="checkbox" name="remember" id="remember"> Recordarme
               </div>

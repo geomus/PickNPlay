@@ -113,13 +113,18 @@ router.post(
                 let user = await db.Users.findOne({
                     where: { email: req.body.email },
                 });
-                if (bcrypt.compareSync(value, user.pass)) {
-                    return Promise.resolve();
-                } else {
-                    return Promise.reject();
+                if(user){
+                    if (bcrypt.compareSync(value, user.pass)) {
+                        return Promise.resolve();
+                    } else {
+                        return Promise.reject();
+                    }
+                }else{
+                     return Promise.reject();
                 }
+                
             })
-            .withMessage("contraseña incorrecta server"),
+            .withMessage("contraseña incorrecta "),
     ],
     usersController.processLogin
 );
