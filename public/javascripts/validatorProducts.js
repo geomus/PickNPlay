@@ -126,8 +126,9 @@ window.addEventListener("load", () => {
             };
             return errores;
         };
-
+        
         if (hasErrors().includes(true)) {
+            console.log(errores);
             e.preventDefault();
             alert("Tiene errores");
         };
