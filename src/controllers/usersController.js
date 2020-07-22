@@ -3,14 +3,27 @@ const fs = require("fs");
 const bcrypt = require("bcrypt");
 const path = require("path");
 const { validationResult } = require("express-validator");
+const e = require("express");
 // const { Op } = db.Sequelize;
+// a mejorar con db
+let productsPath = path.join(__dirname,'..','data','productos.json');
+function getProducts() {
+	let products = fs.readFileSync(productsPath, "utf8")
+    return products != '' ? JSON.parse(products) : []
+};
+let productos = getProducts();
+const destacados = productos.filter(prod =>prod.destacado==true);
+let errors;
 
 const controller = {
     processLogin: (req, res, next) => {
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
+            //let showModal = {};
+            //showModal.errors = errors;
+            res.locals.showModal = true;
             console.log(errors);
-            res.send(errors);
+            res.render('index',{title: 'Home', destacados, errors:errors});
         } else {
             db.Users.findOne({
                 where: {
@@ -60,7 +73,7 @@ const controller = {
         });
     },
     register: (req, res) => {
-        res.render("register", { title: "Registro" });
+        res.render("register", { title: "Registro", errors:errors});
     },
     userAdd: async (req, res, next) => {
         let errors = validationResult(req);
@@ -111,6 +124,7 @@ const controller = {
                 res.render("profile", {
                     title: `Perfil de ${loggedUser.firstName}`,
                     loggedUser,
+                    errors:errors
                 })
             )
             .catch((error) => console.log(error));
@@ -120,6 +134,7 @@ const controller = {
         res.render("userEdit", {
             title: "Editar usuario",
             user,
+            errors:errors
         }).catch((error) => console.log(error));
     },
     update: (req, res) => {

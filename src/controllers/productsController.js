@@ -5,7 +5,7 @@ const { check, validationResult, body } = require("express-validator");
 
 //let productsPath = path.join(__dirname, "..", "data", "productos.json");
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
+let errors;
 const controller = {
     list: (req, res) => {
         db.Articles.findAll().then((productos) =>
@@ -13,6 +13,7 @@ const controller = {
                 productos: productos,
                 toThousand: toThousand,
                 title: "listadoProductos",
+                errors
             })
         );
     },
@@ -25,6 +26,7 @@ const controller = {
                     producto: producto,
                     toThousand: toThousand,
                     pictures: pictures,
+                    errors
                 });
             })
             .catch((error) => console.log(error));
@@ -56,6 +58,7 @@ const controller = {
                 return res.render("edit", {
                     title: "Editar Producto",
                     producto: producto,
+                    errors
                 });
             })
             .catch((error) => console.log(error));
@@ -141,6 +144,7 @@ const controller = {
                 res.render("productAdd", {
                     categorias: categorias,
                     title: "Agregar Productos",
+                    errors
                 })
             )
             .catch((error) => console.log(error));
