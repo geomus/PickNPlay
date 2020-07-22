@@ -68,14 +68,6 @@
     <!-- /destacados -->
   </main>
   <!-- este script levanta el modal cuando vienen errores de validacion de login del server -->
-  <% if (showModal){%>
-    <script>
-      window.addEventListener("load", () => {
-    $('#login').modal('show');
-    event.preventDefault();
-      })
-    </script>
-  <% } %>
 
 <!-- FOOTER -->
 <%- include('./partials/footer') %>

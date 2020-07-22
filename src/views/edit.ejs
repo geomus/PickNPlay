@@ -7,35 +7,30 @@
     <div class="col-12" style=" background-color: #ffffff; border-radius: 8px;">
         <h2 style="text-decoration: underline;">Modificando producto:  ID - <%= producto.id %></h2>
         <form action="/products/<%= producto.id %>/edit/?_method=PUT" enctype="multipart/form-data" method="POST" name="formEdit" class="formProduct">
-            <div class="col-12 col-md-6 errors text-muted" style="color: red;">
-                <ul>
-                    <!-- errors (por front) -->
-                </ul>
-            </div>
             <div class="form-row justify-content-center">
                 <div class="col-12 col-md-6 form-group">
                     <label for="name" class="form-label">Nombre del producto:</label>
-                    <input type="text" id="name" name="name" value="<%= producto.name %>" class="form-input name" required>
+                    <input type="text" id="name" name="name" value="<%= producto.name %>" class="form-input name product" required>
                     <small class="errorName error">El NOMBRE es obligatorio, y de mínimo 5 caracteres</small>
                 </div>
                 <div class="col-12 col-md-6 form-group">
                     <label for="price" class="form-label">Precio ($):</label>
-                    <input type="number" id="price" name="price" max="999999" value="<%= producto.price %>" class="form-input price" required>
+                    <input type="number" id="price" name="price" max="999999" value="<%= producto.price %>" class="form-input price product" required>
                     <small class="errorPrice error">El PRECIO es obligatorio y no puede ser 0</small>
                 </div>
                 <div class="col-12 col-md-6 form-group">
                     <label for="discount" class="form-label">Descuento (%):</label>
-                    <input type="number" id="discount" name="discount" min="0" max="99" value="<%= producto.discount %>" class="form-input discount" required>
+                    <input type="number" id="discount" name="discount" min="0" max="99" value="<%= producto.discount %>" class="form-input discount product" required>
                     <small class="errorDiscount error">El DESCUENTO no debe superar el 99%</small>
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="stock" class="form-label">Cantidad:</label>
-                    <input type="number" id="stock" name="stock" value="<%= producto.stock %>" class="form-input stock" required>
+                    <input type="number" id="stock" name="stock" value="<%= producto.stock %>" class="form-input stock product" required>
                     <small class="errorStock error">El STOCK debe estar entre 1 y 999</small>
                 </div>
                 <div class="col-12 col-md-6 form-group">
                     <label for="serialNumber" class="form-label">Serial del producto:</label>
-                    <input type="number" id="serialNumber" name="serialNumber" value="<%= producto.serialNumber %>" class="form-input serialNumber" required>
+                    <input type="number" id="serialNumber" name="serialNumber" value="<%= producto.serialNumber %>" class="form-input serialNumber product" required>
                     <small class="errorSerialNumber error">El SERIAL es obligatorio</small>
                 </div>
                 <div class="col-12 col-md-6 form-group">
@@ -55,7 +50,7 @@
                 </div>
                 <div class="col-12 col-md-6 form-group">
                     <label for="description" class="form-label">Descripcion del producto:</label><br>
-                    <textarea name="description" id="description" maxlength="150" cols="30" rows="4" class="form-input description" required><%= producto.description %></textarea>
+                    <textarea name="description" id="description" maxlength="150" cols="30" rows="4" class="form-input description product" required><%= producto.description %></textarea>
                     <small class="errorDescription error">La DESCRIPCIÓN debe tener un minimo de 20 caracteres</small>
                 </div>
                 <div class="col-12 col-md-6 form-group">
@@ -96,8 +91,9 @@
                 </div>
                 <div class="col-12 col-md-6 form-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input image" name="image" accept="image/x-png,image/gif,image/jpeg" max="3" id="image" required multiple>
+                        <input type="file" class="custom-file-input image product" name="image" accept="image/x-png,image/gif,image/jpeg" max="3" id="image" required multiple>
                         <label class="custom-file-label" for="image">Elegir imagenes (MAX 3)</label>
+                        <small class="errorImage error"></small>
                     </div>
                 </div>
                 <div class="col-12 form-group">
