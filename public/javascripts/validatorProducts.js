@@ -7,8 +7,12 @@ window.addEventListener("load", () => {
     let serialNumber = document.querySelector("input.serialNumber");
     let description = document.querySelector("textarea.description");
     let image = document.querySelector("input.image");
-    let inputs = document.querySelectorAll("input");
+    let inputsProduct = document.querySelectorAll(".product");
 
+    //  Reset errores
+    for (let i = 0; i < inputsProduct.length; i++) {
+        inputsProduct[i].classList.remove("in-valid")
+    };
     name.addEventListener("blur", ()=> {
         if(name.value.trim() == "" || name.value.length < 5) {
             name.classList.add("in-valid");
@@ -17,7 +21,7 @@ window.addEventListener("load", () => {
             document.querySelector("small.errorName").style.display ='none';
             name.classList.remove("in-valid");
         }
-    })
+    });
 
     price.addEventListener("blur", ()=> {
         if (price.value.trim() == "" || Number(price.value) == 0) {
@@ -69,7 +73,7 @@ window.addEventListener("load", () => {
         }
     })
 
-    //  validar formato de una imagen
+    // validar formato de una imagen
     function validateType (fileName){
         let fileType = (fileName).split(".");
         if((fileType.find(type => type=="jpg" || type=="jpeg" ||type=="gif" || type=="png")) !== undefined){
@@ -77,9 +81,9 @@ window.addEventListener("load", () => {
         } else {
             return false;
         }
-    }
+    };
 
-    // validar formato de todas las imágenes (CORREGIR)
+    // validar formato de todas las imágenes
     function validateTypeAll () {
         let valid = [];
         for (let i = 0; i < image.files.length; i++) {
@@ -90,12 +94,11 @@ window.addEventListener("load", () => {
             };
         };
         return valid;
-    }
+    };
 
     image.addEventListener("blur", ()=> {
         let errorImage = document.querySelector("small.errorImage");
         if (validateTypeAll().includes(false)) {
-        // if (!validateType(image.value)) {
             image.classList.add("in-valid");
             errorImage.innerHTML = "Formatos de IMAGEN permitidos: JPG, JPEG, PNG, GIF, seleccionar de nuevo";
             errorImage.style.display = 'inline-block';
@@ -110,15 +113,15 @@ window.addEventListener("load", () => {
             image.classList.remove("in-valid");
             errorImage.style.display ='none';
         };
-    })
+    });
 
 
     formProduct.addEventListener("submit", (e) => {
         // check errors, si hay errores no permite el submit
         let hasErrors = () => {
             let errores = [];
-            for (let i = 0; i < inputs.length; i++) {
-                if (inputs[i].classList.contains('in-valid')) {
+            for (let i = 0; i < inputsProduct.length; i++) {
+                if (inputsProduct[i].classList.contains('in-valid')) {
                    errores.push(true);
                 } else {
                     errores.push(false);
@@ -129,7 +132,6 @@ window.addEventListener("load", () => {
 
         if (hasErrors().includes(true)) {
             e.preventDefault();
-            alert("Tiene errores");
         };
     });
 });
