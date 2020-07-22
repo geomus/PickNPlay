@@ -18,7 +18,7 @@ window.addEventListener("load", () => {
 
     firstName.addEventListener("blur", ()=> {
         //  || !exp.test(firstName)
-        if (firstName.value.trim()=="" || firstName.value.length < 2 || !exp.test(firstName.value)) {
+        if (firstName.value.trim()=="" || firstName.value.length <2|| !exp.test(firstName.value)) {
             firstName.classList.add("in-valid");
             document.querySelector("small.errorFirstName").style.display ='inline-block';
         } else {
@@ -134,10 +134,10 @@ window.addEventListener("load", () => {
             return errores;
         };
 
-        if (hasErrors().includes(true)) {
-            e.preventDefault();
-            alert("Tiene errores");
-        };
+        //if (hasErrors().includes(true)) {
+       //     e.preventDefault();
+        //    alert("Tiene errores");
+       // };
     });
 });
 
