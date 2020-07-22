@@ -56,7 +56,7 @@ window.addEventListener("load", () => {
 
     email.addEventListener("blur", ()=> {
         // || !expEm.test(email.value)
-        if (email.value.trim()== "" || email.value.length > 35 || emailL.value.length < 4) {
+        if (email.value.trim()== "" || email.value.length > 35 || email.value.length < 4) {
             email.classList.add("in-valid");
             document.querySelector("small.errorEmail").style.display ='inline-block';
         } else {
