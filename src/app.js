@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const sessionUser = require('./middlewares/sessionUser');
+const variablesGlobales = require('./middlewares/variablesGlobales');
 const logger = require('morgan');
 const methodOverride =  require('method-override');
 
@@ -38,6 +39,7 @@ const usersRouter = require('./routes/users');
 const usersApiRoute = require ('./routes/api/users');
 
 app.use(sessionUser);
+app.use(variablesGlobales);
 app.use('/', indexRouter); // Rutas /
 app.use('/products', productsRouter); // Rutas /products
 app.use('/users', usersRouter); // Rutas /users

@@ -87,16 +87,30 @@ window.addEventListener("load", () => {
     });
 
     //  validar formato de una imagen
-    function validateType (fileName){
-        let fileType = (fileName).split(".");
-        if((fileType.find(type => type=="jpg" || type=="jpeg" ||type=="gif" || type=="png")) !== undefined){
+
+    //function validateType (fileName){
+    //    let fileType = (fileName).split(".");
+    //    if((fileType.find(type => type=="jpg" || type=="jpeg" ||type=="gif" || type=="png")) !== undefined){
+    //        return true;
+    //    } else {
+    //        return false;
+    //    }
+    //};
+
+    //  validar formato de una imagen
+    function validateType(fileName) {
+        let fileType = (fileName.split("."))[1].toLowerCase();
+        console.log(fileType);
+        if (fileType == "jpg" || fileType == "jpeg" || fileType == "gif" || fileType == "png") {
             return true;
         } else {
             return false;
         }
-    };
+    }
 
-    avatar.addEventListener("blur", ()=> {
+    //avatar.addEventListener("blur", ()=> {
+    avatar.addEventListener("change", ()=> {
+
         let errorAvatar = document.querySelector("small.errorAvatar");
         if (!validateType(avatar.value)) {
             avatar.classList.add("in-valid");

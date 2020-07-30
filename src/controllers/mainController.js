@@ -10,15 +10,14 @@ function getProducts() {
 };
 let productos = getProducts();
 const destacados = productos.filter(prod =>prod.destacado==true);
-let errors ;
 
 const controller = {
 	home: (req, res) => {
 		res.locals.showModal = false;
-		res.render('index',{title: 'Home', destacados, puntoMil:toThousand, errors});
+		res.render('index',{title: 'Home', destacados, puntoMil:toThousand});
 	},
 	carrito: (req, res) => {
-		res.render('carrito',{title: 'Carro Compras', errors});
+		res.render('carrito',{title: 'Carro Compras'});
 	}
 };
 

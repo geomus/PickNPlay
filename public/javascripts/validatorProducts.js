@@ -75,8 +75,12 @@ window.addEventListener("load", () => {
 
     // validar formato de una imagen
     function validateType (fileName){
-        let fileType = (fileName).split(".");
-        if((fileType.find(type => type=="jpg" || type=="jpeg" ||type=="gif" || type=="png")) !== undefined){
+        //console.log(fileName);
+        //let fileType = (fileName).split(".");
+        let fileType = (fileName.split("."))[1].toLowerCase();
+        console.log(fileType);
+        if (fileType == "jpg" || fileType == "jpeg" || fileType == "gif" || fileType == "png"){
+        //if((fileType.find(type => type=="jpg" || type=="jpeg" ||type=="gif" || type=="png")) !== undefined){
             return true;
         } else {
             return false;
@@ -88,6 +92,7 @@ window.addEventListener("load", () => {
         let valid = [];
         for (let i = 0; i < image.files.length; i++) {
             if (validateType(image.files[i].name)) {
+                //console.log(image.files[i].name);
                 valid.push(true);
             } else {
                 valid.push(false);
@@ -96,7 +101,9 @@ window.addEventListener("load", () => {
         return valid;
     };
 
-    image.addEventListener("blur", ()=> {
+    //image.addEventListener("blur", ()=> {
+    image.addEventListener("change", ()=> {
+    
         let errorImage = document.querySelector("small.errorImage");
         if (validateTypeAll().includes(false)) {
             image.classList.add("in-valid");

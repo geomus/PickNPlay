@@ -5,15 +5,13 @@ const { check, validationResult, body } = require("express-validator");
 
 //let productsPath = path.join(__dirname, "..", "data", "productos.json");
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-let errors;
 const controller = {
     list: (req, res) => {
         db.Articles.findAll().then((productos) =>
             res.render("list", {
                 productos: productos,
                 toThousand: toThousand,
-                title: "listadoProductos",
-                errors
+                title: "listadoProductos"
             })
         );
     },
@@ -25,8 +23,7 @@ const controller = {
                     title: `Detalle ${producto.name}`,
                     producto: producto,
                     toThousand: toThousand,
-                    pictures: pictures,
-                    errors
+                    pictures: pictures
                 });
             })
             .catch((error) => console.log(error));
@@ -57,8 +54,7 @@ const controller = {
             .then((producto) => {
                 return res.render("edit", {
                     title: "Editar Producto",
-                    producto: producto,
-                    errors
+                    producto: producto
                 });
             })
             .catch((error) => console.log(error));
@@ -143,8 +139,7 @@ const controller = {
             .then((categorias) =>
                 res.render("productAdd", {
                     categorias: categorias,
-                    title: "Agregar Productos",
-                    errors
+                    title: "Agregar Productos"
                 })
             )
             .catch((error) => console.log(error));
