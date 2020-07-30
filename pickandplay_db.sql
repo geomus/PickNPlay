@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 01-07-2020 a las 03:06:12
+-- Tiempo de generación: 30-07-2020 a las 15:02:42
 -- Versión del servidor: 5.7.24
--- Versión de PHP: 7.2.19
+-- Versión de PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `pickandplay.db`
 --
-CREATE DATABASE IF NOT EXISTS `pickandplay.db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `pickandplay.db`;
 
 -- --------------------------------------------------------
 
@@ -53,7 +50,8 @@ INSERT INTO `articles` (`id`, `name`, `price`, `discount`, `stock`, `category_id
 (14, 'Teclado Nord', '200000.00', 0, 5, 5, 1, '[\"image-1593390856698.JPG\",\"image-1593390856702.JPG\"]', 'Lorem ipsum dolor sit amet consectetur adipiscing elit taciti, condimentum morbi sagittis penatibus ridiculus nisl libero porta nunc, senectus platea ', NULL, '2020-07-01 02:41:26', '2020-07-01 02:41:26'),
 (19, 'Fender Jazz Bass', '45000.00', 25, 3, 3, 1, '[   \"fjb1.jpg\",\r\n   \"fjb2.jpg\",\r\n   \"fjb3.jpg\"]', 'Fender Jazz Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 5555, '2020-07-01 02:56:34', '2020-07-01 02:56:34'),
 (20, 'Music Mann Stingray', '33000.00', 0, 2, 3, 0, '[\"mms1.jpg\", \"mms2.jpg\"]', 'Music Mann Stingray USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 24441, '2020-07-01 02:58:39', '2020-07-01 02:58:39'),
-(21, 'Gibson Thunderbird Bass', '103000.00', 10, 1, 3, 0, '[\"gtb1.jpg\", \"gtb2.jpg\"]', 'Gibson Thunderbird Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 4777, '2020-07-01 03:03:38', '2020-07-01 03:03:38');
+(21, 'Gibson Thunderbird Bass', '103000.00', 10, 1, 3, 0, '[\"gtb1.jpg\", \"gtb2.jpg\"]', 'Gibson Thunderbird Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 4777, '2020-07-01 03:03:38', '2020-07-01 03:03:38'),
+(22, 'Cajon Peruano', '8000.00', 0, 2, 1, 0, '[\"image-1595357239397.jpeg\",\"image-1595357239498.jpeg\",\"image-1595357239595.jpeg\"]', 'Cajon peruano de madera', 25141, '2020-07-21 18:46:04', '2020-07-21 18:47:19');
 
 -- --------------------------------------------------------
 
@@ -159,10 +157,11 @@ CREATE TABLE `users` (
 --
 -- Volcado de datos para la tabla `users`
 --
+
 INSERT INTO `users` (`id`, `email`, `pass`, `firstName`, `lastName`, `avatar`, `rating`, `isAdmin`, `createdAt`, `updatedAt`) VALUES
-(2,	'nahu.daneri@gmail.com',	'$2b$10$YeO0ndHKPHiL5EeL6FylOe2Jw55bHPvXBCnPJBsrbLnG7sxeHavOq',	'Nahuel',	'Prueba',	'avatar-1593277180489.jpg',	NULL,	1,	'2020-06-27 15:38:14',	'2020-06-27 16:59:40'),
-(3,	'eabramzon@gmail.com',	'$2b$10$nuLyZBeF/bEPHN69IMvtu.J7/QQcuoqq8QgUxgyl3HS4dJR1p0GS.',	'enrique',	'Abramzon',	'avatar-1595275058311.jpg',	NULL,	1,	'2020-07-01 16:23:06',	'2020-07-20 16:57:38'),
-(17,	'reviewer@gmail.com',	'$2b$10$VQClw3zFNwUm3v0FD2EmPOEvaLHfVxtMbIxI8ofI5zpFeXAuU1Pcq',	'Mati',	'Santi',	'avatar-1595275773878.JPG',	NULL,	0,	'2020-07-20 17:09:34',	'2020-07-20 17:09:34');
+(2, 'nahu.daneri@gmail.com', '$2b$10$YeO0ndHKPHiL5EeL6FylOe2Jw55bHPvXBCnPJBsrbLnG7sxeHavOq', 'Nahuel', 'Prueba', 'avatar-1593277180489.jpg', 8, 1, '2020-06-27 15:38:14', '2020-07-30 13:56:16'),
+(6, 'francabj95@gmail.com', '$2b$10$SE924oqs/qPFatFS9Q2buuQYBJoVSbSXFxzTB.djBL8JjEJzqPY9q', 'Francisco', 'Toyos', 'avatar-1595356717155.jpeg', 8, 1, '2020-07-21 18:38:37', '2020-07-30 13:56:16');
+
 --
 -- Índices para tablas volcadas
 --
@@ -206,7 +205,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `brands`
@@ -230,7 +229,7 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas

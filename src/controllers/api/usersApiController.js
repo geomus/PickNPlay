@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const { validationResult } = require("express-validator");
 // const { Op } = db.Sequelize;
+//let cors = requiere ('cors')
 
 const controller = {
     list: async (req, res) =>{
@@ -17,7 +18,8 @@ const controller = {
             data: users.map(user => {
                 return {
                     id: user.id,
-                    name: user.name,
+                    firstName: user.firstName,
+                    lastName:user.lastName,
                     email: user.email,
                     detail: `/api/profile/${user.id}`
                 }
@@ -133,15 +135,18 @@ const controller = {
             },
             data: {
                     id: user.id,
-                    name: user.name,
                     email: user.email,
                     firstName: user.firstName,
                     lastName: user.lastName,
                     rating: user.rating,
-                    avatar: user.avatar
+                    avatar: user.avatar,
+                    
                 }
             });
     },
+
+
+    
     // edit: async (req, res) => {
     //     let user = await db.Users.findByPk(req.params.id);
     //     res.render("userEdit", {

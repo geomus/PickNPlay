@@ -10,6 +10,7 @@ const methodOverride =  require('method-override');
 
 
 const app = express();
+//app.use(cors())
 
 //middlewares
 app.use(express.static(path.join(__dirname, '../public')));
