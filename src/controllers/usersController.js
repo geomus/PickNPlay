@@ -13,17 +13,14 @@ function getProducts() {
 };
 let productos = getProducts();
 const destacados = productos.filter(prod =>prod.destacado==true);
-let errors;
-
 const controller = {
     processLogin: (req, res, next) => {
-        let errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            //let showModal = {};
-            //showModal.errors = errors;
-            res.locals.showModal = true;
-            console.log(errors);
-            res.render('index',{title: 'Home', destacados, errors:errors});
+        let errorsL = validationResult(req);
+        if (!errorsL.isEmpty()) {
+
+            let showModal = "/javascripts/popModal.js";
+            console.log(errorsL);
+            res.render('index',{title: 'Home', destacados, errorsL:errorsL, showModal:showModal});
         } else {
             db.Users.findOne({
                 where: {
@@ -73,7 +70,7 @@ const controller = {
         });
     },
     register: (req, res) => {
-        res.render("register", { title: "Registro", errors:errors});
+        res.render("register", { title: "Registro"});
     },
     userAdd: async (req, res, next) => {
         let errors = validationResult(req);
@@ -123,8 +120,7 @@ const controller = {
             .then((loggedUser) =>
                 res.render("profile", {
                     title: `Perfil de ${loggedUser.firstName}`,
-                    loggedUser,
-                    errors:errors
+                    loggedUser
                 })
             )
             .catch((error) => console.log(error));
@@ -133,8 +129,7 @@ const controller = {
         let user = await db.Users.findByPk(req.params.id);
         res.render("userEdit", {
             title: "Editar usuario",
-            user,
-            errors:errors
+            user
         }).catch((error) => console.log(error));
     },
     update: (req, res) => {

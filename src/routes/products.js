@@ -24,7 +24,7 @@ const productsController = require("../controllers/productsController");
 
 // ************ Middlewares Require ************
 const adminUser = require("../middlewares/adminUser");
-const imageControlProducts = require("../middlewares/imgControlProducts");
+const imageControlProd = require("../middlewares/imgControlProd");
 
 /* PRODUCTS */
 // Listado productos
@@ -35,7 +35,7 @@ router.get("/create", adminUser, productsController.productAdd);
 router.post(
     "/create",
     uploadProducts.any(),
-    imageControlProducts,
+    imageControlProd,
     [
         check("name")
             .isLength({ min: 5 })
@@ -50,13 +50,15 @@ router.post(
 
         body("files")
             .custom(function (value, { req }) {
+                //console.log(req.files);
+                console.log(value);
                 let boleanValue = 0;
                 for (let i = 0; i < req.files.length; i++) {
                     if (
-                        value[i].mimetype == "image/jpg" ||
-                        value[i].mimetype == "image/jpeg" ||
-                        value[i].mimetype == "image/png" ||
-                        value[i].mimetype == "image/gif"
+                        req.files[i].mimetype == "image/jpg" ||
+                        req.files[i].mimetype == "image/jpeg" ||
+                        req.filese[i].mimetype == "image/png" ||
+                        req.files[i].mimetype == "image/gif"
                     ) {
                         boleanValue = boleanValue + 1; //return true;
                     }
@@ -80,7 +82,7 @@ router.get("/:id/edit", productsController.editView);
 router.put(
     "/:id/edit",
     uploadProducts.any(),
-    imageControlProducts,
+    imageControlProd,
     [
         check("name")
             .isLength({ min: 5 })
@@ -98,10 +100,10 @@ router.put(
                 let boleanValue = 0;
                 for (let i = 0; i < req.files.length; i++) {
                     if (
-                        value[i].mimetype == "image/jpg" ||
-                        value[i].mimetype == "image/jpeg" ||
-                        value[i].mimetype == "image/png" ||
-                        value[i].mimetype == "image/gif"
+                        req.files[i].mimetype == "image/jpg" ||
+                        req.files[i].mimetype == "image/jpeg" ||
+                        req.files[i].mimetype == "image/png" ||
+                        req.files[i].mimetype == "image/gif"
                     ) {
                         boleanValue = boleanValue + 1; //return true;
                     }
