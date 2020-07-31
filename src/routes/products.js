@@ -57,7 +57,7 @@ router.post(
                     if (
                         req.files[i].mimetype == "image/jpg" ||
                         req.files[i].mimetype == "image/jpeg" ||
-                        req.filese[i].mimetype == "image/png" ||
+                        req.files[i].mimetype == "image/png" ||
                         req.files[i].mimetype == "image/gif"
                     ) {
                         boleanValue = boleanValue + 1; //return true;
