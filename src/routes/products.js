@@ -51,13 +51,13 @@ router.post(
         body("files")
             .custom(function (value, { req }) {
                 //console.log(req.files);
-                console.log(value);
+                // console.log(value);
                 let boleanValue = 0;
                 for (let i = 0; i < req.files.length; i++) {
                     if (
                         req.files[i].mimetype == "image/jpg" ||
                         req.files[i].mimetype == "image/jpeg" ||
-                        req.filese[i].mimetype == "image/png" ||
+                        req.files[i].mimetype == "image/png" ||
                         req.files[i].mimetype == "image/gif"
                     ) {
                         boleanValue = boleanValue + 1; //return true;

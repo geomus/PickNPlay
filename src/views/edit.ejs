@@ -56,37 +56,24 @@
                 <div class="col-12 col-md-6 form-group">
                     <label for="category" class="form-label">Categoría:</label>
                     <select name="category" id="category" class="custom-select" style="width: 190px" required>
-                        <option value="1" <% if(producto.category.name == 'Accesorios' ){ %>
-                            selected
-                        <% } %>>Accesorios</option>
-                        <option value="2" <% if(producto.category.name == 'Baterias' ){ %>
-                            selected
-                        <% } %>>Baterias</option>
-                        <option value="3" <% if(producto.category.name == 'Bajos' ){ %>
-                            selected
-                        <% } %>>Bajos</option>
-                        <option value="4" <% if(producto.category.name == 'Guitarras' ){ %>
-                            selected
-                        <% } %>>Guitarras</option>
-                        <option value="5" <% if(producto.category.name == 'Teclados' ){ %>
-                            selected
-                        <% } %>>Teclados</option>
+                        <% for (category of categories) {  %>
+                            <option value="<%= category.id %>"
+                            <% if(producto.category_id == category.id || producto.category.name == "Guitarra"){ %>
+                                selected
+                            <% } %>><%= category.name  %> </option>
+                        <% } %>
                     </select>
                 </div>
                 <div class="col-12 col-md-6 form-group">
-                    <label for="subCategory" class="form-label">Subcategoría:</label>
-                    <select name="subCategory" id="subCategory"class="custom-select" style="width: 190px" <% if(producto.category.name !== 'Guitarras'){ %>
+                    <label for="subcategory" class="form-label">Subcategoría:</label>
+                    <select name="subcategory" id="subcategory"class="custom-select" style="width: 190px" <% if(producto.category.name !== 'Guitarras'){ %>
                         disabled
                     <% } %>>
-                        <option value="0" <% if(producto.subCategory == 'guitarras-acusticas'){ %>
-                            selected
-                        <% } %>>Acustica</option>
-                        <option value="0" <% if(producto.subCategory == 'clasicas-criollas'){ %>
-                            selected
-                        <% } %>>Clasica</option>
-                        <option value="0" <% if(producto.subCategory == 'guitarras-electricas'){ %>
-                            selected
-                        <% } %>>Electrica</option>
+                        <% for (subcategory of subcategories) {  %>
+                            <option value="<%= subcategory.id %>"<% if(producto.category_id == subcategory.id){ %>
+                                selected
+                            <% } %>><%= subcategory.name  %> </option>
+                        <% } %>
                     </select>
                 </div>
                 <div class="col-12 col-md-6 form-group">

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 30-07-2020 a las 15:02:42
+-- Tiempo de generación: 31-07-2020 a las 18:24:29
 -- Versión del servidor: 5.7.24
--- Versión de PHP: 7.2.11
+-- Versión de PHP: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `pickandplay.db`
 --
+CREATE DATABASE IF NOT EXISTS `pickandplay.db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `pickandplay.db`;
 
 -- --------------------------------------------------------
 
@@ -38,6 +41,7 @@ CREATE TABLE `articles` (
   `image` varchar(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `serialNumber` int(6) UNSIGNED DEFAULT NULL,
+  `brand_id` int(10) UNSIGNED DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -46,12 +50,11 @@ CREATE TABLE `articles` (
 -- Volcado de datos para la tabla `articles`
 --
 
-INSERT INTO `articles` (`id`, `name`, `price`, `discount`, `stock`, `category_id`, `outstanding`, `image`, `description`, `serialNumber`, `createdAt`, `updatedAt`) VALUES
-(14, 'Teclado Nord', '200000.00', 0, 5, 5, 1, '[\"image-1593390856698.JPG\",\"image-1593390856702.JPG\"]', 'Lorem ipsum dolor sit amet consectetur adipiscing elit taciti, condimentum morbi sagittis penatibus ridiculus nisl libero porta nunc, senectus platea ', NULL, '2020-07-01 02:41:26', '2020-07-01 02:41:26'),
-(19, 'Fender Jazz Bass', '45000.00', 25, 3, 3, 1, '[   \"fjb1.jpg\",\r\n   \"fjb2.jpg\",\r\n   \"fjb3.jpg\"]', 'Fender Jazz Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 5555, '2020-07-01 02:56:34', '2020-07-01 02:56:34'),
-(20, 'Music Mann Stingray', '33000.00', 0, 2, 3, 0, '[\"mms1.jpg\", \"mms2.jpg\"]', 'Music Mann Stingray USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 24441, '2020-07-01 02:58:39', '2020-07-01 02:58:39'),
-(21, 'Gibson Thunderbird Bass', '103000.00', 10, 1, 3, 0, '[\"gtb1.jpg\", \"gtb2.jpg\"]', 'Gibson Thunderbird Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 4777, '2020-07-01 03:03:38', '2020-07-01 03:03:38'),
-(22, 'Cajon Peruano', '8000.00', 0, 2, 1, 0, '[\"image-1595357239397.jpeg\",\"image-1595357239498.jpeg\",\"image-1595357239595.jpeg\"]', 'Cajon peruano de madera', 25141, '2020-07-21 18:46:04', '2020-07-21 18:47:19');
+INSERT INTO `articles` (`id`, `name`, `price`, `discount`, `stock`, `category_id`, `outstanding`, `image`, `description`, `serialNumber`, `brand_id`, `createdAt`, `updatedAt`) VALUES
+(14, 'Teclado Nord', '200000.00', 0, 5, 5, 1, '[\"image-1593390856698.JPG\",\"image-1593390856702.JPG\"]', 'Lorem ipsum dolor sit amet consectetur adipiscing elit taciti, condimentum morbi sagittis penatibus ridiculus nisl libero porta nunc, senectus platea ', NULL, NULL, '2020-07-01 02:41:26', '2020-07-01 02:41:26'),
+(19, 'Fender Jazz Bass', '45000.00', 25, 3, 3, 1, '[   \"fjb1.jpg\",\r\n   \"fjb2.jpg\",\r\n   \"fjb3.jpg\"]', 'Fender Jazz Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 5555, NULL, '2020-07-01 02:56:34', '2020-07-01 02:56:34'),
+(20, 'Music Mann Stingray', '33000.00', 0, 2, 3, 0, '[\"mms1.jpg\", \"mms2.jpg\"]', 'Music Mann Stingray USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 24441, NULL, '2020-07-01 02:58:39', '2020-07-01 02:58:39'),
+(21, 'Gibson Thunderbird Bass', '103000.00', 10, 1, 3, 0, '[\"gtb1.jpg\", \"gtb2.jpg\"]', 'Gibson Thunderbird Bass USA color a eleccion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 4777, NULL, '2020-07-01 03:03:38', '2020-07-01 03:03:38');
 
 -- --------------------------------------------------------
 
@@ -60,9 +63,9 @@ INSERT INTO `articles` (`id`, `name`, `price`, `discount`, `stock`, `category_id
 --
 
 CREATE TABLE `brands` (
-  `id` smallint(5) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(20) NOT NULL,
-  `rating` tinyint(3) UNSIGNED NOT NULL
+  `rating` decimal(3,0) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -70,36 +73,36 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`, `rating`) VALUES
-(1, 'Fenders', 10),
-(2, 'Gibson', 10),
-(3, 'Ibañez', 8),
-(4, 'Ephipone', 9),
-(5, 'Washburn', 8),
-(6, 'Eastwood Guitars', 6),
-(7, 'Alhambra', 6),
-(8, 'G&L', 7),
-(9, 'Warwick', 8),
-(10, 'Jackson', 9),
-(11, 'Yamaha', 10),
-(12, 'Kiesel', 5),
-(13, 'Paiste', 8),
-(14, 'Tama', 9),
-(15, 'ESP', 8),
-(16, 'Remo', 9),
-(17, 'Zildjian', 10),
-(18, 'Sabian', 8),
-(19, 'Korg', 8),
-(20, 'Marshall', 8),
-(21, 'Mapex', 9),
-(22, 'Sonor', 9),
-(23, 'Casio', 10),
-(24, 'Morley', 8),
-(25, 'Evans', 7),
-(26, 'DW', 9),
-(27, 'Gretsch', 9),
-(28, 'Akai', 8),
-(29, 'Takamine', 9),
-(30, 'Tanglewood', 8);
+(1, 'Fenders', '10'),
+(2, 'Gibson', '10'),
+(3, 'Ibañez', '8'),
+(4, 'Ephipone', '9'),
+(5, 'Washburn', '8'),
+(6, 'Eastwood Guitars', '6'),
+(7, 'Alhambra', '6'),
+(8, 'G&L', '7'),
+(9, 'Warwick', '8'),
+(10, 'Jackson', '9'),
+(11, 'Yamaha', '10'),
+(12, 'Kiesel', '5'),
+(13, 'Paiste', '8'),
+(14, 'Tama', '9'),
+(15, 'ESP', '8'),
+(16, 'Remo', '9'),
+(17, 'Zildjian', '10'),
+(18, 'Sabian', '8'),
+(19, 'Korg', '8'),
+(20, 'Marshall', '8'),
+(21, 'Mapex', '9'),
+(22, 'Sonor', '9'),
+(23, 'Casio', '10'),
+(24, 'Morley', '8'),
+(25, 'Evans', '7'),
+(26, 'DW', '9'),
+(27, 'Gretsch', '9'),
+(28, 'Akai', '8'),
+(29, 'Takamine', '9'),
+(30, 'Tanglewood', '8');
 
 -- --------------------------------------------------------
 
@@ -110,29 +113,37 @@ INSERT INTO `brands` (`id`, `name`, `rating`) VALUES
 CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(20) NOT NULL,
-  `subcategoryId` int(10) NOT NULL
+  `parent_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `subcategoryId`) VALUES
-(1, 'Accesorios', 0),
-(2, 'Baterias', 0),
-(3, 'Bajos', 0),
-(4, 'Guitarras', 0),
-(5, 'Teclados', 0);
+INSERT INTO `categories` (`id`, `name`, `parent_id`) VALUES
+(1, 'Accesorios', NULL),
+(2, 'Baterias', NULL),
+(3, 'Bajos', NULL),
+(4, 'Guitarras', NULL),
+(5, 'Teclados', NULL),
+(6, 'Acusticas', 4),
+(7, 'Clasicas', 4),
+(8, 'Electricas', 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `subcategories`
+-- Estructura de tabla para la tabla `provider`
 --
 
-CREATE TABLE `subcategories` (
-  `id` tinyint(3) UNSIGNED NOT NULL,
-  `name` varchar(20) NOT NULL
+CREATE TABLE `provider` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `company` char(60) NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `adress` text,
+  `contact_number` tinyint(3) UNSIGNED NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -159,8 +170,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `pass`, `firstName`, `lastName`, `avatar`, `rating`, `isAdmin`, `createdAt`, `updatedAt`) VALUES
-(2, 'nahu.daneri@gmail.com', '$2b$10$YeO0ndHKPHiL5EeL6FylOe2Jw55bHPvXBCnPJBsrbLnG7sxeHavOq', 'Nahuel', 'Prueba', 'avatar-1593277180489.jpg', 8, 1, '2020-06-27 15:38:14', '2020-07-30 13:56:16'),
-(6, 'francabj95@gmail.com', '$2b$10$SE924oqs/qPFatFS9Q2buuQYBJoVSbSXFxzTB.djBL8JjEJzqPY9q', 'Francisco', 'Toyos', 'avatar-1595356717155.jpeg', 8, 1, '2020-07-21 18:38:37', '2020-07-30 13:56:16');
+(3, 'eabramzon@gmail.com', '$2b$10$nuLyZBeF/bEPHN69IMvtu.J7/QQcuoqq8QgUxgyl3HS4dJR1p0GS.', 'Enrique', 'Abramzon', 'avatar-1595275058311.jpg', NULL, 1, '2020-07-01 19:23:06', '2020-07-20 19:57:38'),
+(4, 'nahuel.daneri@outlook.com', '$2b$10$8uW9Z/WHuzlL5qhew41vVujChrGT7wsM.xRiYFhOZxQvf7MbpHIEm', 'Nahuel', 'Daneri', 'avatar-1595437615155.jpg', NULL, 1, '2020-07-22 16:49:59', '2020-07-22 17:06:55'),
+(5, 'reviewer@gmail.com', '$2b$10$VQClw3zFNwUm3v0FD2EmPOEvaLHfVxtMbIxI8ofI5zpFeXAuU1Pcq', 'Mati', 'Santi', 'avatar-1595275773878.JPG', NULL, 1, '2020-07-20 20:09:34', '2020-07-20 20:09:34');
 
 --
 -- Índices para tablas volcadas
@@ -171,7 +183,8 @@ INSERT INTO `users` (`id`, `email`, `pass`, `firstName`, `lastName`, `avatar`, `
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`) USING BTREE;
+  ADD KEY `category_id` (`category_id`) USING BTREE,
+  ADD KEY `brand_id` (`brand_id`);
 
 --
 -- Indices de la tabla `brands`
@@ -186,9 +199,9 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `subcategories`
+-- Indices de la tabla `provider`
 --
-ALTER TABLE `subcategories`
+ALTER TABLE `provider`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -205,31 +218,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `subcategories`
+-- AUTO_INCREMENT de la tabla `provider`
 --
-ALTER TABLE `subcategories`
-  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `provider`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -239,7 +252,8 @@ ALTER TABLE `users`
 -- Filtros para la tabla `articles`
 --
 ALTER TABLE `articles`
-  ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `articles_ibfk_2` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

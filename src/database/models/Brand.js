@@ -2,17 +2,16 @@
 module.exports = (sequelize, DataTypes) => {
   const Brands = sequelize.define('Brands', {
     name: DataTypes.STRING,
-    rating: DataTypes.TINYINT
+    rating: DataTypes.FLOAT
   }, {
     timestamps:false
   });
   Brands.associate = function(models) {
-    //console.log(Brands)
     // associations can be defined here
-    //Brands.hasMany(models.Article,{  //the name of the DB (article)
-    //  as:'articles', //name table
-    //  foreignKey:'brand_id' //name foreignKey, it's in the article table
-    //});
+    Brands.hasMany(models.Articles,{
+     as:'articles',
+     foreignKey:'brand_id'
+    });
 
   };
   return Brands;

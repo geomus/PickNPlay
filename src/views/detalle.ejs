@@ -5,11 +5,15 @@
 
 
   <div class="container">
-    <div>
-      <a class="p-1" href="/"><img src="/images/iconos/house.svg" alt="Home" width="20" height="20" title="Home"></a>
-      <span class="ubicacionSitio"><a class="anclas" href="">><%= producto.category.name%></a><a class="anclas"
-          href="">><%= producto.category.subcategoryId %></a></span>
-    </div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/"><img src="/images/iconos/house.svg" alt="Home" width="20" height="20" title="Home"></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="#"><%= cat %></a></li>
+        <% if(subcat != "" ){ %>
+          <li class="breadcrumb-item active" aria-current="page"><a href="#"><%= subcat %></a></li>
+        <% } %>
+      </ol>
+    </nav>
   </div>
 
   <div class="container">
@@ -31,7 +35,7 @@
             <div class="carousel-item <%=estado%>">
               <img class="d-block w-100" src="/images/imgInstrumentos/<%=imagenX%>" alt="First slide">
             </div>
-            
+
             <%};%>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
