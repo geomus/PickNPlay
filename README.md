@@ -11,13 +11,14 @@
 ## Plan de negocio inicial:
 ### Nuestra oferta es variada, por eso mismo se dividirá en categorías, que podrían a su vez contener subcategorías, para facilitar la búsqueda filtrada por el objetivo del cliente.
 
+## Datos para navegar el sitio.
+## PORT page: 2000.
+### usuario administrador: reviewer@gmail.com  // password: 11112222T
+### Para acceder a la vista de carga de nuevos productos hay un link en el  pie de la vista de perfil del usuario. Para borrar o editar un producto se accede al mismo desde la vista detalle del mismo con user admin.
+
 ## Sitios referentes:
 ### [Oliveira Musical](https://www.olimusic.com/) //productos destacados
 ### [Audio Rosario](https://www.audiorosario.com.ar/) //carousel de portadas
 ### [Tu Instrumento](http://tu-instrumento.com.ar/) //solapas desplegables de las categorias, tono de colores (distribución)
 ### [Intervalo Shop](https://www.intervaloshop.com/) //movimiento por los menús
 ### [American Guitar Shop](https://guitar-shop.de/) //responsive
-
-## Datos para navegar el sitio.
-### usuario administrador: reviewer@gmail.com  // password: 11112222T
-### Para acceder a la vista de carga de nuevos productos hay un link en el  pie de la vista de perfil del usuario. Para borrar o editar un producto se accede al mismo desde la vista detalle del mismo con user admin.

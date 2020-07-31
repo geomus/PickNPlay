@@ -51,7 +51,7 @@ router.post(
         body("files")
             .custom(function (value, { req }) {
                 //console.log(req.files);
-                console.log(value);
+                // console.log(value);
                 let boleanValue = 0;
                 for (let i = 0; i < req.files.length; i++) {
                     if (

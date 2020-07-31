@@ -7,12 +7,14 @@ const sessionUser = require('./middlewares/sessionUser');
 const variablesGlobales = require('./middlewares/variablesGlobales');
 const logger = require('morgan');
 const methodOverride =  require('method-override');
+const cors = require('cors')
 
 
 const app = express();
 //app.use(cors())
 
 //middlewares
+app.use(cors())
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
