@@ -7,7 +7,7 @@ const { validationResult } = require("express-validator");
 //let cors = requiere ('cors')
 
 const controller = {
-    list: async (req, res) =>{
+    listUsers: async (req, res) =>{
         const users = await db.Users.findAll();
         res.json({
             meta:{
@@ -28,7 +28,7 @@ const controller = {
 
     },
 
-    profile: async (req, res) => {
+    profileOneUser: async (req, res) => {
         const user = await db.Users.findByPk(req.params.id)
         res.json({
             meta:{
@@ -46,6 +46,22 @@ const controller = {
             });
     },
 
-};
+    listProducts: async (req, res) => {
+        let products = await db.Articles.findAll()
+        //console.log(products);
+        res.json({
+            meta:{
+                status: 200,
+                link: `/api/products/`
+            },
+            data: products.map (product => {return {
+                id: product.id,
+                name: product.name
+            }})
+
+    })}
+    
+
+}
 
 module.exports = controller;
