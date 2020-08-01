@@ -60,45 +60,17 @@ const controller = {
             description: product.description,
             detail: `/api/products/${product.id}`
         }})
-        
-        let accesorios = 0
-        let baterias = 0
-        let bajos = 0
-        let teclados = 0
-        let acusticas = 0
-        let clasicas = 0
-        let electricas = 0
-        for (let producto of productos){
-            //console.log(producto.category_id);
-            switch(producto.category_id){
-                case 1 : accesorios = accesorios + 1
-                break
-                case 2 : baterias = baterias + 1
-                break
-                case 3 : bajos = bajos + 1
-                break
-                case 5 : teclados = teclados + 1
-                break
-                case 6 : acusticas = acusticas +1
-                break
-                case 7 : clasicas = clasicas +1
-                break
-                case 9 : electricas = electricas +1
-                break
-            }
-        }
+
         let countByCategory = {
-            accesorios:accesorios,
-            baterias:baterias,
-            bajos:bajos,
-            teclados:teclados,
-            acusticas:acusticas,
-            clasicas:clasicas,
-            electricas:electricas
+            accesorios:(productos.filter(producto => producto.category_id == 1)).length,
+            baterias:(productos.filter(producto => producto.category_id == 2)).length,
+            bajos:(productos.filter(producto => producto.category_id == 3)).length,
+            teclados:(productos.filter(producto => producto.category_id == 5)).length,
+            acusticas:(productos.filter(producto => producto.category_id == 6)).length,
+            clasicas:(productos.filter(producto => producto.category_id == 7)).length,
+            electricas:(productos.filter(producto => producto.category_id == 8)).length
         }
-        //console.log(bajos);
-        //console.log(accesorios);
-        //console.log(teclados);
+
         res.json({
             meta:{
                 status: 200,
