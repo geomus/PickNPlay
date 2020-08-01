@@ -10,7 +10,7 @@ const apiController = require('../../controllers/api/apiController')
 router.get("/users", apiController.listUsers);
 
 // // Profile
-router.get("/profile/:id",  apiController.profileOneUser);
+router.get("/users/:id",  apiController.profileOneUser);
 
 /* PRODUCTS */
 // Todos los productos
