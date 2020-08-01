@@ -73,6 +73,7 @@ const controller = {
                 [Op.not]: null
             }
         }})
+        //console.log(subcategories)
         let producto = await db.Articles.findByPk(req.params.id, { include: ["category"] })
         return res.render("edit", {
         title: "Editar Producto",
@@ -127,11 +128,16 @@ const controller = {
                 // seteo categoria
                 let categoryFinal = "";
                 if (req.body.subcategory != "") {
-                    categoryFinal = req.body.subcategory;
+                    categoryFinal = Number(req.body.subcategory);
                 } else {
-                    categoryFinal = req.body.category;
+                    categoryFinal = Number(req.body.category);
                 }
-                categoryFinal = Number(categoryFinal)
+                //categoryFinal = Number(categoryFinal)
+                //console.log(req.body)
+                //console.log(categoryFinal)
+                //console.log(req.body.category)
+                //console.log(req.body.subcategory)
+                //console.log('aca esta')
 
                 //por ultimo edita el articulo  en la db
                 await db.Articles.update(
@@ -150,6 +156,7 @@ const controller = {
                         where: { id: req.params.id },
                     }
                 )
+                await res.redirect("/products")
             }
         } catch (error) {
             console.log(error);

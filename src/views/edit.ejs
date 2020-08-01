@@ -66,9 +66,11 @@
                 </div>
                 <div class="col-12 col-md-6 form-group">
                     <label for="subcategory" class="form-label">Subcategoría:</label>
-                    <select name="subcategory" id="subcategory"class="custom-select" style="width: 190px" <% if(producto.category.name !== 'Guitarras'){ %>
+                    <!-- <% //if(producto.category.name != 'Guitarras'){ %>
                         disabled
-                    <% } %>>
+                    <% //} %> -->
+                    <select name="subcategory" id="subcategory" class="custom-select" style="width: 190px" >
+                        <option value="" selected>No aplica</option>
                         <% for (subcategory of subcategories) {  %>
                             <option value="<%= subcategory.id %>"<% if(producto.category_id == subcategory.id){ %>
                                 selected
