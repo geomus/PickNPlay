@@ -1,90 +1,123 @@
 let db = require("../../database/models");
-const fs = require("fs");
-const bcrypt = require("bcrypt");
-const path = require("path");
-const { validationResult } = require("express-validator");
-//const { Op } = db.Sequelize;
-//let cors = requiere ('cors')
+
 
 const controller = {
-    listUsers: async (req, res) =>{
+    listUsers: async (req, res) => {
         const users = await db.Users.findAll();
         res.json({
-            meta:{
+            meta: {
                 status: 200,
                 count: users.length,
-                link: '/api/users/'
+                link: "/api/users/",
             },
-            data: users.map(user => {
+            data: users.map((user) => {
                 return {
                     id: user.id,
                     firstName: user.firstName,
-                    lastName:user.lastName,
+                    lastName: user.lastName,
                     email: user.email,
-                    detail: `/api/users/${user.id}`
-                }
-            })
-        })
-
+                    detail: `/api/users/${user.id}`,
+                };
+            }),
+        });
     },
 
     profileOneUser: async (req, res) => {
-        const user = await db.Users.findByPk(req.params.id)
+        const user = await db.Users.findByPk(req.params.id);
         res.json({
-            meta:{
+            meta: {
                 status: 200,
-                link: `/api/users/${user.id}`
+                link: `/api/users/${user.id}`,
             },
             data: {
-                    id: user.id,
-                    email: user.email,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    avatar: user.avatar
-                }
-            });
+                id: user.id,
+                email: user.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                avatar: user.avatar,
+            },
+        });
     },
 
     listProducts: async (req, res) => {
-        let products = await db.Articles.findAll({ include: ["category"] })
-        let categories = await db.Categories.findAll()
+        let products = await db.Articles.findAll({ include: ["category"] });
+        let categories = await db.Categories.findAll();
 
-        let countProd = products.length
+        let countProd = products.length;
         //console.log(categories);
         //console.log(products);
-        let productos =  products.map (product => {return {
-            id: product.id,
-            name: product.name,
-            category_id: product.category_id,
-            categorie: product.category.name,
-            description: product.description,
-            detail: `/api/products/${product.id}`
-        }})
+        let productos = products.map((product) => {
+            return {
+                id: product.id,
+                name: product.name,
+                category_id: product.category_id,
+                categorie: product.category.name,
+                description: product.description,
+                detail: `/api/products/${product.id}`,
+            };
+        });
 
         let countByCategory = {
-            accesorios:(productos.filter(producto => producto.category_id == 1)).length,
-            baterias:(productos.filter(producto => producto.category_id == 2)).length,
-            bajos:(productos.filter(producto => producto.category_id == 3)).length,
-            teclados:(productos.filter(producto => producto.category_id == 5)).length,
-            acusticas:(productos.filter(producto => producto.category_id == 6)).length,
-            clasicas:(productos.filter(producto => producto.category_id == 7)).length,
-            electricas:(productos.filter(producto => producto.category_id == 8)).length
-        }
+            accesorios: productos.filter((producto) => producto.category_id == 1)
+                .length,
+            baterias: productos.filter((producto) => producto.category_id == 2)
+                .length,
+            bajos: productos.filter((producto) => producto.category_id == 3)
+                .length,
+            teclados: productos.filter((producto) => producto.category_id == 5)
+                .length,
+            acusticas: productos.filter((producto) => producto.category_id == 6)
+                .length,
+            clasicas: productos.filter((producto) => producto.category_id == 7)
+                .length,
+            electricas: productos.filter((producto) => producto.category_id == 8)
+                .length,
+        };
 
         res.json({
-            meta:{
+            meta: {
                 status: 200,
-                link: `/api/products/`
+                link: `/api/products/`,
             },
-            data:{
-                productsList:productos,
+            data: {
+                productsList: productos,
                 count: countProd,
-                countByCategory: countByCategory
-
-            }
-
-    })}
-
-}
+                countByCategory: countByCategory,
+            },
+        });
+    },
+    oneProduct: async (req, res) => {
+        try {
+            const article = await db.Articles.findByPk(req.params.id, {
+                include: ["category"],
+            });
+            //console.log(article)
+            res.json({
+                meta: {
+                    status: 200,
+                    link: `/api/users/${article.id}`,
+                },
+                data: {
+                    id: article.id,
+                    name: article.name,
+                    price: article.price,
+                    discount: article.discount,
+                    category_id: article.category_id,
+                    category: article.category.name,
+                    outstanding: article.outstanding,
+                    imges: JSON.parse(article.image),
+                    description: article.description,
+                    createdAt: article.createdAt,
+                    updatedAt: article.updatedAt,
+                    urlFirstImg: `/images/instrumentos/${
+                        JSON.parse(article.image)[0]
+                    }`,
+                },
+            });
+        } catch (error) {
+            res.json({ error: error });
+        }
+    },
+};
 
 module.exports = controller;

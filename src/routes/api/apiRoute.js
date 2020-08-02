@@ -17,7 +17,7 @@ router.get("/users/:id",  apiController.profileOneUser);
 router.get("/products",  apiController.listProducts);
 
 //Un producto
-//router.get("/profile/:id",  apiController.oneProduct);
+router.get("/products/:id",  apiController.oneProduct);
 
 
 module.exports = router;
