@@ -3,6 +3,8 @@ import Card from './Card';
 import CategoryCard from './CategoryCard';
 import LastProduct from './LastProduct';
 import AllUsers from './AllUsers';
+import AllProductsTable from './AllProductsTable';
+
 
 
 
@@ -67,6 +69,9 @@ class  DivCont extends Component {
     <LastProduct/>
     {/*<!-- All users in DB -->*/}
     <AllUsers/>
+
+    {/*<!-- All products table in DB -->*/}
+    <AllProductsTable/>
 
     {/*<!-- Categories in DB -->*/}
     <div className="col-lg-6 mb-4">

@@ -1,4 +1,5 @@
 let db = require("../../database/models");
+const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
 const controller = {
@@ -47,12 +48,15 @@ const controller = {
         //console.log(categories);
         //console.log(products);
         let productos = products.map((product) => {
+            let fixPrice = toThousand(Math.trunc(product.price))
+            //console.log(fixPrice);
             return {
                 id: product.id,
                 name: product.name,
                 category_id: product.category_id,
-                categorie: product.category.name,
+                category: product.category.name,
                 description: product.description,
+                price:fixPrice,
                 detail: `/api/products/${product.id}`,
             };
         });
@@ -92,6 +96,7 @@ const controller = {
                 include: ["category"],
             });
             //console.log(article)
+            let fixPrice = toThousand(Math.trunc(article.price))
             res.json({
                 meta: {
                     status: 200,
@@ -100,7 +105,7 @@ const controller = {
                 data: {
                     id: article.id,
                     name: article.name,
-                    price: article.price,
+                    price: fixPrice,
                     discount: article.discount,
                     category_id: article.category_id,
                     category: article.category.name,
