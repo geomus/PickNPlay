@@ -8,8 +8,8 @@ import Content from './Content';
 function App() {
   return (
     <React.Fragment>
-    <Sidebar/>
-    <Content/>
+      <Sidebar/>
+      <Content/>
     </React.Fragment>
   );
 }

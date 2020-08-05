@@ -8,7 +8,6 @@ const TableRow = (props) => {
             <td>{props.category}</td>
             <td>$ {props.price}</td>
             <td>{props.id}</td>
-
         </tr>
     )
 }
