@@ -17,7 +17,7 @@ class  DivCont extends Component {
             stringUsers: ''
         }
     }
-    
+
     apiCall(url, consecuencia){
         fetch(url)
         .then(response => response.json())

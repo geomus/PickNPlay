@@ -52,7 +52,7 @@ class AllUsers extends Component{
             <div className="card-body">
                 <div className="text-center">
                     {/**/}
-                    <img className="img-fluid px-3 px-sm-4 mt-3 mb-4"  src="/product_dummy.svg" style={{width: '25rem'}} alt=" dummy"/>
+                    <img className="img-fluid px-3 px-sm-4 mt-3 mb-4"  src="/images/users.svg" style={{width: '15rem'}} alt=" dummy"/>
                 </div>
                 <div>
                     Users:
