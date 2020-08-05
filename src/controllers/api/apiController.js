@@ -78,6 +78,7 @@ const controller = {
             electricas: productos.filter((producto) => producto.category_id == 8)
                 .length,
         };
+        
 
         res.json({
             meta: {
