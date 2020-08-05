@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import Card from './Card';
 import CategoryCard from './CategoryCard';
-import LastProduct from './LastProduct';
 import AllUsers from './AllUsers';
 import AllProductsTable from './AllProductsTable';
+import LastProductNew from './LastProductNew';
+
 
 
 
@@ -65,10 +66,12 @@ class  DivCont extends Component {
     </div>
     {/*<!-- Content Row -->*/}
     <div className="row">
-    {/*<!-- Last Product in DB -->*/}
-    <LastProduct/>
+    
     {/*<!-- All users in DB -->*/}
     <AllUsers/>
+
+    {/*<!-- Last Product in DB -->*/}
+    <LastProductNew/>
 
     {/*<!-- All products table in DB -->*/}
     <AllProductsTable/>

@@ -19,5 +19,8 @@ router.get("/products",  apiController.listProducts);
 //Un producto
 router.get("/products/:id",  apiController.oneProduct);
 
+//ultimo producto cargado
+router.get("/lastProduct",  apiController.lastProduct);
+
 
 module.exports = router;

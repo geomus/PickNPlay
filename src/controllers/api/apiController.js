@@ -1,4 +1,5 @@
 let db = require("../../database/models");
+//const { json } = require("sequelize/types");
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
@@ -42,7 +43,7 @@ const controller = {
 
     listProducts: async (req, res) => {
         let products = await db.Articles.findAll({ include: ["category"] });
-        let categories = await db.Categories.findAll();
+        //let categories = await db.Categories.findAll();
 
         let countProd = products.length;
         //console.log(categories);
@@ -123,6 +124,39 @@ const controller = {
             res.json({ error: error });
         }
     },
+    lastProduct: async (req, res) => {
+
+        let products = await db.Articles.findAll({ include: ["category"], order:[['id','DESC']] });
+
+        let newestIndex = (products[0].id).toString()
+
+        let ultimoProducto = (products.filter((product) => product.id == newestIndex))[0]
+
+        let fixPrice = toThousand(Math.trunc(ultimoProducto.price))
+
+        let firstImage = JSON.parse(ultimoProducto.image)
+
+        let dataUltimoProducto = {
+                id: ultimoProducto.id,
+                name: ultimoProducto.name,
+                discount: ultimoProducto.discount,
+                category: ultimoProducto.category.name,
+                description: ultimoProducto.description,
+                price:fixPrice,
+                image: firstImage[0]
+            };
+
+
+        res.json({
+            meta: {
+                status: 200,
+                link: `/api/ultimoProducto`,
+            },
+            data:dataUltimoProducto
+        })
+
+
+    }
 };
 
 module.exports = controller;
