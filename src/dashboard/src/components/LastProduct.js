@@ -17,7 +17,6 @@ class lastProduct extends Component{
     }
 
     componentDidMount(){
-        //console.log('Mounted');
         this.apiCall('/api/lastProduct/', this.mostrarUltimoProducto)
     }
 
@@ -27,13 +26,7 @@ class lastProduct extends Component{
             product: objeto.data
         })
     }
-
-    componentDidUpdate(){
-        //console.log('Updated');
-    }
     render(){
-        //console.log('Rendered');
-
         let contenido;
         if (this.state.product === ''){
             contenido = <p>Cargando____...</p>
@@ -48,23 +41,23 @@ class lastProduct extends Component{
         }
         let imgLastProd = `/images/imgInstrumentos/${this.state.product.image}`;
         return(
-        <div className="col-lg-6 mb-4">
-        <div className="card shadow mb-4">
-            <div className="card-header py-3">
-                <h6 className="m-0 font-weight-bold text-primary">Ultimo producto cargado en el eComerce</h6>
-            </div>
-            <div className="card-body">
-                <div className="text-center">
-                    {/**/}
-                    <img className="img-fluid px-3 px-sm-4 mt-3 mb-4"  src={imgLastProd} style={{width: '18rem'}} alt=" dummy"/>
+            <div className="col-lg-6 mb-4">
+                <div className="card shadow mb-4">
+                    <div className="card-header py-3">
+                        <h6 className="m-0 font-weight-bold text-primary">Ultimo producto cargado en el eComerce</h6>
+                    </div>
+                    <div className="card-body">
+                        <div className="text-center">
+                            {/**/}
+                            <img className="img-fluid px-3 px-sm-4 mt-3 mb-4"  src={imgLastProd} style={{width: '18rem'}} alt=" dummy"/>
+                        </div>
+                        <div>
+                            {contenido}
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    {contenido}
-                </div>
             </div>
-        </div>
-    </div>
-    )
+        )
     };
 }
 

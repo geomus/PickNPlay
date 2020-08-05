@@ -109,7 +109,6 @@ router.post(
             .withMessage("el campo de contraseña no puede estar vacio"),
         body("pass")
             .custom(async (value, { req }) => {
-                //console.log(req.body);
                 let user = await db.Users.findOne({
                     where: { email: req.body.email },
                 });
@@ -122,7 +121,6 @@ router.post(
                 }else{
                      return Promise.reject();
                 }
-                
             })
             .withMessage("contraseña incorrecta "),
     ],
@@ -153,7 +151,6 @@ router.put(
         check("email").isEmail().withMessage("Formato de email incorrecto?"),
         body("file")
             .custom(function (value) {
-                //console.log(value.mimetype);
                 if (
                     value.mimetype == "image/jpg" ||
                     value.mimetype == "image/jpeg" ||

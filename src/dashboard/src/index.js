@@ -12,6 +12,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('wrapper')
 );
-
-
-
