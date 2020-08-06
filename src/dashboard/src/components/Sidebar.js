@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import SidebarItem from './SidebarItem.js';
 
 function Sidebar(props) {
@@ -17,8 +19,8 @@ function Sidebar(props) {
             <hr className="sidebar-divider my-0"/>
 
             {/*<!-- Nav Item - Dashboard -->*/}
-
-            <SidebarItem active={true} icon='fa-tachometer-alt' text='Dashboard' url='/'/>
+            <NavLink exact to='/'> <SidebarItem active={true} icon='fa-tachometer-alt' text='Dashboard'/></NavLink>
+            {/* <SidebarItem active={true} icon='fa-tachometer-alt' text='Dashboard' url='/'/> */}
 
             {/*<!-- Divider -->*/}
             <hr className="sidebar-divider"/>
@@ -27,13 +29,12 @@ function Sidebar(props) {
             <div className="sidebar-heading">Actions</div>
 
             {/*<!-- Nav Item - Pages -->*/}
-            <SidebarItem active={false} icon='fa-fw fa-folder' text='Pages' url='/'/>
-
-            {/*<!-- Nav Item - Charts -->*/}
-            <SidebarItem active={false} icon='fa-fw fa-chart-area' text='Charts' url='/'/>
+            <NavLink exact to='/providers'> <SidebarItem active={false} icon='fa-fw fa-folder' text='Proveedores'/></NavLink>
+            {/* <SidebarItem active={false} icon='fa-fw fa-folder' text='Pages' url='/'/> */}
 
             {/*<!-- Nav Item - Tables -->*/}
-            <SidebarItem active={false} icon='fas fa-fw fa-table' text='Tables' url='/'/>
+            <NavLink exact to='/products'> <SidebarItem active={false} icon='fas fa-fw fa-table' text='Solo Productos'/></NavLink>
+            {/* <SidebarItem active={false} icon='fas fa-fw fa-table' text='Tables' url='/'/> */}
 
 
             {/*<!-- Divider -->*/}

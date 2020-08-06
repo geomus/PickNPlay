@@ -1,12 +1,21 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+
 import Sidebar from './Sidebar';
 import Content from './Content';
+import Providers from './Providers';
+import NotFound from './404';
 
 function App() {
   return (
     <React.Fragment>
       <Sidebar/>
-      <Content/>
+      <Switch>
+				<Route exact path='/' component={Content} />
+				<Route path='/providers' component={Providers} />
+        <Route path='/products' component={Providers} />
+				<Route component={NotFound} />
+			</Switch>
     </React.Fragment>
   );
 }
