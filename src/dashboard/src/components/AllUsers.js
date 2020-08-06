@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 class AllUsers extends Component{
 
@@ -22,7 +23,6 @@ class AllUsers extends Component{
     }
 
     mostrarUsuarios = (data) => {
-        //console.log(data.data[0].firstName);
         this.setState({
             stringUsers: data.data
         })
@@ -58,7 +58,8 @@ class AllUsers extends Component{
                             Users:
                             {contenido}
                         </div>
-                <a target="_blank" rel="nofollow" href="/">Cantidad total de usuarios: {this.state.stringUsers.length}</a>
+                        <Link to='/' className="btn btn-warning">Cantidad total de usuarios: {this.state.stringUsers.length}</Link>
+                        {/* <a target="_blank" rel="nofollow" href="/">Cantidad total de usuarios: {this.state.stringUsers.length}</a> */}
                     </div>
                 </div>
             </div>

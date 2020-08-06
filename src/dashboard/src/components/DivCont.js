@@ -1,43 +1,11 @@
-import React, {Component} from 'react';
-import Card from './Card';
+import React from 'react';
+import Widgets from './Widgets';
 import LastProduct from './LastProduct';
 import AllUsers from './AllUsers';
 import AllProductsTable from './AllProductsTable';
 import CategoriesTable from './CategoriesTable'
-import Providers from './Providers'
 
-class  DivCont extends Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-            stringUsers: ''
-        }
-    }
-
-    apiCall(url, consecuencia){
-        fetch(url)
-        .then(response => response.json())
-        .then(data => consecuencia(data))
-        .catch(error => console.log(error))
-    }
-    componentDidMount(){
-        console.log('Mounted');
-        this.apiCall('/api/users/', this.getAllUsers)
-    }
-    getAllUsers = (data) => {
-        console.log(data.data[0].name);
-        this.setState({
-            stringUsers: data.data
-        })
-    }
-
-    componentDidUpdate(){
-        console.log('Updated');
-    }
-    render(){
-        console.log('Rendered');
-
+function DivCont (props) {
     return(
         <div className="container-fluid">
 
@@ -48,16 +16,9 @@ class  DivCont extends Component {
 
             {/*<!-- Content Row -->*/}
             <div className="row">
-
-            {/*<!-- Amount of Products in DB -->*/}
-            <Card cardName='Products in Data Base' amount='55' icon='fas fa-clipboard-list fa-2x text-gray-300' color='primary'/>
-
-            {/*<!-- $$$ of all products in DB -->*/}
-            <Card cardName='Amount in products' amount='$190.000' icon='fas fa-dollar-sign fa-2x text-gray-300' color='success'/>
-
-            {/*<!-- Amount of users in DB -->*/}
-            <Card cardName='Users quantity' amount={this.state.stringUsers.length} icon='fas fa-user-check fa-2x text-gray-300' color='warning'/>
+                <Widgets/>
             </div>
+
             {/*<!-- Content Row -->*/}
             <div className="row">
                 {/*<!-- Last Product in DB -->*/}
@@ -70,14 +31,10 @@ class  DivCont extends Component {
                 <AllProductsTable/>
 
                 {/*<!-- Categories in DB -->*/}
-                <Providers/>
-
-                {/*<!-- Categories in DB -->*/}
                 <CategoriesTable/>
             </div>
         </div>
     );
-  }
 }
 
 export default DivCont;

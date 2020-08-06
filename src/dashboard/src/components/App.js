@@ -13,7 +13,7 @@ function App() {
       <Switch>
 				<Route exact path='/' component={Content} />
 				<Route path='/providers' component={Providers} />
-        <Route path='/products' component={Providers} />
+        {/* <Route path='/products' component={} /> */}
 				<Route component={NotFound} />
 			</Switch>
     </React.Fragment>

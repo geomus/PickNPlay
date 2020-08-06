@@ -1,18 +1,12 @@
-const fs = require('fs');
-const path = require('path');
+const db = require("../database/models");
 
-let productsPath = path.join(__dirname,'..','data','productos.json');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-function getProducts() {
-	let products = fs.readFileSync(productsPath, "utf8")
-    return products != '' ? JSON.parse(products) : []
-};
-let productos = getProducts();
-const destacados = productos.filter(prod =>prod.destacado==true);
-
 const controller = {
-	home: (req, res) => {
+	home: async (req, res) => {
+		let destacados = await db.Articles.findAll({ include: ["category"] , where:{
+            outstanding: 1
+        }})
 		res.locals.showModal = false;
 		res.render('index',{title: 'Home', destacados, puntoMil:toThousand});
 	},

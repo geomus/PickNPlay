@@ -19,22 +19,19 @@ function Sidebar(props) {
             <hr className="sidebar-divider my-0"/>
 
             {/*<!-- Nav Item - Dashboard -->*/}
-            <NavLink exact to='/'> <SidebarItem active={true} icon='fa-tachometer-alt' text='Dashboard'/></NavLink>
-            {/* <SidebarItem active={true} icon='fa-tachometer-alt' text='Dashboard' url='/'/> */}
+            <NavLink exact to='/'> <SidebarItem active={true} icon='fa-tachometer-alt' text='Inicio'/></NavLink>
 
             {/*<!-- Divider -->*/}
             <hr className="sidebar-divider"/>
 
             {/*<!-- Heading -->*/}
-            <div className="sidebar-heading">Actions</div>
+            <div className="sidebar-heading">Menú</div>
 
             {/*<!-- Nav Item - Pages -->*/}
             <NavLink exact to='/providers'> <SidebarItem active={false} icon='fa-fw fa-folder' text='Proveedores'/></NavLink>
-            {/* <SidebarItem active={false} icon='fa-fw fa-folder' text='Pages' url='/'/> */}
 
             {/*<!-- Nav Item - Tables -->*/}
             <NavLink exact to='/products'> <SidebarItem active={false} icon='fas fa-fw fa-table' text='Solo Productos'/></NavLink>
-            {/* <SidebarItem active={false} icon='fas fa-fw fa-table' text='Tables' url='/'/> */}
 
 
             {/*<!-- Divider -->*/}

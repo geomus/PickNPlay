@@ -10,6 +10,9 @@ router.get("/users", apiController.listUsers);
 // Profile
 router.get("/users/:id",  apiController.profileOneUser);
 
+/* WIDGETS */
+router.get('/widgets',apiController.widgets);
+
 /* PRODUCTS */
 // Todos los productos
 router.get("/products",  apiController.listProducts);

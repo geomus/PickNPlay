@@ -1,20 +1,14 @@
-let db = require("../database/models");
+const db = require("../database/models");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const path = require("path");
 const { validationResult } = require("express-validator");
-const e = require("express");
-// const { Op } = db.Sequelize;
-// a mejorar con db
-let productsPath = path.join(__dirname,'..','data','productos.json');
-function getProducts() {
-	let products = fs.readFileSync(productsPath, "utf8")
-    return products != '' ? JSON.parse(products) : []
-};
-let productos = getProducts();
-const destacados = productos.filter(prod =>prod.destacado==true);
+
 const controller = {
-    processLogin: (req, res, next) => {
+    processLogin: async (req, res, next) => {
+        let destacados = await db.Articles.findAll({ include: ["category"] , where:{
+            outstanding: 1
+        }})
         let errorsL = validationResult(req);
         if (!errorsL.isEmpty()) {
 

@@ -3,7 +3,6 @@ const path = require("path");
 const db = require("../database/models");
 const { Op } = require("sequelize")
 const { check, validationResult, body } = require("express-validator");
-const { isNull } = require("util");
 
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
