@@ -34,7 +34,7 @@
  },
  {
   "id": 3,
-  "name": "Gibson Thunderbird Bass",
+  "name": "Gibson Thunderbird",
   "price": 150000,
   "discount": 5,
   "stock":2,
@@ -77,8 +77,8 @@
   "subCategory": "guitarras-electricas",
   "description": "Epiphone Casino Vinyage Clasic. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
-    "ec1.jpg",
-    "ec2.jpg"
+    "gl1.jpg",
+   "gl2.jpg"
   ],
   "destacado": false,
   "serialNumber": ""
@@ -174,8 +174,7 @@
   "subCategory": "",
   "description": "Tama 5 cuerpos todos los colores. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   "image": [
-   "tama1.jpg",
-   "tama2.jpg"
+   "tama1.jpg"
   ],
   "destacado": false,
   "serialNumber": ""
