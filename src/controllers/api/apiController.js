@@ -43,14 +43,11 @@ const controller = {
 
     listProducts: async (req, res) => {
         let products = await db.Articles.findAll({ include: ["category"] });
-        //let categories = await db.Categories.findAll();
+        let categories = await db.Categories.findAll();
 
         let countProd = products.length;
-        //console.log(categories);
-        //console.log(products);
         let productos = products.map((product) => {
             let fixPrice = toThousand(Math.trunc(product.price))
-            //console.log(fixPrice);
             return {
                 id: product.id,
                 name: product.name,
@@ -62,21 +59,23 @@ const controller = {
             };
         });
 
-        let countByCategory = {
-            accesorios: productos.filter((producto) => producto.category_id == 1)
-                .length,
-            baterias: productos.filter((producto) => producto.category_id == 2)
-                .length,
-            bajos: productos.filter((producto) => producto.category_id == 3)
-                .length,
-            teclados: productos.filter((producto) => producto.category_id == 5)
-                .length,
-            acusticas: productos.filter((producto) => producto.category_id == 6)
-                .length,
-            clasicas: productos.filter((producto) => producto.category_id == 7)
-                .length,
-            electricas: productos.filter((producto) => producto.category_id == 8)
-                .length,
+        // array dinamico de obj por categoria
+        function ObjCategory(name, cant) {
+            this.name = name;
+            this.cant = cant;
+        }
+        let arrayCategories = []
+         categories.map((cat)=>{
+            let newCat = new ObjCategory(cat.name, 0)
+            arrayCategories.push(newCat)
+        })
+
+        for (let prod of productos) {
+            for (let cat of arrayCategories) {
+               if (prod.category === cat.name) {
+                    cat.cant = cat.cant + 1;
+                }
+            };
         };
         
 
@@ -84,11 +83,11 @@ const controller = {
             meta: {
                 status: 200,
                 link: `/api/products/`,
+                count: countProd,
+                countByCategory: arrayCategories
             },
             data: {
-                productsList: productos,
-                count: countProd,
-                countByCategory: countByCategory,
+                productsList: productos
             },
         });
     },
@@ -97,7 +96,6 @@ const controller = {
             const article = await db.Articles.findByPk(req.params.id, {
                 include: ["category"],
             });
-            //console.log(article)
             let fixPrice = toThousand(Math.trunc(article.price))
             res.json({
                 meta: {
@@ -155,8 +153,25 @@ const controller = {
             },
             data:dataUltimoProducto
         })
-
-
+    },
+    listProviders: async (req, res) => {
+        let providers = await db.Providers.findAll();
+        let listProviders = providers.map((provider) => {
+            return {
+                id: provider.id,
+                company: provider.company,
+                address: provider.address,
+                contact_number: provider.contact_number,
+            };
+        });
+        res.json({
+            meta: {
+                status: 200,
+                count: providers.length,
+                link: "/api/providers/",
+            },
+            data: listProviders
+        })
     }
 };
 

@@ -132,13 +132,6 @@ const controller = {
                 } else {
                     categoryFinal = Number(req.body.category);
                 }
-                //categoryFinal = Number(categoryFinal)
-                //console.log(req.body)
-                //console.log(categoryFinal)
-                //console.log(req.body.category)
-                //console.log(req.body.subcategory)
-                //console.log('aca esta')
-
                 //por ultimo edita el articulo  en la db
                 await db.Articles.update(
                     {

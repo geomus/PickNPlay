@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 31-07-2020 a las 18:24:29
+-- Tiempo de generación: 06-08-2020 a las 00:30:18
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -133,18 +133,27 @@ INSERT INTO `categories` (`id`, `name`, `parent_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `provider`
+-- Estructura de tabla para la tabla `providers`
 --
 
-CREATE TABLE `provider` (
+CREATE TABLE `providers` (
   `id` int(10) UNSIGNED NOT NULL,
   `company` char(60) NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `adress` text,
-  `contact_number` tinyint(3) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED DEFAULT NULL,
+  `address` text,
+  `contact_number` int(30) UNSIGNED NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `providers`
+--
+
+INSERT INTO `providers` (`id`, `company`, `product_id`, `address`, `contact_number`, `createdAt`, `updatedAt`) VALUES
+(1, 'UnlimitedUSA', 2, '518  Saints Alley, Tampa, FL.', 813491738, '2020-08-05 22:34:17', '2020-08-05 22:34:17'),
+(2, 'Criollas Argilla', NULL, '742 Evergreen Terrace, Springfield', 1555576684, '2020-08-05 22:36:49', '2020-08-05 22:36:49'),
+(3, 'Viscusso & Co.', 3, 'P. Sherman, calle Wallaby, 42, Sydney', 1778123668, '2020-08-05 22:39:05', '2020-08-05 22:39:05');
 
 -- --------------------------------------------------------
 
@@ -199,9 +208,9 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `provider`
+-- Indices de la tabla `providers`
 --
-ALTER TABLE `provider`
+ALTER TABLE `providers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -218,7 +227,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `brands`
@@ -233,10 +242,10 @@ ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `provider`
+-- AUTO_INCREMENT de la tabla `providers`
 --
-ALTER TABLE `provider`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `providers`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

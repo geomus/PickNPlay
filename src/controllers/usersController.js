@@ -74,8 +74,6 @@ const controller = {
     },
     userAdd: async (req, res, next) => {
         let errors = validationResult(req);
-        //console.log(errors);
-        //console.log(req.files[0]);
 
         if (!errors.isEmpty()) {
             if (req.files[0]) {

@@ -26,7 +26,6 @@ class AllProductsTable extends Component{
     }
 
     mostrarProductos = (data) => {
-        console.log(data.data);
         this.setState({
             arrayProducts: data.data.productsList
         })
@@ -53,8 +52,6 @@ class AllProductsTable extends Component{
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Product Id</th>
-
-
                             </tr>
                         </thead>
                         <tbody>

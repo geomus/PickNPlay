@@ -11,8 +11,11 @@
 ## Plan de negocio inicial:
 ### Nuestra oferta es variada, por eso mismo se dividirá en categorías, que podrían a su vez contener subcategorías, para facilitar la búsqueda filtrada por el objetivo del cliente.
 
-## Datos para navegar el sitio.
+## Datos para navegar el sitio:
+## clone repository, npm install on ../Grupo_1_InstrumentosM and ../src/dashboard.
+## Run DB script.
 ## PORT page: 2000.
+## PORT dashboard: 3000.
 ### usuario administrador: reviewer@gmail.com  // password: 11112222T
 ### Para acceder a la vista de carga de nuevos productos hay un link en el  pie de la vista de perfil del usuario. Para borrar o editar un producto se accede al mismo desde la vista detalle del mismo con user admin.
 
