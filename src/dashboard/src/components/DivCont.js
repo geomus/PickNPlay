@@ -4,6 +4,7 @@ import LastProduct from './LastProduct';
 import AllUsers from './AllUsers';
 import AllProductsTable from './AllProductsTable';
 import CategoriesTable from './CategoriesTable'
+import Providers from './Providers'
 
 class  DivCont extends Component {
 
@@ -67,6 +68,9 @@ class  DivCont extends Component {
 
                 {/*<!-- All products table in DB -->*/}
                 <AllProductsTable/>
+
+                {/*<!-- Categories in DB -->*/}
+                <Providers/>
 
                 {/*<!-- Categories in DB -->*/}
                 <CategoriesTable/>

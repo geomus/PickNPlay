@@ -152,6 +152,25 @@ const controller = {
             },
             data:dataUltimoProducto
         })
+    },
+    listProviders: async (req, res) => {
+        let providers = await db.Providers.findAll();
+        let listProviders = providers.map((provider) => {
+            return {
+                id: provider.id,
+                company: provider.company,
+                address: provider.address,
+                contact_number: provider.contact_number,
+            };
+        });
+        res.json({
+            meta: {
+                status: 200,
+                count: providers.length,
+                link: "/api/providers/",
+            },
+            data: listProviders
+        })
     }
 };
 
