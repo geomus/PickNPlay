@@ -28,7 +28,7 @@ const imageControlProd = require("../middlewares/imgControlProd");
 
 /* PRODUCTS */
 // Listado productos
-router.get("/", productsController.list);
+router.get("/list/:id?", productsController.list);
 // Agregar productos
 router.get("/create", adminUser, productsController.productAdd);
 

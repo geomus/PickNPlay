@@ -3,7 +3,11 @@
 <!-- HEADER -->
 <%- include('./partials/header') %>
 <div class="container">
-    <strong><h5 style="color: white; text-decoration: underline;"><i class="fas fa-play"></i> Catalogo:</h5></strong>
+    <strong>
+        <% if (cardsTitle) {%> 
+            <h5 style="color: white; text-decoration: underline;"><i class="fas fa-play"></i><%= cardsTitle %> </h5>
+        <% }else{%> <h5 style="color: white; text-decoration: underline;"><i class="fas fa-play"></i><%= productos[0].category.name  %> </h5>  <%}%> 
+    </strong>
     <div class="row">
         <% for (producto of productos){
             let image = JSON.parse(producto.image) %>
@@ -17,7 +21,7 @@
                     </div>
                 </a>
                 <div class="card-footer bg-light">
-                    <small class="text-muted text-capitalize"><%= producto.category.name %></small>
+                    <a href='/products/list/<%=producto.category_id%>'><small class="text-muted text-capitalize"><%= producto.category.name %></small></a>
                 </div>
             </div>
         </div>

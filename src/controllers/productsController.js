@@ -8,13 +8,25 @@ const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
     list: (req, res) => {
+        if (!req.params.id){
         db.Articles.findAll({ include: ["category"] }).then((productos) =>
             res.render("list", {
                 productos: productos,
                 toThousand: toThousand,
-                title: "Listado Productos"
+                title: "Listado Productos",
+                cardsTitle:'Catalogo'
             })
         );
+    }else{
+        db.Articles.findAll({ include: ["category"], where: {category_id:req.params.id} }).then((productos) =>
+        res.render("list", {
+            productos: productos,
+            toThousand: toThousand,
+            title: "Listado Productos",
+            cardsTitle:''
+        })
+        );
+    }
     },
     detalle: async (req, res) => {
         let producto = await db.Articles.findByPk(req.params.id, { include: ["category",'brand'] })
@@ -41,7 +53,6 @@ const controller = {
             pictures: pictures
         })
     },
-
     delete: async (req, res) => {
         let deletedArticle = await db.Articles.findByPk(req.params.id);
         await db.Articles.destroy({
