@@ -69,7 +69,7 @@ const controller = {
                 )
             )
         );
-        return res.redirect("/products");
+        return res.redirect("/products/list/");
     },
 
     editView: async (req, res) => {
@@ -159,7 +159,7 @@ const controller = {
                         where: { id: req.params.id },
                     }
                 )
-                await res.redirect("/products")
+                await res.redirect("/products/list/")
             }
         } catch (error) {
             console.log(error);
@@ -229,7 +229,7 @@ const controller = {
                 description: req.body.description,
                 image: imagesString,
             })
-            .then(() => res.redirect("/products"))
+            .then(() => res.redirect("/products/list/"))
             .catch((error) => console.log(error));
         }
     },

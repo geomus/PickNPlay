@@ -103,7 +103,8 @@
   </div>
   <!-- Modal alerta antes de borrar-->
   <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content  modal-naranja">
       <div class="mt-4 mb-1">
@@ -115,7 +116,6 @@
       <div class="modal-botones">
         <button type="button" class="btn btn-verde" data-dismiss="modal">Salir</button>
         <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST" style="display: inline-flex">
-          
           <button type="submit" class="btn btn-rojo">Borrar producto</button>
         </form>
       </div>
