@@ -2,25 +2,59 @@
 <%- include('./partials/head') %>
 <!-- HEADER -->
 <%- include('./partials/header') %>
+<div class="container my-5">
+    <!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-12">
 
-<div class="container py-3 my-3">
-    <div class="col-12 py-3 my-3" style=" background-color: #ffffff; border-radius: 8px;">
-        <h2>Hola <%= loggedUser.firstName %>! </h2>
-        <div class="col-4 py-3 my-3" style="background-color: #2F303A;">
-            <!-- Editar -->
-            <button type="button" class="btn btn-light btn-block">
-                <a class="btnEdit" style="color: grey;" href="/users/<%=loggedUser.id%>/edit">Editar</a>
-            </button>
-            <!-- Eliminar -->
-            <button type="button" class="btn btn-danger btn-block">
-                <a class="btnEdit" style="color:whitesmoke;" href="/users/<%=loggedUser.id%>/delete">Borrar usuario</a>
-            </button>
+            <div class="container card shadow py-3 my-5" style=" background-color: #ffffff; border-radius: 8px;">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Hola <%= loggedUser.firstName %>!</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col mr-5 align-self-center">
+                                        <img class="img-fluid rounded" style="width: 150px;" src="/images/userAvatars/<%= loggedUser.avatar %>" alt="Avatar">
+                                    </div>
+                                    <div class="col py-4 my-4 rounded" style="background-color: #2f303a48;">
+                                        <!-- Editar -->
+                                        <button type="button" class="btn btn-light btn-block">
+                                            <a class="btnEdit" style="color: grey;" href="/users/<%=loggedUser.id%>/edit">Editar</a>
+                                        </button>
+                                        <!-- Eliminar -->
+                                        <button type="button" class="btn btn-danger btn-block">
+                                            <a class="btnEdit" style="color:whitesmoke;" href="/users/<%=loggedUser.id%>/delete">Borrar usuario</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% if (loggedUser.isAdmin){ %>
+                            <div class="col-lg-6 col-md-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <h3>Panel de control administrador:</h3>
+                                                <ul>
+                                                    <li><a href="/products/create">Carga de productos</a></li>
+                                                    <li><a href="http://localhost:3500/">Dashboard de control</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <img class="img-fluid" src="/images/userAvatars/<%= loggedUser.avatar %>" alt="Avatar">
-        <% if (loggedUser.isAdmin){ %>
-            <h3>Panel de control administrador:</h3>
-            <a href="/products/create">Carga de productos</a>
-        <% } %>
     </div>
 </div>
 

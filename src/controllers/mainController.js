@@ -10,8 +10,9 @@ const controller = {
 		res.locals.showModal = false;
 		res.render('index',{title: 'Home', destacados, puntoMil:toThousand});
 	},
-	carrito: (req, res) => {
-		res.render('carrito',{title: 'Carro Compras'});
+	carrito: async (req, res) => {
+		let productos = await db.Articles.findAll({ include: ["category"]})
+		res.render('carrito',{title: 'Carro Compras', productos});
 	}
 };
 

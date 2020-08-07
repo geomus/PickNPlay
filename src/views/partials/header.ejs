@@ -75,12 +75,12 @@
           <div class="dropdown-menu dropdown-menu-right border-white text-white bg-secondary text-center"
             aria-labelledby="navbarDropdown">
             <!-- logout y link perfil-->
+            <button type="" class='btn btn-light mb-1 btn-block '>
+              <a class="text-dark" href="/users/profile/<%=frontLogedUser.id  %>">Perfil</a>
+            </button>
             <form action="/users/logout" method="POST" class="text-center">
               <button type="submit" class='btn btn-light btn-block'>Cerrar sesión</button>
             </form>
-              <button type="" class='btn btn-light mt-1 btn-block '>
-                <a class="text-dark" href="/users/profile/<%=frontLogedUser.id  %>">Perfil</a>
-              </button>
           </div>
         </div>
         <% }else{ %>
