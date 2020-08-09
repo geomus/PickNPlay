@@ -55,7 +55,7 @@
             <h5 class="card-title"><%= producto.name %> </h5>
             <p class="card-text"><%= producto.description %></p>
             <div class="mb-3">
-              <!--pone y saca la linea del descuento para que no aparezca un -0% y tacha precio cuando hay descuento-->
+              <!-- pone y saca la linea del descuento para que no aparezca un -0% y tacha precio cuando hay descuento -->
               <%let preciofinal = toThousand(producto.price-((producto.price*producto.discount)/100))
               let display = "";
               let tachado = "";
