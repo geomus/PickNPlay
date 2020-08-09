@@ -27,6 +27,9 @@ const adminUser = require("../middlewares/adminUser");
 const imageControlProd = require("../middlewares/imgControlProd");
 
 /* PRODUCTS */
+// Buscar
+router.get("/search", productsController.search);
+
 // Listado productos
 router.get("/list/:id?", productsController.list);
 // Agregar productos

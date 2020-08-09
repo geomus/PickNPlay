@@ -1,0 +1,56 @@
+<!-- HEAD -->
+<%- include('./partials/head') %>
+<!-- HEADER -->
+<%- include('./partials/header') %>
+    <div class="container">
+        <% if (exist) { %>
+            <strong>
+                <h5 style="color: white; text-decoration: underline;"><i class="fas fa-play"></i> Resultados para "<%= search %>"</h5>
+            </strong>
+            <div class="row">
+                <% for (producto of productos){ %>
+                    <% let image = JSON.parse(producto.image) %>
+                    <% let preciofinal = toThousand(producto.price-((producto.price*producto.discount)/100)) %>
+                    <% let display = ""; %>
+                    <% let tachado = ""; %>
+                    <% if (producto.discount <= 0){ %>
+                        <% display = "d-none" %>
+                        <% tachado = "" %>
+                    <% } else { %>
+                        <% display = "d-block text-right text-warning" %>
+                        <% tachado = "tachado" %>
+                    <% } %>
+                    <div class="col-12 col-sm-6 col-lg-3 py-2">
+                        <div class="card text-white bg-secondary mb-3 h-100">
+                            <a href="/products/<%= producto.id %>" style="color: black;">
+                                    <img class="card-img-top img-fluid" src="/images/imgInstrumentos/<%=image[0]%>" alt="Card image cap">
+                                <div class="card-body " style='height: 9.5rem;'>
+                                    <h4 class="card-title"><%= producto.name %></h4>
+                                    <h5 class="card-title text-right <%=tachado %>">$<%= toThousand(Math.trunc(producto.price)) %></h5>
+                                    <h4 class="card-title  <%= display %>"><img src='/images/iconos/etiqueta-de-precio.svg' width='40'>&ensp; $<%=preciofinal%></h4>
+                                </div>
+                            </a>
+                            <div class="card-footer bg-light">
+                                <a href='/products/list/<%=producto.category_id%>'><small class="text-muted text-capitalize"><%= producto.category.name %></small></a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        <% } else { %>
+            <div class="col-lg-8 col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <h4 class="">No hay resultados para tu búsqueda, probá de nuevo!</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+<!-- FOOTER -->
+<%- include('./partials/footer') %>

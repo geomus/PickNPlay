@@ -6,7 +6,7 @@ export default function () {
 
         <div id="content-wrapper" className="d-flex flex-column">
             <div className="container my-auto">
-                <p>No existe esa página</p>
+                <p>Página inexistente o en mantenimiento.</p>
                 <Link to='/' className="btn btn-warning">Regresar</Link>
             </div>
         </div>

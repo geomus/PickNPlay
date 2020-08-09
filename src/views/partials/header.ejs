@@ -1,4 +1,4 @@
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- header -->
     <!-- modal login -->
     <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login menu" aria-hidden="true">
@@ -59,8 +59,9 @@
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <form class="form-inline my-2 my-lg-0 order-lg-1 flex-md-grow-1 justify-content-center">
-          <input class="form mr-sm-1 p-0 navSearch rounded-left border" type="search" placeholder=" Buscar" aria-label="Search">
+        <!-- search -->
+        <form action="/products/search" method="GET" name="searchForm" class="formSearch" class="form-inline my-2 my-lg-0 order-lg-1 flex-md-grow-1 justify-content-center">
+          <input class="form mr-sm-1 p-0 navSearch rounded-left border" name="q" type="search" placeholder=" Buscar" aria-label="Search">
           <button class="btn btn-dark my-2 my-sm-0 rounded-right" type="submit" style="border-color: #6c757d;"><i class="fas fa-search"
               style="color: white;"></i></button>
         </form>

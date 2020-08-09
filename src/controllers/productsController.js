@@ -28,30 +28,52 @@ const controller = {
         );
     }
     },
+    search: async (req, res) => {
+        try {
+            let search = req.query.q;
+            let productos = await db.Articles.findAll({ include: ["category"],
+            where: {
+                name : {[Op.like]:'%'+ search +'%'}
+            }});
+            return res.render("search", {
+                title: `Resultados para ${search}`,
+                productos,
+                toThousand: toThousand,
+                search,
+                exist: productos.length
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    },
     detalle: async (req, res) => {
-        let producto = await db.Articles.findByPk(req.params.id, { include: ["category",'brand'] })
-        pictures = JSON.parse(producto.image);
+        try {
+            let producto = await db.Articles.findByPk(req.params.id, { include: ["category",'brand'] })
+            let pictures = JSON.parse(producto.image);
 
-        // separar categoria de la subcategoria (si la hay)
-        let cat, subcat;
-        if (producto.category.parent_id != null) {
-            cat = await db.Categories.findOne({where:{
-                id: producto.category.parent_id
-            }})
-            subcat = producto.category.name;
-        } else {
-            cat = producto.category;
-            subcat = "";
-        };
+            // separar categoria de la subcategoria (si la hay)
+            let cat, subcat;
+            if (producto.category.parent_id != null) {
+                cat = await db.Categories.findOne({where:{
+                    id: producto.category.parent_id
+                }})
+                subcat = producto.category.name;
+            } else {
+                cat = producto.category;
+                subcat = "";
+            };
 
-        return res.render("detalle", {
-            title: `Detalle ${producto.name}`,
-            producto: producto,
-            cat: cat.name,
-            subcat: subcat,
-            toThousand: toThousand,
-            pictures: pictures
-        })
+            return res.render("detalle", {
+                title: `Detalle ${producto.name}`,
+                producto: producto,
+                cat: cat.name,
+                subcat: subcat,
+                toThousand: toThousand,
+                pictures: pictures
+            })
+        } catch (error) {
+            console.log(error);
+        }
     },
     delete: async (req, res) => {
         let deletedArticle = await db.Articles.findByPk(req.params.id);

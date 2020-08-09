@@ -21,7 +21,6 @@ class lastProduct extends Component{
     }
 
     mostrarUltimoProducto = (objeto) => {
-        console.log(objeto.data);
         this.setState({
             product: objeto.data
         })
@@ -48,7 +47,6 @@ class lastProduct extends Component{
                     </div>
                     <div className="card-body">
                         <div className="text-center">
-                            {/**/}
                             <img className="img-fluid px-3 px-sm-4 mt-3 mb-4"  src={imgLastProd} style={{width: '18rem'}} alt=" dummy"/>
                         </div>
                         <div>

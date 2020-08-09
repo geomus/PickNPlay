@@ -8,9 +8,9 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/"><img src="/images/iconos/house.svg" alt="Home" width="20" height="20" title="Home"></a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="#"><%= cat %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="/products/list/<%=producto.category_id%>"><%= cat %></a></li>
         <% if(subcat != "" ){ %>
-          <li class="breadcrumb-item active" aria-current="page"><a href="#"><%= subcat %></a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="/products/list/<%=producto.category_id%>"><%= subcat %></a></li>
         <% } %>
       </ol>
     </nav>
