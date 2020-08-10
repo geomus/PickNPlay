@@ -8,7 +8,7 @@ const controller = {
             outstanding: 1
         }})
 		res.locals.showModal = false;
-		res.render('index',{title: 'Home', destacados, puntoMil:toThousand});
+		res.render('index',{title: 'Home', destacados, puntoMil: toThousand});
 	},
 	carrito: async (req, res) => {
 		let productos = await db.Articles.findAll({ include: ["category"]})

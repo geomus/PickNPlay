@@ -2,6 +2,7 @@ const db = require("../database/models");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const path = require("path");
+const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const { validationResult } = require("express-validator");
 
 const controller = {
@@ -14,7 +15,7 @@ const controller = {
 
             let showModal = "/javascripts/popModal.js";
             console.log(errorsL);
-            res.render('index',{title: 'Home', destacados, errorsL:errorsL, showModal:showModal});
+            res.render('index',{title: 'Home', destacados, errorsL:errorsL, showModal:showModal, puntoMil:toThousand});
         } else {
             db.Users.findOne({
                 where: {

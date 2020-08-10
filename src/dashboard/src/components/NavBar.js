@@ -14,7 +14,7 @@ function NavBar(props) {
 
             {/*<!-- Nav Item - Alerts -->*/}
             <li className="nav-item dropdown no-arrow mx-1">
-                <a className="nav-link dropdown-toggle" href="/" id="alertsDropdown">
+                <a className="nav-link dropdown-toggle" href="/dashboard" id="alertsDropdown">
                     <i className="fas fa-bell fa-fw"></i>
                     {/*<!-- Counter - Alerts -->*/}
                     <span className="badge badge-danger badge-counter">3+</span>
@@ -23,7 +23,7 @@ function NavBar(props) {
 
             {/*<!-- Nav Item - Messages -->*/}
             <li className="nav-item dropdown no-arrow mx-1">
-                <a className="nav-link dropdown-toggle" href="/" id="messagesDropdown">
+                <a className="nav-link dropdown-toggle" href="/dashboard" id="messagesDropdown">
                     <i className="fas fa-envelope fa-fw"></i>
                     {/*<!-- Counter - Messages -->*/}
                     <span className="badge badge-danger badge-counter">7</span>
@@ -36,7 +36,7 @@ function NavBar(props) {
             <li className="nav-item dropdown no-arrow">
                 <a className="nav-link dropdown-toggle" href="/" id="userDropdown">
                     <span className="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                    <img className="img-profile rounded-circle" src="/avatar-admin.jpg" width="60" alt='foto'/>
+                    <img className="img-profile rounded-circle" src="/images/avatar-admin.jpg" width="60" alt='foto'/>
                 </a>
             </li>
 

@@ -8,7 +8,7 @@ function Sidebar(props) {
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             {/*<!-- Sidebar - Brand -->*/}
-            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div className="sidebar-brand-icon">
                     <i className="fas fa-chart-line"></i>
                 </div>
@@ -19,7 +19,7 @@ function Sidebar(props) {
             <hr className="sidebar-divider my-0"/>
 
             {/*<!-- Nav Item - Dashboard -->*/}
-            <NavLink exact to='/'> <SidebarItem active={true} icon='fa-tachometer-alt' text='Inicio'/></NavLink>
+            <NavLink exact to='/dashboard'> <SidebarItem active={true} icon='fa-tachometer-alt' text='Inicio'/></NavLink>
 
             {/*<!-- Divider -->*/}
             <hr className="sidebar-divider"/>
@@ -28,10 +28,10 @@ function Sidebar(props) {
             <div className="sidebar-heading">Menú</div>
 
             {/*<!-- Nav Item - Pages -->*/}
-            <NavLink exact to='/providers'> <SidebarItem active={false} icon='fa-fw fa-folder' text='Proveedores'/></NavLink>
+            <NavLink exact to='/dashboard/providers'> <SidebarItem active={false} icon='fa-fw fa-folder' text='Proveedores'/></NavLink>
 
             {/*<!-- Nav Item - Tables -->*/}
-            <NavLink exact to='/products'> <SidebarItem active={false} icon='fas fa-fw fa-table' text='Solo Productos'/></NavLink>
+            <NavLink exact to='/dashboard/products'> <SidebarItem active={false} icon='fas fa-fw fa-table' text='Solo Productos'/></NavLink>
 
 
             {/*<!-- Divider -->*/}

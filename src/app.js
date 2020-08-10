@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const sessionUser = require('./middlewares/sessionUser');
+const adminUser = require('./middlewares/adminUser');
 const variablesGlobales = require('./middlewares/variablesGlobales');
 const logger = require('morgan');
 const methodOverride =  require('method-override');
@@ -46,6 +47,9 @@ app.use(variablesGlobales);
 app.use('/', indexRouter); // Rutas /
 app.use('/products', productsRouter); // Rutas /products
 app.use('/users', usersRouter); // Rutas /users
+app.use('/dashboard',adminUser, function (req, res){
+  res.sendFile(path.resolve(__dirname, 'dashboard/build', 'index.html'))
+})
 
 // API
 app.use('/api',ApiRoute)

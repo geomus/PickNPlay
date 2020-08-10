@@ -11,8 +11,8 @@ function App() {
     <React.Fragment>
       <Sidebar/>
       <Switch>
-				<Route exact path='/' component={Content} />
-				<Route path='/providers' component={Providers} />
+				<Route exact path='/dashboard' component={Content} />
+				<Route path='/dashboard/providers' component={Providers} />
         {/* <Route path='/products' component={} /> */}
 				<Route component={NotFound} />
 			</Switch>
