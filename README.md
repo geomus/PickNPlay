@@ -1,7 +1,6 @@
 # Grupo 1
 ![Logo](https://user-images.githubusercontent.com/61567182/79498247-5a80cd00-7fff-11ea-88c7-0279911f1585.png)
 # Pick 'n' Play
-## Integrantes: Abramzon Enrique, Daneri Nahuel, Toyos Francisco
 ## Descripción:
 ### El sitio está orientado a la compra-venta de instrumentos musicales varios y accesorios relacionados.
 ## [Trello del equipo](https://trello.com/b/2bdNFARD/)
